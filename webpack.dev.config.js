@@ -13,7 +13,7 @@ module.exports = {
     },
     devServer: {
         historyApiFallback: true,
-        contentBase: path.resolve(__dirname, 'dist'),
+        //contentBase: path.resolve(__dirname, 'dist'),
         open: true,
         compress: true,
         hot: true,
@@ -53,7 +53,7 @@ module.exports = {
     },
     plugins: [
         new HTMLWebpackPlugin({
-            title: 'news-js',
+            title: 'online-store',
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',
         }),
