@@ -1,12 +1,32 @@
-import { Container, Typography } from '@mui/material';
-import { SOME_MESSAGE } from '../../utils/constants';
+import { AppBar, Badge, IconButton, Toolbar, Typography, Link, Box } from '@mui/material';
+import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
+import MenuIcon from '@mui/icons-material/Menu';
 
 export const Header: React.FC = () => {
   return (
-    <Container maxWidth="lg">
-      <Typography variant="h6" sx={{ backgroundColor: 'lightgrey', mt: 4, mb: 2, pl: 1.7 }}>
-        {SOME_MESSAGE}
-      </Typography>
-    </Container>
+    <AppBar position="static" style={{ background: 'white', boxShadow: 'none' }}>
+      <Toolbar>
+        <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+          <IconButton size="large" edge="start" aria-label="menu" sx={{ mr: 2 }}>
+            <MenuIcon style={{ color: '#006666' }} />
+          </IconButton>
+        </Box>
+        <Typography
+          variant="h1"
+          fontSize={35}
+          sx={{ flexGrow: 1 }}
+          fontFamily={`'Pacifico', cursive`}
+        >
+          <Link href="#" underline="none" color="#006666">
+            My Flowers
+          </Link>
+        </Typography>
+        <IconButton color="inherit">
+          <Badge color="secondary">
+            {<AddShoppingCartOutlinedIcon style={{ color: '#006666' }} sx={{ fontSize: 30 }} />}
+          </Badge>
+        </IconButton>
+      </Toolbar>
+    </AppBar>
   );
 };
