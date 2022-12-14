@@ -5,7 +5,7 @@ export interface FlowersData {
   discount: number;
   rating: number;
   stock: number;
-  brand: string;
-  category: string;
+  family: string;
+  genus: string;
   price: number;
 }
