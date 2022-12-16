@@ -1,4 +1,4 @@
-import type { FlowersData } from './types';
+import type { FlowersData } from '../components/types/types';
 
 export const flowersData: FlowersData[] = [
   {
