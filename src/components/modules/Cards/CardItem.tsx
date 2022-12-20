@@ -3,11 +3,16 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box, Button, CardActionArea, CardActions, Rating } from '@mui/material';
-import { flowersData } from '../../../data/data';
 import style from './CardItem.module.css';
+import { FlowersType } from '../../types/types';
 
-export const CardItem = () => {
-  let cardDescription: string = flowersData[0].description;
+interface Icards {
+  key: number;
+  cards: FlowersType;
+}
+export const CardItem = (props: Icards) => {
+  console.log(props);
+  let cardDescription: string = props.cards.description;
   if (cardDescription.length > 180) {
     cardDescription = cardDescription.split('').slice(0, 180).join('') + '...';
   }
@@ -17,20 +22,20 @@ export const CardItem = () => {
         <CardMedia
           component="img"
           height="200"
-          image={flowersData[0].photos[0]}
-          alt={flowersData[0].name}
-          sx={{ objectPosition: '0 -230px' }}
+          image={props.cards.photos[0]}
+          alt={props.cards.name}
+          sx={{ objectPosition: '50% 70%' }}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {flowersData[0].name}
+            {props.cards.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {cardDescription}
           </Typography>
         </CardContent>
         <Box className={style.priceBox}>
-          <Typography>{flowersData[0].price}$</Typography>
+          <Typography>{props.cards.price}$</Typography>
           <CardActions>
             <Button
               className={style.bntBuy}
@@ -45,7 +50,7 @@ export const CardItem = () => {
         </Box>
         <Rating
           name="half-rating-read"
-          defaultValue={flowersData[0].rating}
+          defaultValue={props.cards.rating}
           precision={0.5}
           readOnly
           sx={{ padding: '0 0 10px 16px' }}

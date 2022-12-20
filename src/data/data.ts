@@ -2,6 +2,7 @@ import type { FlowersType } from '../components/types/types';
 
 export const flowersData: FlowersType[] = [
   {
+    id: 1,
     name: 'Haworthia',
     photos: [
       'https://images.unsplash.com/photo-1463154545680-d59320fd685d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1575&q=80',
@@ -17,6 +18,7 @@ export const flowersData: FlowersType[] = [
     price: 80,
   },
   {
+    id: 2,
     name: 'Croton',
     photos: [
       'https://images.unsplash.com/photo-1604762525950-13c07ecdab8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
@@ -32,6 +34,7 @@ export const flowersData: FlowersType[] = [
     price: 85,
   },
   {
+    id: 3,
     name: 'Peperomia nivalis',
     photos: [
       'https://images.unsplash.com/photo-1599067899479-9956c06f9ca9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
@@ -47,6 +50,7 @@ export const flowersData: FlowersType[] = [
     price: 75,
   },
   {
+    id: 4,
     name: 'Cactus',
     photos: [
       'https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=474&q=80',
@@ -62,6 +66,7 @@ export const flowersData: FlowersType[] = [
     price: 30,
   },
   {
+    id: 5,
     name: 'Ficus',
     photos: [
       'https://images.unsplash.com/photo-1562351757-66f3589f30cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
@@ -76,6 +81,7 @@ export const flowersData: FlowersType[] = [
     price: 70,
   },
   {
+    id: 6,
     name: 'Aloe humilis',
     photos: [
       'https://images.unsplash.com/photo-1485955900006-10f4d324d411?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80',
@@ -90,6 +96,7 @@ export const flowersData: FlowersType[] = [
     price: 72,
   },
   {
+    id: 7,
     name: 'Ceropegia Woodii',
     photos: [
       'https://images.unsplash.com/photo-1602761265250-08beab2b989b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
@@ -105,6 +112,7 @@ export const flowersData: FlowersType[] = [
     price: 55,
   },
   {
+    id: 8,
     name: 'Chamaedorea elegans',
     photos: [
       'https://images.unsplash.com/photo-1519241923167-9c69efe2d7b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=401&q=80',
@@ -120,6 +128,7 @@ export const flowersData: FlowersType[] = [
     price: 60,
   },
   {
+    id: 9,
     name: 'Echeveria',
     photos: [
       'https://images.unsplash.com/photo-1613563928976-adba4cfec13d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80',
@@ -135,6 +144,7 @@ export const flowersData: FlowersType[] = [
     price: 80,
   },
   {
+    id: 10,
     name: 'Ficus lyrata',
     photos: [
       'https://images.unsplash.com/photo-1453904300235-0f2f60b15b5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
@@ -149,6 +159,7 @@ export const flowersData: FlowersType[] = [
     price: 72,
   },
   {
+    id: 11,
     name: 'Monstera',
     photos: [
       'https://images.unsplash.com/photo-1521465192072-6926fef831fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
@@ -164,6 +175,7 @@ export const flowersData: FlowersType[] = [
     price: 65,
   },
   {
+    id: 12,
     name: 'Zamioculcas',
     photos: [
       'https://images.unsplash.com/photo-1550731827-6ec2951e3099?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1530&q=80',
@@ -179,6 +191,7 @@ export const flowersData: FlowersType[] = [
     price: 90,
   },
   {
+    id: 13,
     name: 'Pilea',
     photos: [
       'https://images.unsplash.com/photo-1598880942562-8cf3cf728312?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
@@ -194,6 +207,7 @@ export const flowersData: FlowersType[] = [
     price: 65,
   },
   {
+    id: 14,
     name: 'Fern',
     photos: [
       'https://images.unsplash.com/photo-1610247673420-52d9683002eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
@@ -209,6 +223,7 @@ export const flowersData: FlowersType[] = [
     price: 20,
   },
   {
+    id: 15,
     name: 'Ficus microcarpa',
     photos: [
       'https://images.unsplash.com/photo-1512428813834-c702c7702b78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
@@ -224,6 +239,7 @@ export const flowersData: FlowersType[] = [
     price: 72,
   },
   {
+    id: 16,
     name: 'Epipremnum',
     photos: [
       'https://images.unsplash.com/photo-1598880940080-ff9a29891b85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjN8fHBvdHRlZCUyMGZsb3dlcnN8ZW58MHx8MHx3aGl0ZXw%3D&auto=format&fit=crop&w=500&q=60',
@@ -238,6 +254,7 @@ export const flowersData: FlowersType[] = [
     price: 68,
   },
   {
+    id: 17,
     name: 'Sansevieria',
     photos: [
       'https://images.unsplash.com/photo-1620127807580-990c3ecebd14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80',
@@ -252,6 +269,7 @@ export const flowersData: FlowersType[] = [
     price: 55,
   },
   {
+    id: 18,
     name: 'Violet',
     photos: [
       'https://images.unsplash.com/photo-1595609169861-8eedf5d26662?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80',
@@ -267,6 +285,7 @@ export const flowersData: FlowersType[] = [
     price: 70,
   },
   {
+    id: 19,
     name: 'Hydrangea',
     photos: [
       'https://images.unsplash.com/photo-1604782789956-2d2c62465f94?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80',
@@ -282,6 +301,7 @@ export const flowersData: FlowersType[] = [
     price: 80,
   },
   {
+    id: 20,
     name: 'Geranium',
     photos: [
       'https://images.unsplash.com/photo-1616075196566-f2fc53eb6f75?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
