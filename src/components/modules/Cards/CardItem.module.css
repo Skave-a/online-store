@@ -1,0 +1,16 @@
+.priceBox {
+    display: flex;
+    padding: 0 16px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bntBuy {
+    border: 1px solid #006666;
+    color: #006666;
+}
+
+.bntBuy:hover {
+    color: white;
+    background-color: #006666;
+}

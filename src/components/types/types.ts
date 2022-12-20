@@ -1,11 +1,11 @@
-export interface FlowersData {
+export interface FlowersType {
   name: string;
   photos: string[];
   description: string;
-  discount: number;
+  discount?: number;
   rating: number;
-  stock: number;
-  family: string;
-  genus: string;
+  stock?: number;
+  family?: string;
+  genus?: string;
   price: number;
 }

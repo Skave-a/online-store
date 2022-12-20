@@ -1,6 +1,6 @@
-import type { FlowersData } from '../components/types/types';
+import type { FlowersType } from '../components/types/types';
 
-export const flowersData: FlowersData[] = [
+export const flowersData: FlowersType[] = [
   {
     name: 'Haworthia',
     photos: [
@@ -40,7 +40,7 @@ export const flowersData: FlowersData[] = [
     description:
       'Peperomia nivalis is a species of plant in the genus Peperomia endemic to Peru. Its native habitat is found in the high altitude ranges of the peruvian Andes. P. nivalis is a compact erect succulent herb with fleshy stems and leaves. The thick leaves are cuneate and U-shaped in cross-section with epidermal windows on the top-side. The leaf color is bright green in the shady summer and reddish during dry sunny seasons.',
     discount: 5,
-    rating: 4.9,
+    rating: 4.5,
     stock: 45,
     family: 'Piperaceae',
     genus: 'Peperomia',
@@ -98,7 +98,7 @@ export const flowersData: FlowersData[] = [
     description:
       'Ceropegia woodii is a flowering plant in the dogbane family Apocynaceae, native to South Africa, Eswatini and Zimbabwe. It is sometimes treated as a subspecies of the related Ceropegia linearis, as C. linearis subsp. woodii. Common names include chain of hearts, collar of hearts, string of hearts, rosary vine, hearts-on-a-string, and sweetheart vine.',
     discount: 0,
-    rating: 4.9,
+    rating: 4.5,
     stock: 25,
     family: 'Apocynaceae',
     genus: 'Ceropegia',
@@ -157,7 +157,7 @@ export const flowersData: FlowersData[] = [
     description:
       'Monstera is a genus of 59 species of flowering plants in the arum family, Araceae, native to tropical regions of the Americas.',
     discount: 0,
-    rating: 4.9,
+    rating: 4.5,
     stock: 12,
     family: 'Araceae',
     genus: 'Monstera',
@@ -231,7 +231,7 @@ export const flowersData: FlowersData[] = [
     ],
     description: `Epipremnum aureum is a species in the arum family Araceae, native to Mo'orea in the Society Islands of French Polynesia. The species is a popular houseplant in temperate regions but has also become naturalised in tropical and sub-tropical forests worldwide, including northern South Africa, Australia, Southeast Asia, South Asia, the Pacific Islands and the West Indies, where it has caused severe ecological damage in some cases.`,
     discount: 10,
-    rating: 4.9,
+    rating: 4.5,
     stock: 23,
     family: 'Araceae',
     genus: 'Epipremnum',
@@ -240,7 +240,7 @@ export const flowersData: FlowersData[] = [
   {
     name: 'Sansevieria',
     photos: [
-      'https://unsplash.com/photos/WQq3rRPb-5Q',
+      'https://images.unsplash.com/photo-1620127807580-990c3ecebd14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80',
       'https://images.unsplash.com/photo-1636901942227-bc95c76b73f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
     ],
     description: `Sansevieria is a historically recognized genus of flowering plants, native to Africa, notably Madagascar, and southern Asia, now included in the genus Dracaena on the basis of molecular phylogenetic studies. Common names for the 70 or so species formerly placed in the genus include mother-in-law's tongue, devil's tongue, jinn's tongue, bow string hemp, snake plant and snake tongue.`,
@@ -254,7 +254,7 @@ export const flowersData: FlowersData[] = [
   {
     name: 'Violet',
     photos: [
-      'https://unsplash.com/photos/590CL9EbVRo',
+      'https://images.unsplash.com/photo-1595609169861-8eedf5d26662?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80',
       'https://images.unsplash.com/photo-1639678313728-4c58093f3785?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
     ],
     description:
@@ -275,7 +275,7 @@ export const flowersData: FlowersData[] = [
     description:
       'Hydrangea, commonly named the hortensia, is a genus of over 75 species of flowering plants native to Asia and the Americas. By far the greatest species diversity is in eastern Asia, notably China, Korea, and Japan. Most are shrubs 1–3 m (3 ft 3 in – 9 ft 10 in) tall, but some are small trees, and others lianas reaching up to 30 m (100 ft) by climbing up trees. They can be either deciduous or evergreen, though the widely cultivated temperate species are all deciduous.',
     discount: 0,
-    rating: 4.9,
+    rating: 4.5,
     stock: 50,
     family: 'Hydrangeaceae',
     genus: 'Hydrangea',
@@ -284,7 +284,7 @@ export const flowersData: FlowersData[] = [
   {
     name: 'Geranium',
     photos: [
-      'https://unsplash.com/photos/HWwUllLR4OE',
+      'https://images.unsplash.com/photo-1616075196566-f2fc53eb6f75?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
       'https://images.unsplash.com/photo-1567538737566-184fdf777891?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80',
     ],
     description:
