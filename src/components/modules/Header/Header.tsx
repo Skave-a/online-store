@@ -1,6 +1,7 @@
 import { AppBar, Badge, IconButton, Toolbar, Typography, Link, Box } from '@mui/material';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link as RouterLink } from 'react-router-dom';
 
 export const Header: React.FC = () => {
   return (
@@ -16,16 +17,19 @@ export const Header: React.FC = () => {
           fontSize={35}
           sx={{ flexGrow: 1 }}
           fontFamily={`'Pacifico', cursive`}
+          color="#006666"
         >
-          <Link href="#" underline="none" color="#006666">
+          <Link component={RouterLink} to="/" underline="none" color="#006666">
             My Flowers
           </Link>
         </Typography>
-        <IconButton color="inherit">
-          <Badge color="secondary">
-            {<AddShoppingCartOutlinedIcon style={{ color: '#006666' }} sx={{ fontSize: 30 }} />}
-          </Badge>
-        </IconButton>
+        <RouterLink to="/basket">
+          <IconButton color="inherit">
+            <Badge color="secondary">
+              {<AddShoppingCartOutlinedIcon style={{ color: '#006666' }} sx={{ fontSize: 30 }} />}
+            </Badge>
+          </IconButton>
+        </RouterLink>
       </Toolbar>
     </AppBar>
   );

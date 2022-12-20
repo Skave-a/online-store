@@ -8,4 +8,6 @@ export interface FlowersData {
   family: string;
   genus: string;
   price: number;
+  quantity: number;
+  priceTotal?: number;
 }

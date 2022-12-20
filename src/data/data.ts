@@ -15,6 +15,7 @@ export const flowersData: FlowersData[] = [
     family: 'Asphodelaceae',
     genus: 'Haworthia',
     price: 80,
+    quantity: 1,
   },
   {
     name: 'Croton',
@@ -30,6 +31,7 @@ export const flowersData: FlowersData[] = [
     family: 'Euphorbiaceae',
     genus: 'Croton',
     price: 85,
+    quantity: 1,
   },
   {
     name: 'Peperomia nivalis',
@@ -45,6 +47,7 @@ export const flowersData: FlowersData[] = [
     family: 'Piperaceae',
     genus: 'Peperomia',
     price: 75,
+    quantity: 1,
   },
   {
     name: 'Cactus',
@@ -60,6 +63,7 @@ export const flowersData: FlowersData[] = [
     family: 'Cactaceae',
     genus: 'Pereskia',
     price: 30,
+    quantity: 1,
   },
   {
     name: 'Ficus',
@@ -74,6 +78,7 @@ export const flowersData: FlowersData[] = [
     family: 'Moraceae',
     genus: 'Ficus',
     price: 70,
+    quantity: 1,
   },
   {
     name: 'Aloe humilis',
@@ -88,6 +93,7 @@ export const flowersData: FlowersData[] = [
     family: 'Asphodelaceae',
     genus: 'Aloe',
     price: 72,
+    quantity: 1,
   },
   {
     name: 'Ceropegia Woodii',
@@ -103,6 +109,7 @@ export const flowersData: FlowersData[] = [
     family: 'Apocynaceae',
     genus: 'Ceropegia',
     price: 55,
+    quantity: 1,
   },
   {
     name: 'Chamaedorea elegans',
@@ -118,6 +125,7 @@ export const flowersData: FlowersData[] = [
     family: 'Palm',
     genus: 'Chamedorea',
     price: 60,
+    quantity: 1,
   },
   {
     name: 'Echeveria',
@@ -133,6 +141,7 @@ export const flowersData: FlowersData[] = [
     family: 'FLORIST-TO-DOOR',
     genus: '',
     price: 80,
+    quantity: 1,
   },
   {
     name: 'Ficus lyrata',
@@ -147,6 +156,7 @@ export const flowersData: FlowersData[] = [
     family: 'Moraceae',
     genus: 'Ficus',
     price: 72,
+    quantity: 1,
   },
   {
     name: 'Monstera',
@@ -162,6 +172,7 @@ export const flowersData: FlowersData[] = [
     family: 'Araceae',
     genus: 'Monstera',
     price: 65,
+    quantity: 1,
   },
   {
     name: 'Zamioculcas',
@@ -177,6 +188,7 @@ export const flowersData: FlowersData[] = [
     family: 'Araceae',
     genus: 'Zamioculcas',
     price: 90,
+    quantity: 1,
   },
   {
     name: 'Pilea',
@@ -192,6 +204,7 @@ export const flowersData: FlowersData[] = [
     family: 'Urticaceae',
     genus: 'Pilea',
     price: 65,
+    quantity: 1,
   },
   {
     name: 'Fern',
@@ -207,6 +220,7 @@ export const flowersData: FlowersData[] = [
     family: 'Polypodiopsida',
     genus: 'Equisetum',
     price: 20,
+    quantity: 1,
   },
   {
     name: 'Ficus microcarpa',
@@ -222,6 +236,7 @@ export const flowersData: FlowersData[] = [
     family: 'Moraceae',
     genus: 'Ficus',
     price: 72,
+    quantity: 1,
   },
   {
     name: 'Epipremnum',
@@ -236,6 +251,7 @@ export const flowersData: FlowersData[] = [
     family: 'Araceae',
     genus: 'Epipremnum',
     price: 68,
+    quantity: 1,
   },
   {
     name: 'Sansevieria',
@@ -250,6 +266,7 @@ export const flowersData: FlowersData[] = [
     family: 'Asparagaceae',
     genus: 'Dracaena',
     price: 55,
+    quantity: 1,
   },
   {
     name: 'Violet',
@@ -265,6 +282,7 @@ export const flowersData: FlowersData[] = [
     family: 'Violaceae',
     genus: 'Viola',
     price: 70,
+    quantity: 1,
   },
   {
     name: 'Hydrangea',
@@ -280,6 +298,7 @@ export const flowersData: FlowersData[] = [
     family: 'Hydrangeaceae',
     genus: 'Hydrangea',
     price: 80,
+    quantity: 1,
   },
   {
     name: 'Geranium',
@@ -295,5 +314,6 @@ export const flowersData: FlowersData[] = [
     family: 'Geraniaceae',
     genus: 'Geranium',
     price: 10,
+    quantity: 1,
   },
 ];
