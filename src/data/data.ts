@@ -69,8 +69,8 @@ export const flowersData: FlowersType[] = [
     id: 5,
     name: 'Ficus',
     photos: [
+      'https://images.unsplash.com/photo-1603179614210-1836dcac7260?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80',
       'https://images.unsplash.com/photo-1562351757-66f3589f30cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
-      'https://images.unsplash.com/photo-1597055181413-65e08a46a708?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
     ],
     description: `Ficus is a genus of about 850 species of woody trees, shrubs, vines, epiphytes and hemiepiphytes in the family Moraceae. Collectively known as fig trees or figs, they are native throughout the tropics with a few species extending into the semi-warm temperate zone.`,
     discount: 10,
@@ -147,8 +147,8 @@ export const flowersData: FlowersType[] = [
     id: 10,
     name: 'Ficus lyrata',
     photos: [
-      'https://images.unsplash.com/photo-1453904300235-0f2f60b15b5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
       'https://images.unsplash.com/photo-1596547612397-1432a7a7d37d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+      'https://images.unsplash.com/photo-1453904300235-0f2f60b15b5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
     ],
     description: `Lyre- shaped ficus(lat.Ficus lyrata) is an evergreen tree, from the genus Ficus of the Mulberry family(Moraceae)`,
     discount: 20,
@@ -162,8 +162,8 @@ export const flowersData: FlowersType[] = [
     id: 11,
     name: 'Monstera',
     photos: [
-      'https://images.unsplash.com/photo-1521465192072-6926fef831fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
       'https://images.unsplash.com/photo-1585598117791-876ce25c1884?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+      'https://images.unsplash.com/photo-1521465192072-6926fef831fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
     ],
     description:
       'Monstera is a genus of 59 species of flowering plants in the arum family, Araceae, native to tropical regions of the Americas.',
@@ -178,8 +178,8 @@ export const flowersData: FlowersType[] = [
     id: 12,
     name: 'Zamioculcas',
     photos: [
-      'https://images.unsplash.com/photo-1550731827-6ec2951e3099?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1530&q=80',
       'https://images.unsplash.com/photo-1632207691143-643e2a9a9361?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
+      'https://images.unsplash.com/photo-1550731827-6ec2951e3099?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1530&q=80',
     ],
     description:
       'Zamioculcas is a genus of flowering plants in the family Araceae, containing the single species Zamioculcas zamiifolia. It is a tropical perennial plant, native to eastern Africa, from southern Kenya to northeastern South Africa. Common names include Zanzibar gem, ZZ plant, Zuzu plant, aroid palm, eternity plant and emerald palm. It is grown as an ornamental plant, mainly for its attractive glossy foliage and easy care.',
@@ -210,8 +210,8 @@ export const flowersData: FlowersType[] = [
     id: 14,
     name: 'Fern',
     photos: [
-      'https://images.unsplash.com/photo-1610247673420-52d9683002eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
       'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+      'https://images.unsplash.com/photo-1610247673420-52d9683002eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
     ],
     description:
       'A fern (Polypodiopsida or Polypodiophyta) is a member of a group of vascular plants (plants with xylem and phloem) that reproduce via spores and have neither seeds nor flowers.',
@@ -288,8 +288,8 @@ export const flowersData: FlowersType[] = [
     id: 19,
     name: 'Hydrangea',
     photos: [
-      'https://images.unsplash.com/photo-1604782789956-2d2c62465f94?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80',
       'https://images.unsplash.com/photo-1501577316686-a5cbf6c1df7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+      'https://images.unsplash.com/photo-1604782789956-2d2c62465f94?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80',
     ],
     description:
       'Hydrangea, commonly named the hortensia, is a genus of over 75 species of flowering plants native to Asia and the Americas. By far the greatest species diversity is in eastern Asia, notably China, Korea, and Japan. Most are shrubs 1–3 m (3 ft 3 in – 9 ft 10 in) tall, but some are small trees, and others lianas reaching up to 30 m (100 ft) by climbing up trees. They can be either deciduous or evergreen, though the widely cultivated temperate species are all deciduous.',
