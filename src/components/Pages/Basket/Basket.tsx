@@ -1,17 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, Button, CardMedia, Container, Divider, Grid, Typography } from '@mui/material';
 import { flowersData } from '../../../data/data';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-function Basket() {
+function Basket({ setTotalQuantity }: { setTotalQuantity: (arg0: number) => void }) {
   const [basket, setBasket] = useState(flowersData.slice(0, 4));
-  const isQuantityBasket = basket.filter((item) => item.quantity > 0);
-  //console.log('isQuantityBasket:', isQuantityBasket);
 
-  const aumentHandler = (name: string) => {
+  const totalBasket = basket.reduce(
+    (acc, el) => acc + (el.priceTotal ? el.priceTotal : el.price),
+    0
+  );
+
+  const totalQuantity = basket.reduce((acc, el) => acc + el.quantity, 0);
+
+  useEffect(() => {
+    setTotalQuantity(totalQuantity);
+  }, [setTotalQuantity, totalQuantity]);
+
+  const augmentHandler = (name: string) => {
     setBasket((basket) => {
       return basket.map((item) => {
-        if (item.name === name) {
+        if (item.name === name && item.quantity < item.stock) {
           return {
             ...item,
             quantity: ++item.quantity,
@@ -25,19 +34,20 @@ function Basket() {
 
   const decrementHandler = (name: string) => {
     setBasket((basket) => {
-      return basket.map((item) => {
-        if (item.name === name) {
-          return {
-            ...item,
-            quantity: --item.quantity,
-            priceTotal: item.priceTotal ? item.priceTotal - item.price : undefined,
-          };
-        }
-        return item;
-      });
+      return basket
+        .map((item) => {
+          if (item.name === name) {
+            return {
+              ...item,
+              quantity: --item.quantity,
+              priceTotal: item.priceTotal ? item.priceTotal - item.price : undefined,
+            };
+          }
+          return item;
+        })
+        .filter((item) => item.quantity > 0);
     });
   };
-  //console.log(`basket:`, basket);
 
   return (
     <>
@@ -49,7 +59,7 @@ function Basket() {
           fontFamily={`font-family: sans-serif`}
           color="#006666"
         >
-          Ваша корзина:{'10'}
+          Ваша корзина:{totalQuantity}
         </Typography>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={4}>
@@ -82,7 +92,7 @@ function Basket() {
                 margin={1}
                 textAlign={'right'}
               >
-                {`${'120'}$`}
+                {`${totalBasket}$`}
               </Typography>
             </Box>
             <Button fullWidth sx={{ mb: 2 }} variant="outlined">
@@ -93,7 +103,7 @@ function Basket() {
             </Button>
           </Grid>
           <Grid item xs={12} sm={8}>
-            {isQuantityBasket.map((item) => {
+            {basket.map((item) => {
               return (
                 <Box
                   key={item.name}
@@ -123,13 +133,14 @@ function Basket() {
                     color="#006666"
                     margin={1}
                     sx={{ fontSize: { xs: 12, sm: 14 } }}
+                    align="justify"
                   >
-                    {item.name}, {item.family}, {item.genus}
+                    Name:{item.name}, Family:{item.family}, Genus:{item.genus}, Stock:{item.stock}
                   </Typography>
                   <Box>
                     <Button
                       onClick={() => {
-                        aumentHandler(item.name);
+                        augmentHandler(item.name);
                       }}
                       sx={{ minWidth: { xs: 33, sm: 64 } }}
                       variant="outlined"

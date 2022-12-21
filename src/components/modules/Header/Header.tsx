@@ -3,7 +3,7 @@ import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutl
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink } from 'react-router-dom';
 
-export const Header: React.FC = () => {
+export const Header: React.FC<{ totalQuantity: number }> = ({ totalQuantity }) => {
   return (
     <AppBar position="static" style={{ background: 'white', boxShadow: 'none' }}>
       <Toolbar>
@@ -25,7 +25,7 @@ export const Header: React.FC = () => {
         </Typography>
         <RouterLink to="/basket">
           <IconButton color="inherit">
-            <Badge color="secondary">
+            <Badge color="error" badgeContent={totalQuantity}>
               {<AddShoppingCartOutlinedIcon style={{ color: '#006666' }} sx={{ fontSize: 30 }} />}
             </Badge>
           </IconButton>
