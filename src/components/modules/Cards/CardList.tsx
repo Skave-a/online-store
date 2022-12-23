@@ -1,13 +1,15 @@
 import { Grid } from '@mui/material';
-import { flowersData } from '../../../data/data';
+import { FlowersType } from '../../types/types';
 import { CardItem } from './CardItem';
 
-const cards = flowersData;
+interface ICardList {
+  cards: FlowersType[];
+}
 
-export const CardList = () => {
+export const CardList = (props: ICardList) => {
   return (
     <Grid container spacing={2}>
-      {cards.map((item) => (
+      {props.cards.map((item) => (
         <CardItem key={item.id} cards={item} />
       ))}
     </Grid>

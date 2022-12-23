@@ -1,16 +1,22 @@
-// import { CardItem } from '../Cards/CardItem';
 import Container from '@mui/material/Container/Container';
 import { CardList } from '../Cards/CardList';
-// import style from './Main.module.css';
+import { useState } from 'react';
+import { flowersData } from '../../../data/data';
+import CardsFilter from '../Cards/CardsFilter';
+import { useSortedCards } from '../../hooks/useCards';
+
+const cards = flowersData;
 
 function Main() {
-  // const [cards] = useState(flowersData);
+  const [filter, setFilter] = useState({ sort: '' });
+  const sortedCards = useSortedCards(cards, filter.sort);
+
   return (
     <Container sx={{ mt: '20px' }}>
-      <CardList />
+      <CardsFilter filter={filter} setFilter={setFilter} />
+      <CardList cards={sortedCards} />
     </Container>
   );
-  // <div className={style.main}>Main page</div>;
 }
 
 export default Main;
