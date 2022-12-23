@@ -1,5 +1,6 @@
-import { Sort } from '../../UI/select/Select';
+import { SelectCards } from '../../UI/select/SelectCards';
 import React, { Dispatch } from 'react';
+import { SearchCard } from '../../UI/search/SearchCard';
 
 interface ICardsFiter {
   sort: string;
@@ -15,7 +16,7 @@ const CardsFilter = ({
 }) => {
   return (
     <div>
-      <Sort
+      <SelectCards
         value={filter.sort}
         onChange={(selectedSort) => setFilter({ ...filter, sort: selectedSort })}
         options={[

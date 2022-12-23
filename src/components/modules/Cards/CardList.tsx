@@ -8,7 +8,7 @@ interface ICardList {
 
 export const CardList = (props: ICardList) => {
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} sx={{ maxWidth: '1000px' }}>
       {props.cards.map((item) => (
         <CardItem key={item.id} cards={item} />
       ))}

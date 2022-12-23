@@ -7,7 +7,7 @@ import Select from '@mui/material/Select';
 const labelSX = {
   color: '#006666',
   '&:focus': {
-    color: '#006666',
+    color: '#006666 !important',
   },
 };
 
@@ -17,7 +17,7 @@ interface IOptionSort {
   id: number;
 }
 
-export const Sort = ({
+export const SelectCards = ({
   options,
   value,
   onChange,
