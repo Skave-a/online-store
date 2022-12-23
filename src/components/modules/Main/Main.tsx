@@ -1,19 +1,20 @@
-import { Sort } from '../../UI/select/Select';
+// import { Sort } from '../../UI/select/Select';
 import Container from '@mui/material/Container/Container';
 import { CardList } from '../Cards/CardList';
 import { useMemo, useState } from 'react';
 import { flowersData } from '../../../data/data';
 import { FlowersType } from '../../types/types';
+import CardsFilter from '../Cards/CardsFilter';
 
 function Main() {
   const [cards, setCards] = useState(flowersData);
-  const [selectedSort, setSelectedSort] = useState('');
+  const [filter, setFilter] = useState({ sort: '' });
 
   const sortedCards = useMemo(() => {
-    if (selectedSort) {
+    if (filter.sort) {
       return [...cards].sort((a, b) => {
-        if (selectedSort.includes('2')) {
-          const sliced = selectedSort.slice(0, -1);
+        if (filter.sort.includes('2')) {
+          const sliced = filter.sort.slice(0, -1);
           if (typeof a[sliced as keyof FlowersType] == 'number') {
             let first = b[sliced] as number;
             let second = a[sliced] as number;
@@ -24,13 +25,13 @@ function Main() {
             return first.localeCompare(second);
           }
         } else {
-          if (typeof a[selectedSort as keyof FlowersType] == 'number') {
-            let first = b[selectedSort] as number;
-            let second = a[selectedSort] as number;
+          if (typeof a[filter.sort as keyof FlowersType] == 'number') {
+            let first = b[filter.sort] as number;
+            let second = a[filter.sort] as number;
             return second - first;
           } else {
-            let first = b[selectedSort] as string;
-            let second = a[selectedSort] as string;
+            let first = b[filter.sort] as string;
+            let second = a[filter.sort] as string;
             return second.localeCompare(first);
           }
         }
@@ -38,24 +39,10 @@ function Main() {
     } else {
       return cards;
     }
-  }, [selectedSort, cards]);
-  const sortCards = (sort: string) => {
-    setSelectedSort(sort);
-  };
+  }, [filter.sort, cards]);
   return (
     <Container sx={{ mt: '20px' }}>
-      <Sort
-        value={selectedSort}
-        onChange={sortCards}
-        options={[
-          { id: 1, value: 'price', name: 'Sort by price ASC' },
-          { id: 2, value: 'price2', name: 'Sort by price DESC' },
-          { id: 3, value: 'rating', name: 'Sort by rating ASC' },
-          { id: 4, value: 'rating2', name: 'Sort by rating DESC' },
-          { id: 5, value: 'name', name: 'Sort by name ASC' },
-          { id: 6, value: 'name2', name: 'Sort by name DESC' },
-        ]}
-      />
+      <CardsFilter filter={filter} setFilter={setFilter} />
       <CardList cards={sortedCards} />
     </Container>
   );
