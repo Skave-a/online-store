@@ -6,7 +6,7 @@ import { Box, Button, CardActionArea, Grid, Rating } from '@mui/material';
 import { FlowersType } from '../../types/types';
 
 interface Icards {
-  key: number;
+  key: number | undefined;
   cards: FlowersType;
 }
 
