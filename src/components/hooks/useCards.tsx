@@ -34,3 +34,13 @@ export const useSortedCards = (cards: FlowersType[], sort: string) => {
   }, [sort, cards]);
   return sortedCards;
 };
+
+export const useCards = (cards: FlowersType[], sort: string, query: string) => {
+  const sortedCards = useSortedCards(cards, sort);
+
+  const sortedAndSearchedcards = useMemo(() => {
+    return sortedCards.filter((card) => card.name.toLowerCase().includes(query.toLowerCase()));
+  }, [query, sortedCards]);
+
+  return sortedAndSearchedcards;
+};

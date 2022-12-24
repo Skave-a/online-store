@@ -113,7 +113,7 @@ export const flowersData: FlowersType[] = [
   },
   {
     id: 8,
-    name: 'Chamaedorea elegans',
+    name: 'Chamaedorea',
     photos: [
       'https://images.unsplash.com/photo-1519241923167-9c69efe2d7b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=401&q=80',
       'https://images.unsplash.com/photo-1627222471517-af7118bc97a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=389&q=80',

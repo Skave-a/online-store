@@ -1,13 +1,12 @@
 import { SelectCards } from '../../UI/select/SelectCards';
 import React, { Dispatch } from 'react';
-import { SearchCard } from '../../UI/search/SearchCard';
 
 interface ICardsFiter {
   sort: string;
-  query?: string;
+  query: string;
 }
 
-const CardsFilter = ({
+const CardsSort = ({
   filter,
   setFilter,
 }: {
@@ -32,4 +31,4 @@ const CardsFilter = ({
   );
 };
 
-export default CardsFilter;
+export default CardsSort;
