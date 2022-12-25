@@ -13,7 +13,7 @@ export const SearchCard = ({
       value={value}
       onChange={onChange}
       id="outlined-basic"
-      label="Search by name"
+      label="Search..."
       variant="outlined"
       sx={{
         '& .MuiOutlinedInput-root.Mui-focused': {
