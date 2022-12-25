@@ -8,7 +8,8 @@ interface ICardList {
 }
 
 export const CardList = (props: ICardList) => {
-  if (!props.cards.length) {
+  let cardsLength = props.cards.length;
+  if (!cardsLength) {
     return (
       <Typography
         variant="h2"

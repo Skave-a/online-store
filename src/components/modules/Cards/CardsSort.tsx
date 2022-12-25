@@ -1,5 +1,7 @@
-import { SelectCards } from '../../UI/select/SelectCards';
+import { SelectCards } from '../Select/SelectCards';
 import React, { Dispatch } from 'react';
+import { Box, Typography } from '@mui/material';
+import { FlowersType } from '../../types/types';
 
 interface ICardsFiter {
   sort: string;
@@ -9,12 +11,14 @@ interface ICardsFiter {
 const CardsSort = ({
   filter,
   setFilter,
+  cards,
 }: {
   filter: ICardsFiter;
   setFilter: Dispatch<ICardsFiter>;
+  cards: FlowersType[];
 }) => {
   return (
-    <div>
+    <Box sx={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
       <SelectCards
         value={filter.sort}
         onChange={(selectedSort) => setFilter({ ...filter, sort: selectedSort })}
@@ -27,7 +31,10 @@ const CardsSort = ({
           { id: 6, value: 'name2', name: 'Sort by name DESC' },
         ]}
       />
-    </div>
+      <Typography variant="h2" fontFamily={`'Pacifico', cursive`} fontSize={25}>
+        Found: {cards.length}
+      </Typography>
+    </Box>
   );
 };
 

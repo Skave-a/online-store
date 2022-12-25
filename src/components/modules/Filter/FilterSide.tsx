@@ -1,5 +1,5 @@
 import { Box } from '@mui/system';
-import { SearchCard } from '../../UI/search/SearchCard';
+import { SearchCard } from '../Search/SearchCard';
 
 interface ICardsFiter {
   sort: string;

@@ -4,13 +4,6 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-const labelSX = {
-  color: '#006666',
-  '&:focus': {
-    color: '#006666 !important',
-  },
-};
-
 interface IOptionSort {
   value: string;
   name: string;
@@ -28,9 +21,7 @@ export const SelectCards = ({
 }) => {
   return (
     <FormControl sx={{ m: 1, minWidth: 215 }} size="small">
-      <InputLabel id="demo-select-small" sx={labelSX}>
-        SORT
-      </InputLabel>
+      <InputLabel id="demo-select-small">SORT</InputLabel>
       <Select
         labelId="demo-select-small"
         id="demo-select-small"
@@ -42,6 +33,7 @@ export const SelectCards = ({
             borderColor: '#006666',
           },
         }}
+        inputProps={{ color: 'success' }}
       >
         <MenuItem value="">
           <em>None</em>

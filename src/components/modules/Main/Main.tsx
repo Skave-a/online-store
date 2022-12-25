@@ -12,12 +12,11 @@ const cards = flowersData;
 function Main() {
   const [filter, setFilter] = useState({ sort: '', query: '' });
   const sortedCards = useCards(cards, filter.sort, filter.query);
-
   return (
     <Container sx={{ mt: '20px', display: 'flex', gap: '20px' }}>
       <FilterSide filter={filter} setFilter={setFilter} />
       <Box>
-        <CardsSort filter={filter} setFilter={setFilter} />
+        <CardsSort filter={filter} setFilter={setFilter} cards={sortedCards} />
         <CardList cards={sortedCards} />
       </Box>
     </Container>
