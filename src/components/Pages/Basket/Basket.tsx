@@ -20,28 +20,24 @@ function Basket({
     return Number(localStorage.getItem('page')) ?? 0;
   });
 
-  const [basket, setBasket] = useState<FlowersData[]>(
-    totalQuantity ? flowersData.slice(0, totalQuantity) : []
-  ); // entry point of basket
-  console.log('totalQuantity', totalQuantity);
-  console.log('basket', basket);
+  const [basket, setBasket] = useState<FlowersData[]>([]); // entry point of basket
 
-  const totalBasket = basket.reduce(
+  const totalBasket = basket?.reduce(
     (acc, el) => acc + (el.priceTotal ? el.priceTotal : el.price),
     0
   );
 
   const basketPages =
-    rowsPerPage > 0 ? basket.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : basket;
+    rowsPerPage > 0 ? basket?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : basket;
 
-  if (!basketPages.length) setPage(page - 1);
+  if (basketPages.length) setPage(page - 1);
 
   let totQuantity = basket.reduce((acc, el) => acc + el.quantity, 0);
 
   useEffect(() => {
     localStorage.clear();
     localStorage.setItem('page', JSON.stringify(page));
-    setTotalQuantity(totQuantity);
+    if (totQuantity) setTotalQuantity(totQuantity);
   }, [setTotalQuantity, page, totQuantity]);
 
   const augmentHandler = (name: string) => {
@@ -83,7 +79,7 @@ function Basket({
 
   return (
     <>
-      {!error && (
+      {basketPages.length ? (
         <Container maxWidth="lg">
           <Typography
             variant="h2"
@@ -230,8 +226,7 @@ function Basket({
             </Grid>
           </Grid>
         </Container>
-      )}
-      {error && (
+      ) : (
         <Box sx={{ position: 'absolute', top: '40%', left: '45%' }}>
           <Typography
             variant="h2"
