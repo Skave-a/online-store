@@ -1,26 +1,21 @@
-import { Button } from '@mui/material';
-import style from './Main.module.css';
+import Container from '@mui/material/Container/Container';
+import { CardList } from '../Cards/CardList';
+import { useState } from 'react';
+import { flowersData } from '../../../data/data';
+import CardsFilter from '../Cards/CardsFilter';
+import { useSortedCards } from '../../hooks/useCards';
 
-function Main({
-  setTotalQuantity,
-  totalQuantity,
-}: {
-  setTotalQuantity: (arg0: number) => void;
-  totalQuantity: number;
-}) {
+const cards = flowersData;
+
+function Main() {
+  const [filter, setFilter] = useState({ sort: '' });
+  const sortedCards = useSortedCards(cards, filter.sort);
+
   return (
-    <>
-      <div className={style.main}>Main page</div>
-      <Button
-        onClick={() => {
-          setTotalQuantity(totalQuantity + 1);
-        }}
-        variant="outlined"
-        sx={{ position: 'absolute', marginLeft: '50px' }}
-      >
-        click +
-      </Button>
-    </>
+    <Container sx={{ mt: '20px' }}>
+      <CardsFilter filter={filter} setFilter={setFilter} />
+      <CardList cards={sortedCards} />
+    </Container>
   );
 }
 
