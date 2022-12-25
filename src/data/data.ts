@@ -89,7 +89,7 @@ export const flowersData: FlowersData[] = [
     description: `Aloe humilis, also known as spider aloe is a species of succulent plant in the genus Aloe. It is endemic to South Africa's Cape Province, and is a low growing, short stemmed aloe with small spines and which grows in dense clusters.`,
     discount: 0,
     rating: 4.9,
-    stock: 21,
+    stock: 3,
     family: 'Asphodelaceae',
     genus: 'Aloe',
     price: 72,

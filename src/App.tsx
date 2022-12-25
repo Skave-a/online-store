@@ -13,8 +13,14 @@ function App() {
     <BrowserRouter>
       <Header totalQuantity={totalQuantity} />
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/basket" element={<Basket setTotalQuantity={setTotalQuantity} />} />
+        <Route
+          path="/"
+          element={<Main totalQuantity={totalQuantity} setTotalQuantity={setTotalQuantity} />}
+        />
+        <Route
+          path="/basket"
+          element={<Basket totalQuantity={totalQuantity} setTotalQuantity={setTotalQuantity} />}
+        />
         {/* <Route path="/anyPage" element={< AnyPage/>} /> */}
         <Route path="*" element={<Page404 />} />
       </Routes>
