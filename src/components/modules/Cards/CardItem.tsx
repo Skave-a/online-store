@@ -4,10 +4,14 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box, Button, CardActionArea, Grid, Rating } from '@mui/material';
 import { FlowersType } from '../../types/types';
+import { MouseEvent, useState } from 'react';
+import CardsFilter from './CardsFilter';
 
 interface Icards {
   key: number | undefined;
   cards: FlowersType;
+  setProduct: (arg0: FlowersType[]) => void;
+  product: FlowersType[];
 }
 
 const btnSX = {
@@ -31,6 +35,16 @@ const priceBoxSX = {
 
 export const CardItem = (props: Icards) => {
   const { name, price, rating, description, photos } = props.cards;
+  const [inCart, setInCart] = useState(false);
+
+  const buttonHandler = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    const isEqual = props.product.some((item) => item.id === props.cards.id);
+    if (!isEqual) {
+      props.setProduct([...props.product, props.cards]);
+      setInCart(true);
+    }
+  };
   return (
     <Grid item xs={12} md={4} sm={6}>
       <Card sx={{ maxWidth: 345 }}>
@@ -63,12 +77,12 @@ export const CardItem = (props: Icards) => {
           <Box sx={priceBoxSX}>
             <Typography>{price}$</Typography>
             <Button
-              onClick={(event) => {
-                event.stopPropagation();
+              onClick={(e) => {
+                buttonHandler(e);
               }}
               sx={btnSX}
             >
-              Buy
+              {inCart ? 'In Cart' : 'Buy'}
             </Button>
           </Box>
           <Rating

@@ -1,6 +1,6 @@
 import TablePagination from '@mui/material/TablePagination';
 import { ChangeEvent, MouseEvent } from 'react';
-import { FlowersData } from '../types/types';
+import { FlowersType } from '../types/types';
 
 export default function Pagination({
   rowsPerPage,
@@ -13,7 +13,7 @@ export default function Pagination({
   setRowsPerPage: (arg0: number) => void;
   page: number;
   setPage: (arg0: number) => void;
-  basket: FlowersData[];
+  basket: FlowersType[];
 }) {
   const handleChangePage = (event: MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     setPage(newPage);

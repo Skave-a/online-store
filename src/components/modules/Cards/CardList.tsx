@@ -4,13 +4,20 @@ import { CardItem } from './CardItem';
 
 interface ICardList {
   cards: FlowersType[];
+  setProduct: (arg0: FlowersType[]) => void;
+  product: FlowersType[];
 }
 
 export const CardList = (props: ICardList) => {
   return (
     <Grid container spacing={2}>
       {props.cards.map((item) => (
-        <CardItem key={item.id} cards={item} />
+        <CardItem
+          key={item.id}
+          cards={item}
+          setProduct={props.setProduct}
+          product={props.product}
+        />
       ))}
     </Grid>
   );

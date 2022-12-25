@@ -1,36 +1,38 @@
 import { useEffect, useState } from 'react';
 import { Box, Button, CardMedia, Container, Divider, Grid, Typography } from '@mui/material';
-import { flowersData } from '../../../data/data';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Pagination from '../../utils/Pagination';
 import { Link } from 'react-router-dom';
-import { FlowersData } from '../../types/types';
+import { FlowersType } from '../../types/types';
 
 function Basket({
   setTotalQuantity,
   totalQuantity,
+  product,
 }: {
   setTotalQuantity: (arg0: number) => void;
+  setProduct: (arg0: FlowersType[]) => void;
   totalQuantity: number;
+  product: FlowersType[];
 }) {
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [error, setError] = useState(false);
-
   const [page, setPage] = useState(() => {
     return Number(localStorage.getItem('page')) ?? 0;
   });
 
-  const [basket, setBasket] = useState<FlowersData[]>([]); // entry point of basket
+  const [basket, setBasket] = useState<FlowersType[]>(product);
+  console.log(`basket:`, basket);
 
   const totalBasket = basket?.reduce(
     (acc, el) => acc + (el.priceTotal ? el.priceTotal : el.price),
     0
   );
 
-  const basketPages =
-    rowsPerPage > 0 ? basket?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : basket;
+  //if (basket.length) setPage(page - 1);
 
-  if (basketPages.length) setPage(page - 1);
+  const basketPages =
+    rowsPerPage > 0 ? basket.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : basket;
+  console.log(`basketPages`, basketPages);
 
   let totQuantity = basket.reduce((acc, el) => acc + el.quantity, 0);
 
@@ -38,7 +40,7 @@ function Basket({
     localStorage.clear();
     localStorage.setItem('page', JSON.stringify(page));
     if (totQuantity) setTotalQuantity(totQuantity);
-  }, [setTotalQuantity, page, totQuantity]);
+  }, [setTotalQuantity, page, totQuantity, setBasket]);
 
   const augmentHandler = (name: string) => {
     setBasket((basket) => {
