@@ -1,5 +1,5 @@
 export interface FlowersType {
-  //[key: string]: number | string | undefined | string[];
+  [key: string]: number | string | undefined | string[];
   id?: number;
   name: string;
   photos: string[];

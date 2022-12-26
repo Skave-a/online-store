@@ -30,6 +30,9 @@ function Basket({
   let totQuantity = product.reduce((acc, el) => acc + el.quantity, 0);
 
   useEffect(() => {
+    if (!product.length) {
+      setTotalQuantity(0);
+    }
     const basketPages =
       rowsPerPage > 0
         ? product.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -227,7 +230,7 @@ function Basket({
             variant="h2"
             fontSize={35}
             /* sx={{ flexGrow: 1 }} */
-            fontFamily={`'Pacifico', cursive`}
+            //fontFamily={`'Pacifico', cursive`}
             color="#006666"
           >
             Basket empty
@@ -249,7 +252,7 @@ function Basket({
             }}
             to="/"
           >
-            Go to Home page
+            Go to buy
           </Link>
         </Box>
       )}

@@ -61,9 +61,6 @@ export const CardItem = (props: Icards) => {
     if (isEqual) {
       setInCart(true);
     }
-    //console.log('render');
-    /* localStorage.clear();
-    localStorage.setItem('isInCart', JSON.stringify(inCart)); */
   }, []);
 
   return (
