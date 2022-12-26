@@ -1,7 +1,10 @@
 import { useMemo } from 'react';
 import { FlowersType } from '../types/types';
 
-export const useSortedCards = (cards: FlowersType[], sort: string) => {
+export const useSortedCards = (cards: FlowersType[], sort: string, sortQuery: string) => {
+  if (sortQuery) {
+    sort = sortQuery;
+  }
   const sortedCards = useMemo(() => {
     if (sort) {
       return [...cards].sort((a, b) => {
@@ -39,9 +42,10 @@ export const useCards = (
   cards: FlowersType[],
   sort: string,
   query: string,
-  searchQuery: string
+  searchQuery: string,
+  sortQuery: string
 ) => {
-  const sortedCards = useSortedCards(cards, sort);
+  const sortedCards = useSortedCards(cards, sort, sortQuery);
   if (searchQuery) {
     query = searchQuery as string;
   }

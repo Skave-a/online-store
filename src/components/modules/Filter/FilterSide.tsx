@@ -1,5 +1,6 @@
 import { Box } from '@mui/system';
 import { SearchCard } from '../Search/SearchCard';
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 
 interface ICardsFiter {
   sort: string;
@@ -23,8 +24,8 @@ export const FilterSide = ({
   searchQuery,
 }: {
   filter: ICardsFiter;
-  setFilter: React.Dispatch<
-    React.SetStateAction<{
+  setFilter: Dispatch<
+    SetStateAction<{
       sort: string;
       query: string;
     }>
@@ -32,13 +33,17 @@ export const FilterSide = ({
   setSearchParams: Function;
   searchQuery: string;
 }) => {
+  function inputHandler(e: ChangeEvent<HTMLInputElement>) {
+    console.log(e);
+    setSearchParams({ search: e.target.value });
+    setFilter({ ...filter, query: e.target.value });
+  }
   return (
     <Box sx={{ maxWidth: '300px' }}>
       <Box sx={boxStyle}>
         <SearchCard
           onChange={(e) => {
-            setSearchParams({ search: e.target.value });
-            setFilter({ ...filter, query: e.target.value });
+            inputHandler(e);
           }}
           value={filter.query}
           searchQuery={searchQuery}

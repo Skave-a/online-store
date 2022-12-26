@@ -1,5 +1,5 @@
 import { TextField } from '@mui/material';
-import style from './SearchCard.module.css';
+import { ChangeEvent } from 'react';
 
 export const SearchCard = ({
   value,
@@ -7,7 +7,7 @@ export const SearchCard = ({
   searchQuery,
 }: {
   value: string;
-  onChange: (query: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (query: ChangeEvent<HTMLInputElement>) => void;
   searchQuery: string;
 }) => {
   if (searchQuery) {
@@ -25,7 +25,7 @@ export const SearchCard = ({
           '& > fieldset': { borderColor: '#006666' },
         },
       }}
-      InputLabelProps={{ className: style.labelSX }}
+      InputLabelProps={{ color: 'success' }}
     />
   );
 };

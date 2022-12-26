@@ -2,7 +2,7 @@ import * as React from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 interface IOptionSort {
   value: string;
@@ -14,11 +14,23 @@ export const SelectCards = ({
   options,
   value,
   onChange,
+  setSearchParams,
+  sortQuery,
 }: {
   options: IOptionSort[];
   value: string;
   onChange: (sort: string) => void;
+  setSearchParams: Function;
+  sortQuery: string;
 }) => {
+  if (sortQuery) {
+    value = sortQuery;
+  }
+  function selectHandler(e: SelectChangeEvent<string>) {
+    console.log(e);
+    setSearchParams({ sort: e.target.value });
+    onChange(e.target.value);
+  }
   return (
     <FormControl sx={{ m: 1, minWidth: 215 }} size="small">
       <InputLabel id="demo-select-small">SORT</InputLabel>
@@ -27,7 +39,9 @@ export const SelectCards = ({
         id="demo-select-small"
         label="SORT"
         value={value}
-        onChange={(event) => onChange(event.target.value)}
+        onChange={(e) => {
+          selectHandler(e);
+        }}
         sx={{
           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
             borderColor: '#006666',

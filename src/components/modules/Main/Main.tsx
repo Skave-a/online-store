@@ -13,8 +13,9 @@ const cards = flowersData;
 function Main() {
   let [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('search') as string;
+  const sortQuery = searchParams.get('sort') as string;
   const [filter, setFilter] = useState({ sort: '', query: '' });
-  const sortedCards = useCards(cards, filter.sort, filter.query, searchQuery);
+  const sortedCards = useCards(cards, filter.sort, filter.query, searchQuery, sortQuery);
   return (
     <Container sx={{ mt: '20px', display: 'flex', gap: '20px' }}>
       <FilterSide
@@ -24,7 +25,13 @@ function Main() {
         searchQuery={searchQuery}
       />
       <Box>
-        <CardsSort filter={filter} setFilter={setFilter} cards={sortedCards} />
+        <CardsSort
+          filter={filter}
+          setFilter={setFilter}
+          cards={sortedCards}
+          setSearchParams={setSearchParams}
+          sortQuery={sortQuery}
+        />
         <CardList cards={sortedCards} />
       </Box>
     </Container>
