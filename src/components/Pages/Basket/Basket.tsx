@@ -9,6 +9,7 @@ function Basket({
   setTotalQuantity,
   totalQuantity,
   product,
+  setProduct,
 }: {
   setTotalQuantity: (arg0: number) => void;
   setProduct: (arg0: FlowersType[]) => void;
@@ -19,33 +20,30 @@ function Basket({
   const [page, setPage] = useState(() => {
     return Number(localStorage.getItem('page')) ?? 0;
   });
+  const [pages, setPages] = useState<FlowersType[]>([]);
 
-  const [basket, setBasket] = useState<FlowersType[]>(product);
-  console.log(`basket:`, basket);
-
-  const totalBasket = basket?.reduce(
+  const totalBasket = product?.reduce(
     (acc, el) => acc + (el.priceTotal ? el.priceTotal : el.price),
     0
   );
 
-  //if (basket.length) setPage(page - 1);
-
-  const basketPages =
-    rowsPerPage > 0 ? basket.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : basket;
-  console.log(`basketPages`, basketPages);
-
-  let totQuantity = basket.reduce((acc, el) => acc + el.quantity, 0);
+  let totQuantity = product.reduce((acc, el) => acc + el.quantity, 0);
 
   useEffect(() => {
+    const basketPages =
+      rowsPerPage > 0
+        ? product.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+        : product;
+    setPages(basketPages);
     localStorage.clear();
     localStorage.setItem('page', JSON.stringify(page));
     if (totQuantity) setTotalQuantity(totQuantity);
-  }, [setTotalQuantity, page, totQuantity, setBasket]);
+  }, [setTotalQuantity, page, totQuantity, product]);
 
   const augmentHandler = (name: string) => {
-    setBasket((basket) => {
-      return basket.map((item) => {
-        if (item.name === name && item.quantity < item.stock) {
+    setProduct(
+      product.map((item) => {
+        if (item.stock && item.name === name && item.quantity < item.stock) {
           return {
             ...item,
             quantity: ++item.quantity,
@@ -53,14 +51,13 @@ function Basket({
           };
         }
         return item;
-      });
-    });
+      })
+    );
   };
 
   const decrementHandler = (name: string) => {
-    /* if (basket.length > 1) { */
-    setBasket((basket) => {
-      return basket
+    setProduct(
+      product
         .map((item) => {
           if (item.name === name) {
             return {
@@ -71,17 +68,13 @@ function Basket({
           }
           return item;
         })
-        .filter((item) => item.quantity > 0);
-    });
-    /* } else {
-      setError(true);
-      setTotalQuantity(0);
-    } */
+        .filter((item) => item.quantity > 0)
+    );
   };
 
   return (
     <>
-      {basketPages.length ? (
+      {pages.length ? (
         <Container maxWidth="lg">
           <Typography
             variant="h2"
@@ -97,7 +90,7 @@ function Basket({
             setRowsPerPage={setRowsPerPage}
             page={page}
             setPage={setPage}
-            basket={basket}
+            basket={product}
           />
           <Grid container spacing={2}>
             <Grid item xs={12} sm={4}>
@@ -141,7 +134,7 @@ function Basket({
               </Button>
             </Grid>
             <Grid item xs={12} sm={8}>
-              {basketPages?.map((item, index) => {
+              {pages?.map((item, index) => {
                 return (
                   <Box
                     key={item.name}

@@ -4,14 +4,15 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box, Button, CardActionArea, Grid, Rating } from '@mui/material';
 import { FlowersType } from '../../types/types';
-import { MouseEvent, useState } from 'react';
-import CardsFilter from './CardsFilter';
+import { MouseEvent, useEffect, useState } from 'react';
 
 interface Icards {
   key: number | undefined;
   cards: FlowersType;
   setProduct: (arg0: FlowersType[]) => void;
   product: FlowersType[];
+  setTotalQuantity: (arg0: number) => void;
+  totalQuantity: number;
 }
 
 const btnSX = {
@@ -42,9 +43,29 @@ export const CardItem = (props: Icards) => {
     const isEqual = props.product.some((item) => item.id === props.cards.id);
     if (!isEqual) {
       props.setProduct([...props.product, props.cards]);
+      props.setTotalQuantity(props.totalQuantity + 1);
       setInCart(true);
     }
+    if (e.currentTarget.textContent === 'Delete') {
+      const isEqual = props.product.some((item) => item.id === props.cards.id);
+      if (isEqual) {
+        props.setProduct(props.product.filter((item: FlowersType) => item.id !== props.cards.id));
+        props.setTotalQuantity(props.totalQuantity - 1);
+        setInCart(false);
+      }
+    }
   };
+
+  useEffect(() => {
+    const isEqual = props.product.some((item) => item.id === props.cards.id);
+    if (isEqual) {
+      setInCart(true);
+    }
+    //console.log('render');
+    /* localStorage.clear();
+    localStorage.setItem('isInCart', JSON.stringify(inCart)); */
+  }, []);
+
   return (
     <Grid item xs={12} md={4} sm={6}>
       <Card sx={{ maxWidth: 345 }}>
@@ -82,7 +103,7 @@ export const CardItem = (props: Icards) => {
               }}
               sx={btnSX}
             >
-              {inCart ? 'In Cart' : 'Buy'}
+              {inCart ? 'Delete' : 'Add'}
             </Button>
           </Box>
           <Rating

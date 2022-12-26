@@ -6,6 +6,8 @@ interface ICardList {
   cards: FlowersType[];
   setProduct: (arg0: FlowersType[]) => void;
   product: FlowersType[];
+  setTotalQuantity: (arg0: number) => void;
+  totalQuantity: number;
 }
 
 export const CardList = (props: ICardList) => {
@@ -17,6 +19,8 @@ export const CardList = (props: ICardList) => {
           cards={item}
           setProduct={props.setProduct}
           product={props.product}
+          totalQuantity={props.totalQuantity}
+          setTotalQuantity={props.setTotalQuantity}
         />
       ))}
     </Grid>

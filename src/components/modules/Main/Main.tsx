@@ -11,9 +11,13 @@ const cards = flowersData;
 function Main({
   setProduct,
   product,
+  setTotalQuantity,
+  totalQuantity,
 }: {
   setProduct: (arg0: FlowersType[]) => void;
   product: FlowersType[];
+  setTotalQuantity: (arg0: number) => void;
+  totalQuantity: number;
 }) {
   const [filter, setFilter] = useState({ sort: '' });
   const sortedCards = useSortedCards(cards, filter.sort);
@@ -21,7 +25,13 @@ function Main({
   return (
     <Container sx={{ mt: '20px' }}>
       <CardsFilter filter={filter} setFilter={setFilter} />
-      <CardList cards={sortedCards} setProduct={setProduct} product={product} />
+      <CardList
+        cards={sortedCards}
+        setProduct={setProduct}
+        product={product}
+        totalQuantity={totalQuantity}
+        setTotalQuantity={setTotalQuantity}
+      />
     </Container>
   );
 }
