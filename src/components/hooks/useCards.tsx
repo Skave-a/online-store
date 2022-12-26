@@ -35,9 +35,16 @@ export const useSortedCards = (cards: FlowersType[], sort: string) => {
   return sortedCards;
 };
 
-export const useCards = (cards: FlowersType[], sort: string, query: string) => {
+export const useCards = (
+  cards: FlowersType[],
+  sort: string,
+  query: string,
+  searchQuery: string
+) => {
   const sortedCards = useSortedCards(cards, sort);
-
+  if (searchQuery) {
+    query = searchQuery as string;
+  }
   const sortedAndSearchedcards = useMemo(() => {
     return sortedCards.filter((card) => {
       return (

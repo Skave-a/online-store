@@ -4,10 +4,15 @@ import style from './SearchCard.module.css';
 export const SearchCard = ({
   value,
   onChange,
+  searchQuery,
 }: {
   value: string;
   onChange: (query: React.ChangeEvent<HTMLInputElement>) => void;
+  searchQuery: string;
 }) => {
+  if (searchQuery) {
+    value = searchQuery as string;
+  }
   return (
     <TextField
       value={value}

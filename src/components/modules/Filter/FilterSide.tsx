@@ -19,6 +19,8 @@ const boxStyle = {
 export const FilterSide = ({
   filter,
   setFilter,
+  setSearchParams,
+  searchQuery,
 }: {
   filter: ICardsFiter;
   setFilter: React.Dispatch<
@@ -27,13 +29,19 @@ export const FilterSide = ({
       query: string;
     }>
   >;
+  setSearchParams: Function;
+  searchQuery: string;
 }) => {
   return (
     <Box sx={{ maxWidth: '300px' }}>
       <Box sx={boxStyle}>
         <SearchCard
-          onChange={(e) => setFilter({ ...filter, query: e.target.value })}
+          onChange={(e) => {
+            setSearchParams({ search: e.target.value });
+            setFilter({ ...filter, query: e.target.value });
+          }}
           value={filter.query}
+          searchQuery={searchQuery}
         />
       </Box>
     </Box>
