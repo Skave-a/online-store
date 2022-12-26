@@ -21,7 +21,7 @@ function Basket({
     return Number(localStorage.getItem('page')) ?? 0;
   });
   const [pages, setPages] = useState<FlowersType[]>([]);
-
+  console.log(`pageS`, pages);
   const totalBasket = product?.reduce(
     (acc, el) => acc + (el.priceTotal ? el.priceTotal : el.price),
     0
@@ -30,6 +30,9 @@ function Basket({
   let totQuantity = product.reduce((acc, el) => acc + el.quantity, 0);
 
   useEffect(() => {
+    if (!pages.length) {
+      setPage(0);
+    }
     if (!product.length) {
       setTotalQuantity(0);
     }
@@ -37,11 +40,12 @@ function Basket({
       rowsPerPage > 0
         ? product.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
         : product;
+
     setPages(basketPages);
-    localStorage.clear();
     localStorage.setItem('page', JSON.stringify(page));
+
     if (totQuantity) setTotalQuantity(totQuantity);
-  }, [setTotalQuantity, page, totQuantity, product]);
+  }, [setTotalQuantity, page, totQuantity, product, pages.length]);
 
   const augmentHandler = (name: string) => {
     setProduct(

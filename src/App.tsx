@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Footer } from './components/modules/Footer/Footer';
 import { Header } from './components/modules/Header/Header';
@@ -8,8 +8,17 @@ import Basket from './components/Pages/Basket/Basket';
 import { FlowersType } from './components/types/types';
 
 function App() {
-  const [product, setProduct] = useState<FlowersType[]>([]);
-  const [totalQuantity, setTotalQuantity] = useState(0);
+  const [product, setProduct] = useState<FlowersType[]>(() => {
+    return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '') : [];
+  });
+  const [totalQuantity, setTotalQuantity] = useState(() => {
+    return Number(localStorage.getItem('badge')) ?? 0;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(product));
+    localStorage.setItem('badge', JSON.stringify(totalQuantity));
+  }, [product, totalQuantity]);
 
   return (
     <BrowserRouter>
