@@ -1,7 +1,10 @@
 import { useMemo } from 'react';
 import { FlowersType } from '../types/types';
 
-export const useSortedCards = (cards: FlowersType[], sort: string) => {
+export const useSortedCards = (cards: FlowersType[], sort: string, sortQuery: string) => {
+  if (sortQuery) {
+    sort = sortQuery;
+  }
   const sortedCards = useMemo(() => {
     if (sort) {
       return [...cards].sort((a, b) => {
@@ -33,4 +36,33 @@ export const useSortedCards = (cards: FlowersType[], sort: string) => {
     }
   }, [sort, cards]);
   return sortedCards;
+};
+
+export const useCards = (
+  cards: FlowersType[],
+  sort: string,
+  query: string,
+  searchQuery: string,
+  sortQuery: string
+) => {
+  const sortedCards = useSortedCards(cards, sort, sortQuery);
+  if (searchQuery) {
+    query = searchQuery as string;
+  }
+  const sortedAndSearchedcards = useMemo(() => {
+    return sortedCards.filter((card) => {
+      return (
+        card.name.toLowerCase().includes(query.toLowerCase()) ||
+        card.description.toLowerCase().includes(query.toLowerCase()) ||
+        (card.family as string).toLowerCase().includes(query.toLowerCase()) ||
+        (card.genus as string).toLowerCase().includes(query.toLowerCase()) ||
+        card.price.toString().includes(query.toLowerCase()) ||
+        (card.discount as number).toString().includes(query.toLowerCase()) ||
+        (card.stock as number).toString().includes(query.toLowerCase()) ||
+        (card.rating as number).toString().includes(query.toLowerCase())
+      );
+    });
+  }, [query, sortedCards]);
+
+  return sortedAndSearchedcards;
 };
