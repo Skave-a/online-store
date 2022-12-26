@@ -27,7 +27,6 @@ export const SelectCards = ({
     value = sortQuery;
   }
   function selectHandler(e: SelectChangeEvent<string>) {
-    console.log(e);
     setSearchParams({ sort: e.target.value });
     onChange(e.target.value);
   }

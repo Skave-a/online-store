@@ -5,6 +5,8 @@ import { CardItem } from './CardItem';
 
 interface ICardList {
   cards: FlowersType[];
+  isGrid: string;
+  isGridQuery: string;
 }
 
 export const CardList = (props: ICardList) => {
@@ -24,7 +26,12 @@ export const CardList = (props: ICardList) => {
   return (
     <Grid container spacing={2} sx={{ maxWidth: '1000px' }}>
       {props.cards.map((item) => (
-        <CardItem key={item.id} cards={item} />
+        <CardItem
+          key={item.id}
+          cards={item}
+          isGrid={props.isGrid}
+          isGridQuery={props.isGridQuery}
+        />
       ))}
     </Grid>
   );

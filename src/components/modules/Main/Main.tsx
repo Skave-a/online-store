@@ -14,8 +14,10 @@ function Main() {
   let [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('search') as string;
   const sortQuery = searchParams.get('sort') as string;
+  const isGridQuery = searchParams.get('grid') as string;
   const [filter, setFilter] = useState({ sort: '', query: '' });
   const sortedCards = useCards(cards, filter.sort, filter.query, searchQuery, sortQuery);
+  const [isGrid, setIsGrid] = useState('false');
   return (
     <Container sx={{ mt: '20px', display: 'flex', gap: '20px' }}>
       <FilterSide
@@ -31,8 +33,9 @@ function Main() {
           cards={sortedCards}
           setSearchParams={setSearchParams}
           sortQuery={sortQuery}
+          setIsGrid={setIsGrid}
         />
-        <CardList cards={sortedCards} />
+        <CardList cards={sortedCards} isGrid={isGrid} isGridQuery={isGridQuery} />
       </Box>
     </Container>
   );

@@ -34,7 +34,6 @@ export const FilterSide = ({
   searchQuery: string;
 }) => {
   function inputHandler(e: ChangeEvent<HTMLInputElement>) {
-    console.log(e);
     setSearchParams({ search: e.target.value });
     setFilter({ ...filter, query: e.target.value });
   }
