@@ -65,7 +65,7 @@ export const CardItem = (props: Icards) => {
 
   return (
     <Grid item xs={12} md={4} sm={6}>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card>
         <CardActionArea component="span">
           <CardMedia
             component="img"
