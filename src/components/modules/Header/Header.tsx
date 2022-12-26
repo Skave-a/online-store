@@ -25,8 +25,21 @@ export const Header: React.FC<{ totalQuantity: number }> = ({ totalQuantity }) =
         </Typography>
         <RouterLink to="/basket">
           <IconButton color="inherit">
-            <Badge color="error" badgeContent={totalQuantity}>
-              {<AddShoppingCartOutlinedIcon style={{ color: '#006666' }} sx={{ fontSize: 30 }} />}
+            <Badge
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              overlap="circular"
+              color="error"
+              badgeContent={totalQuantity}
+            >
+              {
+                <AddShoppingCartOutlinedIcon
+                  style={{ color: '#006666' }}
+                  sx={{ fontSize: 48, marginTop: 1 }}
+                />
+              }
             </Badge>
           </IconButton>
         </RouterLink>
