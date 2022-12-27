@@ -2,6 +2,7 @@ import { Box } from '@mui/system';
 import { SearchCard } from '../Search/SearchCard';
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { Iparams } from '../../types/types';
+import { FilterCheckbox } from './FilterCheckbox';
 
 interface ICardsFiter {
   sort: string;
@@ -16,6 +17,7 @@ const boxStyle = {
   bgcolor: '#F7F7FA',
   padding: '15px',
   width: '250px',
+  mb: '20px',
 };
 
 export const FilterSide = ({
@@ -51,6 +53,9 @@ export const FilterSide = ({
           value={filter.query}
           searchQuery={searchQuery}
         />
+      </Box>
+      <Box sx={boxStyle}>
+        <FilterCheckbox />
       </Box>
     </Box>
   );
