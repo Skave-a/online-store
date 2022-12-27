@@ -7,12 +7,10 @@ import { useCards } from '../../hooks/useCards';
 import { FilterSide } from '../Filter/FilterSide';
 import { Box } from '@mui/system';
 import { useSearchParams } from 'react-router-dom';
+import { Iparams } from '../../types/types';
 
 const cards = flowersData;
 
-export interface Iparams {
-  [key: string]: string;
-}
 const params: Iparams = {};
 
 function Main() {
@@ -20,13 +18,12 @@ function Main() {
   const searchQuery = searchParams.get('search') || '';
   const sortQuery = searchParams.get('sort') || '';
   const isGridQuery = searchParams.get('grid') || '';
+  function handleChange() {
+    setSearchParams(params);
+  }
   const [filter, setFilter] = useState({ sort: '', query: '' });
   const sortedCards = useCards(cards, filter.sort, filter.query, searchQuery, sortQuery);
   const [isGrid, setIsGrid] = useState('false');
-  function handleChange() {
-    setSearchParams(params);
-    console.log(params);
-  }
   return (
     <Container sx={{ mt: '20px', display: 'flex', gap: '20px' }}>
       <FilterSide
@@ -46,7 +43,6 @@ function Main() {
           sortQuery={sortQuery}
           setIsGrid={setIsGrid}
           params={params}
-          isGridQuery={isGridQuery}
           isGrid={isGrid}
         />
         <CardList cards={sortedCards} isGrid={isGrid} isGridQuery={isGridQuery} />

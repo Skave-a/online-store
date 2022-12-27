@@ -1,7 +1,7 @@
 import ViewModuleRoundedIcon from '@mui/icons-material/ViewModuleRounded';
 import WindowRoundedIcon from '@mui/icons-material/WindowRounded';
 import { Box, IconButton } from '@mui/material';
-import { Iparams } from '../Main/Main';
+import { Iparams } from '../../types/types';
 
 const iconBoxSX = {
   display: 'flex',
@@ -12,13 +12,11 @@ export const SwitchView = ({
   setIsGrid,
   handleChange,
   params,
-  isGridQuery,
   isGrid,
 }: {
   setIsGrid: Function;
   handleChange: Function;
   params: Iparams;
-  isGridQuery: string;
   isGrid: string;
 }) => {
   function isGridHandleFalse() {

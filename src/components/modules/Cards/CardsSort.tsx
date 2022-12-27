@@ -1,9 +1,8 @@
 import { SelectCards } from '../Select/SelectCards';
 import React, { Dispatch } from 'react';
 import { Box, Typography } from '@mui/material';
-import { FlowersType } from '../../types/types';
+import { FlowersType, Iparams } from '../../types/types';
 import { SwitchView } from '../SwitchView/SwitchView';
-import { Iparams } from '../Main/Main';
 
 interface ICardsFiter {
   sort: string;
@@ -25,7 +24,6 @@ const CardsSort = ({
   handleChange,
   setIsGrid,
   params,
-  isGridQuery,
   isGrid,
 }: {
   filter: ICardsFiter;
@@ -35,7 +33,6 @@ const CardsSort = ({
   handleChange: Function;
   params: Iparams;
   setIsGrid: Function;
-  isGridQuery: string;
   isGrid: string;
 }) => {
   let sorted = filter.sort;
@@ -65,7 +62,6 @@ const CardsSort = ({
         setIsGrid={setIsGrid}
         handleChange={handleChange}
         params={params}
-        isGridQuery={isGridQuery}
         isGrid={isGrid}
       />
     </Box>
