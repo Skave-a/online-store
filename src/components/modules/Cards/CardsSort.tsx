@@ -1,29 +1,43 @@
 import { SelectCards } from '../Select/SelectCards';
 import React, { Dispatch } from 'react';
 import { Box, Typography } from '@mui/material';
-import { FlowersType } from '../../types/types';
+import { FlowersType, Iparams } from '../../types/types';
+import { SwitchView } from '../SwitchView/SwitchView';
 
 interface ICardsFiter {
   sort: string;
   query: string;
 }
 
+const boxSX = {
+  display: 'flex',
+  gap: '20px',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+};
+
 const CardsSort = ({
   filter,
   setFilter,
   cards,
   sortQuery,
-  setSearchParams,
+  handleChange,
+  setIsGrid,
+  params,
+  isGrid,
 }: {
   filter: ICardsFiter;
   setFilter: Dispatch<ICardsFiter>;
   cards: FlowersType[];
   sortQuery: string;
-  setSearchParams: Function;
+  handleChange: Function;
+  params: Iparams;
+  setIsGrid: Function;
+  isGrid: string;
 }) => {
   let sorted = filter.sort;
   return (
-    <Box sx={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+    <Box sx={boxSX}>
       <SelectCards
         value={sorted}
         onChange={(selectedSort) => {
@@ -37,12 +51,19 @@ const CardsSort = ({
           { id: 5, value: 'name', name: 'Sort by name ASC' },
           { id: 6, value: 'name2', name: 'Sort by name DESC' },
         ]}
-        setSearchParams={setSearchParams}
+        handleChange={handleChange}
+        params={params}
         sortQuery={sortQuery}
       />
       <Typography variant="h2" fontFamily={`'Pacifico', cursive`} fontSize={25}>
         Found: {cards.length}
       </Typography>
+      <SwitchView
+        setIsGrid={setIsGrid}
+        handleChange={handleChange}
+        params={params}
+        isGrid={isGrid}
+      />
     </Box>
   );
 };

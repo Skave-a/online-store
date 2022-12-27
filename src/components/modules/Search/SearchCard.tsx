@@ -10,11 +10,12 @@ export const SearchCard = ({
   onChange: (query: ChangeEvent<HTMLInputElement>) => void;
   searchQuery: string;
 }) => {
-  if (searchQuery) {
+  if (searchQuery.length > 1) {
     value = searchQuery as string;
   }
   return (
     <TextField
+      autoComplete="off"
       value={value}
       onChange={onChange}
       id="outlined-basic"
