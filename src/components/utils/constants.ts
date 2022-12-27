@@ -7,3 +7,23 @@ export const PAGE_NOT_FOUND = {
   subTitle: '404 - The Page can not be found',
   linkTitle: 'Go to homepage',
 };
+
+export const BUTTONS = {
+  delete: 'Delete',
+  add: 'Add',
+  minus: '-',
+  plus: '+',
+};
+
+export const SERVICE_MESSAGES = {
+  goToBuy: 'Go to buy',
+  cartEmpty: 'Cart empty',
+  numberOfProduct: ' № product:',
+  name: 'Name:',
+  family: 'Family:',
+  genus: 'Genus:',
+  stock: 'Stock:',
+  buyNow: 'Buy now',
+  buyMore: 'Buy more',
+  yourCart: 'Your cart:',
+};

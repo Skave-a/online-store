@@ -7,13 +7,13 @@ export default function Pagination({
   setRowsPerPage,
   page,
   setPage,
-  basket,
+  cart,
 }: {
   rowsPerPage: number;
   setRowsPerPage: (arg0: number) => void;
   page: number;
   setPage: (arg0: number) => void;
-  basket: FlowersType[];
+  cart: FlowersType[];
 }) {
   const handleChangePage = (event: MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     setPage(newPage);
@@ -27,7 +27,7 @@ export default function Pagination({
   return (
     <TablePagination
       component="div"
-      count={basket.length}
+      count={cart.length}
       page={page}
       onPageChange={handleChangePage}
       rowsPerPage={rowsPerPage}

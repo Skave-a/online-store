@@ -5,12 +5,13 @@ import Typography from '@mui/material/Typography';
 import { Box, Button, CardActionArea, Grid, Rating } from '@mui/material';
 import { FlowersType } from '../../types/types';
 import { MouseEvent, useEffect, useState } from 'react';
+import { BUTTONS } from '../../utils/constants';
 
 interface Icards {
   key: number | undefined;
   cards: FlowersType;
-  setProduct: (arg0: FlowersType[]) => void;
-  product: FlowersType[];
+  setCart: (arg0: FlowersType[]) => void;
+  cart: FlowersType[];
   setTotalQuantity: (arg0: number) => void;
   totalQuantity: number;
 }
@@ -40,16 +41,16 @@ export const CardItem = (props: Icards) => {
 
   const buttonHandler = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    const isEqual = props.product.some((item) => item.id === props.cards.id);
+    const isEqual = props.cart.some((item) => item.id === props.cards.id);
     if (!isEqual) {
-      props.setProduct([...props.product, props.cards]);
+      props.setCart([...props.cart, props.cards]);
       props.setTotalQuantity(props.totalQuantity + 1);
       setInCart(true);
     }
-    if (e.currentTarget.textContent === 'Delete') {
-      const isEqual = props.product.some((item) => item.id === props.cards.id);
+    if (e.currentTarget.textContent === BUTTONS.delete) {
+      const isEqual = props.cart.some((item) => item.id === props.cards.id);
       if (isEqual) {
-        props.setProduct(props.product.filter((item: FlowersType) => item.id !== props.cards.id));
+        props.setCart(props.cart.filter((item: FlowersType) => item.id !== props.cards.id));
         props.setTotalQuantity(props.totalQuantity - 1);
         setInCart(false);
       }
@@ -57,7 +58,7 @@ export const CardItem = (props: Icards) => {
   };
 
   useEffect(() => {
-    const isEqual = props.product.some((item) => item.id === props.cards.id);
+    const isEqual = props.cart.some((item) => item.id === props.cards.id);
     if (isEqual) {
       setInCart(true);
     }
@@ -100,7 +101,7 @@ export const CardItem = (props: Icards) => {
               }}
               sx={btnSX}
             >
-              {inCart ? 'Delete' : 'Add'}
+              {inCart ? BUTTONS.delete : BUTTONS.add}
             </Button>
           </Box>
           <Rating

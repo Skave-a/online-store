@@ -1,27 +1,27 @@
 import { useEffect, useState } from 'react';
 import { Box, Button, CardMedia, Container, Divider, Grid, Typography } from '@mui/material';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Pagination from '../../utils/Pagination';
 import { Link } from 'react-router-dom';
 import { FlowersType } from '../../types/types';
+import { BUTTONS, SERVICE_MESSAGES } from '../../utils/constants';
 
-function Basket({
+function Cart({
   setTotalQuantity,
   totalQuantity,
-  product,
-  setProduct,
+  cart,
+  setCart,
 }: {
   setTotalQuantity: (arg0: number) => void;
-  setProduct: (arg0: FlowersType[]) => void;
+  setCart: (arg0: FlowersType[]) => void;
   totalQuantity: number;
-  product: FlowersType[];
+  cart: FlowersType[];
 }) {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [page, setPage] = useState(() => {
     return Number(localStorage.getItem('page')) ?? 0;
   });
 
-  const [pages, setPages] = useState<FlowersType[]>(() => {
+  const [pagesPerPage, setPages] = useState<FlowersType[]>(() => {
     return localStorage.getItem('cart')
       ? JSON.parse(localStorage.getItem('cart') || '').map((item: FlowersType) => {
           if (item.quantity === 0) {
@@ -32,12 +32,9 @@ function Basket({
       : [];
   });
 
-  const totalBasket = product?.reduce(
-    (acc, el) => acc + (el.priceTotal ? el.priceTotal : el.price),
-    0
-  );
+  const totalCart = cart?.reduce((acc, el) => acc + (el.priceTotal ? el.priceTotal : el.price), 0);
 
-  let totQuantity = product
+  let quantityTotal = cart
     .map((item) => {
       if (item.quantity === 0) {
         return { ...item, quantity: 1 };
@@ -47,23 +44,21 @@ function Basket({
     .reduce((acc, el) => acc + el.quantity, 0);
 
   useEffect(() => {
-    if (!pages.length) {
+    if (!pagesPerPage.length) {
       setPage(0);
     }
-    if (!product.length) {
+    if (!cart.length) {
       setTotalQuantity(0);
     }
-    const basketPages =
-      rowsPerPage > 0
-        ? product.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-        : product;
+    const pagesPaginated =
+      rowsPerPage > 0 ? cart.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : cart;
 
-    setPages(basketPages);
+    setPages(pagesPaginated);
 
     localStorage.setItem(
       'cart',
       JSON.stringify(
-        product.map((item) => {
+        cart.map((item) => {
           if (item.quantity === 0) {
             return { ...item, quantity: 1 };
           }
@@ -72,12 +67,12 @@ function Basket({
       )
     );
     localStorage.setItem('page', JSON.stringify(page));
-    if (totQuantity) setTotalQuantity(totQuantity);
-  }, [page, product, pages.length]);
+    if (quantityTotal) setTotalQuantity(quantityTotal);
+  }, [page, cart, pagesPerPage.length]);
 
   const augmentHandler = (name: string) => {
-    setProduct(
-      product.map((item) => {
+    setCart(
+      cart.map((item) => {
         if (item.stock && item.name === name && item.quantity < item.stock) {
           return {
             ...item,
@@ -91,8 +86,8 @@ function Basket({
   };
 
   const decrementHandler = (name: string) => {
-    setProduct(
-      product
+    setCart(
+      cart
         .map((item) => {
           if (item.name === name) {
             return {
@@ -109,7 +104,7 @@ function Basket({
 
   return (
     <>
-      {pages.length ? (
+      {pagesPerPage.length ? (
         <Container maxWidth="lg">
           <Typography
             variant="h2"
@@ -118,14 +113,15 @@ function Basket({
             fontFamily={`font-family: sans-serif`}
             color="#006666"
           >
-            Ваша корзина:{totalQuantity}
+            {SERVICE_MESSAGES.yourCart}
+            {totalQuantity}
           </Typography>
           <Pagination
             rowsPerPage={rowsPerPage}
             setRowsPerPage={setRowsPerPage}
             page={page}
             setPage={setPage}
-            basket={product}
+            cart={cart}
           />
           <Grid container spacing={2}>
             <Grid item xs={12} sm={4}>
@@ -147,7 +143,7 @@ function Basket({
                   color="#006666"
                   margin={1}
                 >
-                  Итого:
+                  {SERVICE_MESSAGES.yourCart}
                 </Typography>
                 <Divider sx={{ m: 4 }} variant="middle" />
                 <Typography
@@ -158,18 +154,18 @@ function Basket({
                   margin={1}
                   textAlign={'right'}
                 >
-                  {`${totalBasket}$`}
+                  {`${totalCart}$`}
                 </Typography>
               </Box>
               <Button fullWidth sx={{ mb: 2 }} variant="outlined">
-                Оформить заказ
+                {SERVICE_MESSAGES.buyNow}
               </Button>
               <Button fullWidth variant="outlined">
-                Продолжить покупки
+                {SERVICE_MESSAGES.buyMore}
               </Button>
             </Grid>
             <Grid item xs={12} sm={8}>
-              {pages?.map((item, index) => {
+              {pagesPerPage?.map((item, index) => {
                 return (
                   <Box
                     key={item.name}
@@ -194,6 +190,39 @@ function Basket({
                       image={item.photos[0]}
                       alt="Plant image"
                     />
+                    <Box>
+                      <Typography
+                        fontFamily={`font-family: sans-serif`}
+                        color="#006666"
+                        margin={1}
+                        sx={{ fontSize: { xs: 12, sm: 14 } }}
+                        align="left"
+                      >
+                        {SERVICE_MESSAGES.name}
+                        {item.name}
+                      </Typography>
+                      <Typography
+                        fontFamily={`font-family: sans-serif`}
+                        color="#006666"
+                        margin={1}
+                        sx={{ fontSize: { xs: 12, sm: 14 } }}
+                        align="left"
+                      >
+                        {SERVICE_MESSAGES.genus}
+                        {item.genus}
+                      </Typography>
+                      <Typography
+                        fontFamily={`font-family: sans-serif`}
+                        color="#006666"
+                        margin={1}
+                        sx={{ fontSize: { xs: 12, sm: 14 } }}
+                        align="left"
+                      >
+                        {SERVICE_MESSAGES.stock}
+                        {item.stock}
+                      </Typography>
+                    </Box>
+
                     <Typography
                       fontFamily={`font-family: sans-serif`}
                       color="#006666"
@@ -201,16 +230,8 @@ function Basket({
                       sx={{ fontSize: { xs: 12, sm: 14 } }}
                       align="justify"
                     >
-                      Name:{item.name}, Family:{item.family}, Genus:{item.genus}, Stock:{item.stock}
-                    </Typography>
-                    <Typography
-                      fontFamily={`font-family: sans-serif`}
-                      color="#006666"
-                      margin={1}
-                      sx={{ fontSize: { xs: 12, sm: 14 } }}
-                      align="justify"
-                    >
-                      Номер товара:{index + 1}
+                      {SERVICE_MESSAGES.numberOfProduct}
+                      {index + 1}
                     </Typography>
                     <Box>
                       <Button
@@ -220,7 +241,7 @@ function Basket({
                         sx={{ minWidth: { xs: 33, sm: 64 } }}
                         variant="outlined"
                       >
-                        +
+                        {BUTTONS.plus}
                       </Button>
                       <Typography
                         fontFamily={`font-family: sans-serif`}
@@ -237,7 +258,7 @@ function Basket({
                         sx={{ minWidth: { xs: 40, sm: 64 } }}
                         variant="outlined"
                       >
-                        -
+                        {BUTTONS.minus}
                       </Button>
                     </Box>
                     <Box>
@@ -248,7 +269,6 @@ function Basket({
                       >
                         {item.priceTotal ? item.priceTotal : item.price}$
                       </Typography>
-                      <Button>{<DeleteForeverIcon color="error" fontSize="large" />}</Button>
                     </Box>
                   </Box>
                 );
@@ -258,14 +278,8 @@ function Basket({
         </Container>
       ) : (
         <Box sx={{ position: 'absolute', top: '40%', left: '45%' }}>
-          <Typography
-            variant="h2"
-            fontSize={35}
-            /* sx={{ flexGrow: 1 }} */
-            //fontFamily={`'Pacifico', cursive`}
-            color="#006666"
-          >
-            Basket empty
+          <Typography variant="h2" fontSize={35} color="#006666">
+            {SERVICE_MESSAGES.cartEmpty}
           </Typography>
           <Link
             style={{
@@ -284,7 +298,7 @@ function Basket({
             }}
             to="/"
           >
-            Go to buy
+            {SERVICE_MESSAGES.goToBuy}
           </Link>
         </Box>
       )}
@@ -292,4 +306,4 @@ function Basket({
   ); /*  */
 }
 
-export default Basket;
+export default Cart;

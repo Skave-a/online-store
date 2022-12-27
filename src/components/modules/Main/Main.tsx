@@ -12,13 +12,13 @@ import { useSearchParams } from 'react-router-dom';
 const cards = flowersData;
 
 function Main({
-  setProduct,
-  product,
+  setCart,
+  cart,
   setTotalQuantity,
   totalQuantity,
 }: {
-  setProduct: (arg0: FlowersType[]) => void;
-  product: FlowersType[];
+  setCart: (arg0: FlowersType[]) => void;
+  cart: FlowersType[];
   setTotalQuantity: (arg0: number) => void;
   totalQuantity: number;
 }) {
@@ -45,8 +45,8 @@ function Main({
         />
         <CardList
           cards={sortedCards}
-          setProduct={setProduct}
-          product={product}
+          setCart={setCart}
+          cart={cart}
           totalQuantity={totalQuantity}
           setTotalQuantity={setTotalQuantity}
         />

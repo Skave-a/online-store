@@ -5,8 +5,8 @@ import { CardItem } from './CardItem';
 
 interface ICardList {
   cards: FlowersType[];
-  setProduct: (arg0: FlowersType[]) => void;
-  product: FlowersType[];
+  setCart: (arg0: FlowersType[]) => void;
+  cart: FlowersType[];
   setTotalQuantity: (arg0: number) => void;
   totalQuantity: number;
 }
@@ -31,8 +31,8 @@ export const CardList = (props: ICardList) => {
         <CardItem
           key={item.id}
           cards={item}
-          setProduct={props.setProduct}
-          product={props.product}
+          setCart={props.setCart}
+          cart={props.cart}
           totalQuantity={props.totalQuantity}
           setTotalQuantity={props.setTotalQuantity}
         />

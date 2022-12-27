@@ -4,11 +4,11 @@ import { Footer } from './components/modules/Footer/Footer';
 import { Header } from './components/modules/Header/Header';
 import Page404 from './components/Pages/Page404/Page404';
 import Main from './components/modules/Main/Main';
-import Basket from './components/Pages/Basket/Basket';
+import Cart from './components/Pages/Cart/Cart';
 import { FlowersType } from './components/types/types';
 
 function App() {
-  const [product, setProduct] = useState<FlowersType[]>(() => {
+  const [cart, setCart] = useState<FlowersType[]>(() => {
     return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '') : [];
   });
   const [totalQuantity, setTotalQuantity] = useState(() => {
@@ -16,9 +16,9 @@ function App() {
   });
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(product));
+    localStorage.setItem('cart', JSON.stringify(cart));
     localStorage.setItem('badge', JSON.stringify(totalQuantity));
-  }, [product, totalQuantity]);
+  }, [cart, totalQuantity]);
 
   return (
     <BrowserRouter>
@@ -28,8 +28,8 @@ function App() {
           path="/"
           element={
             <Main
-              product={product}
-              setProduct={setProduct}
+              cart={cart}
+              setCart={setCart}
               totalQuantity={totalQuantity}
               setTotalQuantity={setTotalQuantity}
             />
@@ -38,11 +38,11 @@ function App() {
         <Route
           path="/basket"
           element={
-            <Basket
+            <Cart
               totalQuantity={totalQuantity}
               setTotalQuantity={setTotalQuantity}
-              setProduct={setProduct}
-              product={product}
+              setCart={setCart}
+              cart={cart}
             />
           }
         />
