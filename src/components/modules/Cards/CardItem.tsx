@@ -65,6 +65,7 @@ export const CardItem = (props: Icards) => {
                 display: '-webkit-box',
                 WebkitBoxOrient: 'vertical',
                 WebkitLineClamp: '3',
+                height: '60px',
               }}
             >
               {description}

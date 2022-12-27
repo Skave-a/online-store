@@ -3,6 +3,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { Iparams } from '../Main/Main';
 
 interface IOptionSort {
   value: string;
@@ -14,21 +15,24 @@ export const SelectCards = ({
   options,
   value,
   onChange,
-  setSearchParams,
+  handleChange,
+  params,
   sortQuery,
 }: {
   options: IOptionSort[];
   value: string;
   onChange: (sort: string) => void;
-  setSearchParams: Function;
   sortQuery: string;
+  handleChange: Function;
+  params: Iparams;
 }) => {
   if (sortQuery) {
     value = sortQuery;
   }
   function selectHandler(e: SelectChangeEvent<string>) {
-    setSearchParams({ sort: e.target.value });
     onChange(e.target.value);
+    if (e.target.value) params.sort = e.target.value;
+    handleChange();
   }
   return (
     <FormControl sx={{ m: 1, minWidth: 215 }} size="small">

@@ -15,6 +15,7 @@ export const SearchCard = ({
   }
   return (
     <TextField
+      autoComplete="off"
       value={value}
       onChange={onChange}
       id="outlined-basic"

@@ -3,6 +3,7 @@ import React, { Dispatch } from 'react';
 import { Box, Typography } from '@mui/material';
 import { FlowersType } from '../../types/types';
 import { SwitchView } from '../SwitchView/SwitchView';
+import { Iparams } from '../Main/Main';
 
 interface ICardsFiter {
   sort: string;
@@ -21,15 +22,21 @@ const CardsSort = ({
   setFilter,
   cards,
   sortQuery,
-  setSearchParams,
+  handleChange,
   setIsGrid,
+  params,
+  isGridQuery,
+  isGrid,
 }: {
   filter: ICardsFiter;
   setFilter: Dispatch<ICardsFiter>;
   cards: FlowersType[];
   sortQuery: string;
-  setSearchParams: Function;
+  handleChange: Function;
+  params: Iparams;
   setIsGrid: Function;
+  isGridQuery: string;
+  isGrid: string;
 }) => {
   let sorted = filter.sort;
   return (
@@ -47,13 +54,20 @@ const CardsSort = ({
           { id: 5, value: 'name', name: 'Sort by name ASC' },
           { id: 6, value: 'name2', name: 'Sort by name DESC' },
         ]}
-        setSearchParams={setSearchParams}
+        handleChange={handleChange}
+        params={params}
         sortQuery={sortQuery}
       />
       <Typography variant="h2" fontFamily={`'Pacifico', cursive`} fontSize={25}>
         Found: {cards.length}
       </Typography>
-      <SwitchView setIsGrid={setIsGrid} setSearchParams={setSearchParams} />
+      <SwitchView
+        setIsGrid={setIsGrid}
+        handleChange={handleChange}
+        params={params}
+        isGridQuery={isGridQuery}
+        isGrid={isGrid}
+      />
     </Box>
   );
 };

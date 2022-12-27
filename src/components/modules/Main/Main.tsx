@@ -10,14 +10,23 @@ import { useSearchParams } from 'react-router-dom';
 
 const cards = flowersData;
 
+export interface Iparams {
+  [key: string]: string;
+}
+const params: Iparams = {};
+
 function Main() {
   let [searchParams, setSearchParams] = useSearchParams();
-  const searchQuery = searchParams.get('search') as string;
-  const sortQuery = searchParams.get('sort') as string;
-  const isGridQuery = searchParams.get('grid') as string;
+  const searchQuery = searchParams.get('search') || '';
+  const sortQuery = searchParams.get('sort') || '';
+  const isGridQuery = searchParams.get('grid') || '';
   const [filter, setFilter] = useState({ sort: '', query: '' });
   const sortedCards = useCards(cards, filter.sort, filter.query, searchQuery, sortQuery);
   const [isGrid, setIsGrid] = useState('false');
+  function handleChange() {
+    setSearchParams(params);
+    console.log(params);
+  }
   return (
     <Container sx={{ mt: '20px', display: 'flex', gap: '20px' }}>
       <FilterSide
@@ -25,15 +34,20 @@ function Main() {
         setFilter={setFilter}
         setSearchParams={setSearchParams}
         searchQuery={searchQuery}
+        params={params}
+        handleChange={handleChange}
       />
       <Box>
         <CardsSort
           filter={filter}
           setFilter={setFilter}
           cards={sortedCards}
-          setSearchParams={setSearchParams}
+          handleChange={handleChange}
           sortQuery={sortQuery}
           setIsGrid={setIsGrid}
+          params={params}
+          isGridQuery={isGridQuery}
+          isGrid={isGrid}
         />
         <CardList cards={sortedCards} isGrid={isGrid} isGridQuery={isGridQuery} />
       </Box>
