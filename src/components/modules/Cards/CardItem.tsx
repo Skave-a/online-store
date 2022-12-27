@@ -4,12 +4,18 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box, Button, CardActionArea, Grid, Rating } from '@mui/material';
 import { FlowersType } from '../../types/types';
+import { MouseEvent, useEffect, useState } from 'react';
+import { BUTTONS } from '../../utils/constants';
 
 interface Icards {
   key: number | undefined;
   cards: FlowersType;
   isGrid: string;
   isGridQuery: string;
+  setCart: (arg0: FlowersType[]) => void;
+  cart: FlowersType[];
+  setTotalQuantity: (arg0: number) => void;
+  totalQuantity: number;
 }
 
 const btnSX = {
@@ -41,6 +47,33 @@ export const CardItem = (props: Icards) => {
   if (gridVar === 'true') {
     md = 6;
   }
+  const [inCart, setInCart] = useState(false);
+
+  const buttonHandler = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    const isEqual = props.cart.some((item) => item.id === props.cards.id);
+    if (!isEqual) {
+      props.setCart([...props.cart, props.cards]);
+      props.setTotalQuantity(props.totalQuantity + 1);
+      setInCart(true);
+    }
+    if (e.currentTarget.textContent === BUTTONS.delete) {
+      const isEqual = props.cart.some((item) => item.id === props.cards.id);
+      if (isEqual) {
+        props.setCart(props.cart.filter((item: FlowersType) => item.id !== props.cards.id));
+        props.setTotalQuantity(props.totalQuantity - 1);
+        setInCart(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const isEqual = props.cart.some((item) => item.id === props.cards.id);
+    if (isEqual) {
+      setInCart(true);
+    }
+  }, []);
+
   return (
     <Grid item xs={12} md={md} sm={6}>
       <Card>
@@ -74,12 +107,12 @@ export const CardItem = (props: Icards) => {
           <Box sx={priceBoxSX}>
             <Typography>{price}$</Typography>
             <Button
-              onClick={(event) => {
-                event.stopPropagation();
+              onClick={(e) => {
+                buttonHandler(e);
               }}
               sx={btnSX}
             >
-              Buy
+              {inCart ? BUTTONS.delete : BUTTONS.add}
             </Button>
           </Box>
           <Rating

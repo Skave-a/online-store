@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { flowersData } from '../../../data/data';
 import CardsSort from '../Cards/CardsSort';
 import { useCards } from '../../hooks/useCards';
+import { FlowersType } from '../../types/types';
 import { FilterSide } from '../Filter/FilterSide';
 import { Box } from '@mui/system';
 import { useSearchParams } from 'react-router-dom';
@@ -13,7 +14,17 @@ const cards = flowersData;
 
 const params: Iparams = {};
 
-function Main() {
+function Main({
+  setCart,
+  cart,
+  setTotalQuantity,
+  totalQuantity,
+}: {
+  setCart: (arg0: FlowersType[]) => void;
+  cart: FlowersType[];
+  setTotalQuantity: (arg0: number) => void;
+  totalQuantity: number;
+}) {
   let [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('search') || '';
   const sortQuery = searchParams.get('sort') || '';
@@ -44,7 +55,15 @@ function Main() {
           params={params}
           isGrid={isGrid}
         />
-        <CardList cards={sortedCards} isGrid={isGrid} isGridQuery={isGridQuery} />
+        <CardList
+          cards={sortedCards}
+          setCart={setCart}
+          cart={cart}
+          totalQuantity={totalQuantity}
+          setTotalQuantity={setTotalQuantity}
+          isGrid={isGrid}
+          isGridQuery={isGridQuery}
+        />
       </Box>
     </Container>
   );

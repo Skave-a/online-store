@@ -10,6 +10,8 @@ export interface FlowersType {
   family?: string;
   genus?: string;
   price: number;
+  quantity: number;
+  priceTotal?: number;
 }
 
 export interface Iparams {
