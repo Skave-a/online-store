@@ -18,7 +18,7 @@ export const BUTTONS = {
 export const SERVICE_MESSAGES = {
   goToBuy: 'Go to buy',
   cartEmpty: 'Cart empty',
-  numberOfProduct: ' № product:',
+  numberOfProduct: ' №:',
   name: 'Name:',
   family: 'Family:',
   genus: 'Genus:',

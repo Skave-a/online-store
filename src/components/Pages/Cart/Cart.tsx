@@ -128,7 +128,7 @@ function Cart({
               <Box
                 sx={{
                   border: 1,
-                  height: '9rem',
+                  //height: '9rem',
                   borderColor: 'grey.500',
                   borderRadius: 1,
                   marginBottom: 2,
@@ -142,6 +142,7 @@ function Cart({
                   fontFamily={`font-family: sans-serif`}
                   color="#006666"
                   margin={1}
+                  noWrap
                 >
                   {SERVICE_MESSAGES.yourCart}
                 </Typography>
@@ -157,10 +158,10 @@ function Cart({
                   {`${totalCart}$`}
                 </Typography>
               </Box>
-              <Button fullWidth sx={{ mb: 2 }} variant="outlined">
+              <Button color="success" fullWidth sx={{ mb: 2 }} variant="outlined">
                 {SERVICE_MESSAGES.buyNow}
               </Button>
-              <Button fullWidth variant="outlined">
+              <Button color="success" fullWidth variant="outlined">
                 {SERVICE_MESSAGES.buyMore}
               </Button>
             </Grid>
@@ -185,12 +186,12 @@ function Cart({
                       component="img"
                       sx={{
                         height: '98%',
-                        width: '20%',
+                        width: '25%',
                       }}
                       image={item.photos[0]}
                       alt="Plant image"
                     />
-                    <Box>
+                    <Box sx={{ minWidth: { xs: 40, sm: 64 } }}>
                       <Typography
                         fontFamily={`font-family: sans-serif`}
                         color="#006666"
@@ -222,19 +223,28 @@ function Cart({
                         {item.stock}
                       </Typography>
                     </Box>
-
-                    <Typography
-                      fontFamily={`font-family: sans-serif`}
-                      color="#006666"
-                      margin={1}
-                      sx={{ fontSize: { xs: 12, sm: 14 } }}
-                      align="justify"
-                    >
-                      {SERVICE_MESSAGES.numberOfProduct}
-                      {index + 1}
-                    </Typography>
+                    <Box sx={{ display: 'flex', marginTop: 14 }}>
+                      <Typography
+                        fontFamily={`font-family: sans-serif`}
+                        color="#006666"
+                        sx={{ textAlign: 'center', fontSize: { xs: 20, sm: 27 } }}
+                      >
+                        {item.priceTotal ? item.priceTotal : item.price}$
+                      </Typography>
+                      <Typography
+                        fontFamily={`font-family: sans-serif`}
+                        color="#006666"
+                        margin={1}
+                        sx={{ fontSize: { xs: 12, sm: 13 } }}
+                        align="justify"
+                      >
+                        {SERVICE_MESSAGES.numberOfProduct}
+                        {index + 1}
+                      </Typography>
+                    </Box>
                     <Box>
                       <Button
+                        color="success"
                         onClick={() => {
                           augmentHandler(item.name);
                         }}
@@ -252,6 +262,7 @@ function Cart({
                         {item.quantity}
                       </Typography>
                       <Button
+                        color="success"
                         onClick={() => {
                           decrementHandler(item.name);
                         }}
@@ -260,15 +271,6 @@ function Cart({
                       >
                         {BUTTONS.minus}
                       </Button>
-                    </Box>
-                    <Box>
-                      <Typography
-                        fontFamily={`font-family: sans-serif`}
-                        color="#006666"
-                        sx={{ textAlign: 'center', fontSize: { xs: 20, sm: 27 } }}
-                      >
-                        {item.priceTotal ? item.priceTotal : item.price}$
-                      </Typography>
                     </Box>
                   </Box>
                 );
