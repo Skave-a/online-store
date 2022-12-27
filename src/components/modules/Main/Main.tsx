@@ -8,8 +8,11 @@ import { FlowersType } from '../../types/types';
 import { FilterSide } from '../Filter/FilterSide';
 import { Box } from '@mui/system';
 import { useSearchParams } from 'react-router-dom';
+import { Iparams } from '../../types/types';
 
 const cards = flowersData;
+
+const params: Iparams = {};
 
 function Main({
   setCart,
@@ -23,25 +26,34 @@ function Main({
   totalQuantity: number;
 }) {
   let [searchParams, setSearchParams] = useSearchParams();
-  const searchQuery = searchParams.get('search') as string;
-  const sortQuery = searchParams.get('sort') as string;
+  const searchQuery = searchParams.get('search') || '';
+  const sortQuery = searchParams.get('sort') || '';
+  const isGridQuery = searchParams.get('grid') || '';
+  function handleChange() {
+    setSearchParams(params);
+  }
   const [filter, setFilter] = useState({ sort: '', query: '' });
   const sortedCards = useCards(cards, filter.sort, filter.query, searchQuery, sortQuery);
+  const [isGrid, setIsGrid] = useState('false');
   return (
     <Container sx={{ mt: '20px', display: 'flex', gap: '20px' }}>
       <FilterSide
         filter={filter}
         setFilter={setFilter}
-        setSearchParams={setSearchParams}
         searchQuery={searchQuery}
+        params={params}
+        handleChange={handleChange}
       />
       <Box>
         <CardsSort
           filter={filter}
           setFilter={setFilter}
           cards={sortedCards}
-          setSearchParams={setSearchParams}
+          handleChange={handleChange}
           sortQuery={sortQuery}
+          setIsGrid={setIsGrid}
+          params={params}
+          isGrid={isGrid}
         />
         <CardList
           cards={sortedCards}
@@ -49,6 +61,8 @@ function Main({
           cart={cart}
           totalQuantity={totalQuantity}
           setTotalQuantity={setTotalQuantity}
+          isGrid={isGrid}
+          isGridQuery={isGridQuery}
         />
       </Box>
     </Container>

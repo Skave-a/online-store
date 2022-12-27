@@ -5,6 +5,8 @@ import { CardItem } from './CardItem';
 
 interface ICardList {
   cards: FlowersType[];
+  isGrid: string;
+  isGridQuery: string;
   setCart: (arg0: FlowersType[]) => void;
   cart: FlowersType[];
   setTotalQuantity: (arg0: number) => void;
@@ -31,6 +33,8 @@ export const CardList = (props: ICardList) => {
         <CardItem
           key={item.id}
           cards={item}
+          isGrid={props.isGrid}
+          isGridQuery={props.isGridQuery}
           setCart={props.setCart}
           cart={props.cart}
           totalQuantity={props.totalQuantity}

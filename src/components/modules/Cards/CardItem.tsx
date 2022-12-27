@@ -10,6 +10,8 @@ import { BUTTONS } from '../../utils/constants';
 interface Icards {
   key: number | undefined;
   cards: FlowersType;
+  isGrid: string;
+  isGridQuery: string;
   setCart: (arg0: FlowersType[]) => void;
   cart: FlowersType[];
   setTotalQuantity: (arg0: number) => void;
@@ -37,6 +39,14 @@ const priceBoxSX = {
 
 export const CardItem = (props: Icards) => {
   const { name, price, rating, description, photos } = props.cards;
+  let gridVar = props.isGrid;
+  if (props.isGridQuery) {
+    gridVar = props.isGridQuery;
+  }
+  let md = 4;
+  if (gridVar === 'true') {
+    md = 6;
+  }
   const [inCart, setInCart] = useState(false);
 
   const buttonHandler = (e: MouseEvent<HTMLButtonElement>) => {
@@ -65,7 +75,7 @@ export const CardItem = (props: Icards) => {
   }, []);
 
   return (
-    <Grid item xs={12} md={4} sm={6}>
+    <Grid item xs={12} md={md} sm={6}>
       <Card>
         <CardActionArea component="span">
           <CardMedia
@@ -88,6 +98,7 @@ export const CardItem = (props: Icards) => {
                 display: '-webkit-box',
                 WebkitBoxOrient: 'vertical',
                 WebkitLineClamp: '3',
+                height: '60px',
               }}
             >
               {description}

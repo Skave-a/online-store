@@ -14,4 +14,7 @@ export interface FlowersType {
   priceTotal?: number;
 }
 
+export interface Iparams {
+  [key: string]: string;
+}
 // type FlowersMainType = number | string | undefined | string[];
