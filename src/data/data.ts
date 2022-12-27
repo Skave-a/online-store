@@ -12,10 +12,11 @@ export const flowersData: FlowersType[] = [
       'Haworthia is a large genus of small succulent plants endemic to Southern Africa (Mozambique, Namibia, Lesotho, Eswatini and South Africa)',
     discount: 10,
     rating: 4.9,
-    stock: 50,
+    stock: 5,
     family: 'Asphodelaceae',
     genus: 'Haworthia',
     price: 80,
+    quantity: 1,
   },
   {
     id: 2,
@@ -28,10 +29,11 @@ export const flowersData: FlowersType[] = [
       'Croton is an extensive flowering plant genus in the spurge family, Euphorbiaceae. The plants of this genus were described and introduced to Europeans by Georg Eberhard Rumphius. The common names for this genus are rushfoil and croton, but the latter also refers to Codiaeum variegatum. The generic name comes from the Greek κρότος (krótos), which means "tick" and refers to the shape of the seeds of certain species.',
     discount: 15,
     rating: 4.9,
-    stock: 55,
+    stock: 6,
     family: 'Euphorbiaceae',
     genus: 'Croton',
     price: 85,
+    quantity: 1,
   },
   {
     id: 3,
@@ -48,6 +50,7 @@ export const flowersData: FlowersType[] = [
     family: 'Piperaceae',
     genus: 'Peperomia',
     price: 75,
+    quantity: 1,
   },
   {
     id: 4,
@@ -64,6 +67,7 @@ export const flowersData: FlowersType[] = [
     family: 'Cactaceae',
     genus: 'Pereskia',
     price: 30,
+    quantity: 1,
   },
   {
     id: 5,
@@ -79,6 +83,7 @@ export const flowersData: FlowersType[] = [
     family: 'Moraceae',
     genus: 'Ficus',
     price: 70,
+    quantity: 1,
   },
   {
     id: 6,
@@ -90,10 +95,11 @@ export const flowersData: FlowersType[] = [
     description: `Aloe humilis, also known as spider aloe is a species of succulent plant in the genus Aloe. It is endemic to South Africa's Cape Province, and is a low growing, short stemmed aloe with small spines and which grows in dense clusters.`,
     discount: 0,
     rating: 4.9,
-    stock: 21,
+    stock: 3,
     family: 'Asphodelaceae',
     genus: 'Aloe',
     price: 72,
+    quantity: 1,
   },
   {
     id: 7,
@@ -110,6 +116,7 @@ export const flowersData: FlowersType[] = [
     family: 'Araceae',
     genus: 'Ceropegia',
     price: 55,
+    quantity: 1,
   },
   {
     id: 8,
@@ -126,6 +133,7 @@ export const flowersData: FlowersType[] = [
     family: 'Araceae',
     genus: 'Chamedorea',
     price: 60,
+    quantity: 1,
   },
   {
     id: 9,
@@ -142,6 +150,7 @@ export const flowersData: FlowersType[] = [
     family: 'Araceae',
     genus: '',
     price: 80,
+    quantity: 1,
   },
   {
     id: 10,
@@ -157,6 +166,7 @@ export const flowersData: FlowersType[] = [
     family: 'Moraceae',
     genus: 'Ficus',
     price: 72,
+    quantity: 1,
   },
   {
     id: 11,
@@ -173,6 +183,7 @@ export const flowersData: FlowersType[] = [
     family: 'Araceae',
     genus: 'Monstera',
     price: 65,
+    quantity: 1,
   },
   {
     id: 12,
@@ -189,6 +200,7 @@ export const flowersData: FlowersType[] = [
     family: 'Araceae',
     genus: 'Zamioculcas',
     price: 90,
+    quantity: 1,
   },
   {
     id: 13,
@@ -205,6 +217,7 @@ export const flowersData: FlowersType[] = [
     family: 'Araceae',
     genus: 'Pilea',
     price: 65,
+    quantity: 1,
   },
   {
     id: 14,
@@ -221,6 +234,7 @@ export const flowersData: FlowersType[] = [
     family: 'Moraceae',
     genus: 'Equisetum',
     price: 20,
+    quantity: 1,
   },
   {
     id: 15,
@@ -237,6 +251,7 @@ export const flowersData: FlowersType[] = [
     family: 'Moraceae',
     genus: 'Ficus',
     price: 72,
+    quantity: 1,
   },
   {
     id: 16,
@@ -252,6 +267,7 @@ export const flowersData: FlowersType[] = [
     family: 'Araceae',
     genus: 'Epipremnum',
     price: 68,
+    quantity: 1,
   },
   {
     id: 17,
@@ -267,6 +283,7 @@ export const flowersData: FlowersType[] = [
     family: 'Moraceae',
     genus: 'Dracaena',
     price: 55,
+    quantity: 1,
   },
   {
     id: 18,
@@ -283,6 +300,7 @@ export const flowersData: FlowersType[] = [
     family: 'Araceae',
     genus: 'Viola',
     price: 70,
+    quantity: 1,
   },
   {
     id: 19,
@@ -299,6 +317,7 @@ export const flowersData: FlowersType[] = [
     family: 'Moraceae',
     genus: 'Hydrangea',
     price: 80,
+    quantity: 1,
   },
   {
     id: 20,
@@ -315,5 +334,6 @@ export const flowersData: FlowersType[] = [
     family: 'Moraceae',
     genus: 'Geranium',
     price: 10,
+    quantity: 1,
   },
 ];
