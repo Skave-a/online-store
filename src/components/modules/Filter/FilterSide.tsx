@@ -1,7 +1,7 @@
 import { Box } from '@mui/system';
 import { SearchCard } from '../Search/SearchCard';
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
-import { Iparams } from '../Main/Main';
+import { Iparams } from '../../types/types';
 
 interface ICardsFiter {
   sort: string;
@@ -21,7 +21,6 @@ const boxStyle = {
 export const FilterSide = ({
   filter,
   setFilter,
-  setSearchParams,
   searchQuery,
   params,
   handleChange,
@@ -33,7 +32,6 @@ export const FilterSide = ({
       query: string;
     }>
   >;
-  setSearchParams: Function;
   searchQuery: string;
   params: Iparams;
   handleChange: Function;

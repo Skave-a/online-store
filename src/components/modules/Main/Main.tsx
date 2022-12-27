@@ -29,7 +29,6 @@ function Main() {
       <FilterSide
         filter={filter}
         setFilter={setFilter}
-        setSearchParams={setSearchParams}
         searchQuery={searchQuery}
         params={params}
         handleChange={handleChange}
