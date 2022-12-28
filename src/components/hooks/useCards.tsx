@@ -43,12 +43,14 @@ export const useCards = (
   sort: string,
   query: string,
   searchQuery: string,
-  sortQuery: string
+  sortQuery: string,
+  familyFilter: string
 ) => {
   const sortedCards = useSortedCards(cards, sort, sortQuery);
   if (searchQuery) {
     query = searchQuery as string;
   }
+  // console.log(familyFilter);
   const sortedAndSearchedcards = useMemo(() => {
     return sortedCards.filter((card) => {
       return (

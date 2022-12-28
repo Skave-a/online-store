@@ -1,13 +1,8 @@
 import { Box } from '@mui/system';
 import { SearchCard } from '../Search/SearchCard';
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
-import { Iparams } from '../../types/types';
+import { ICardsFiter, Iparams } from '../../types/types';
 import { FilterCheckbox } from './FilterCheckbox';
-
-interface ICardsFiter {
-  sort: string;
-  query: string;
-}
 
 const boxStyle = {
   display: 'flex',
@@ -28,12 +23,7 @@ export const FilterSide = ({
   handleChange,
 }: {
   filter: ICardsFiter;
-  setFilter: Dispatch<
-    SetStateAction<{
-      sort: string;
-      query: string;
-    }>
-  >;
+  setFilter: Dispatch<SetStateAction<ICardsFiter>>;
   searchQuery: string;
   params: Iparams;
   handleChange: Function;
@@ -55,7 +45,7 @@ export const FilterSide = ({
         />
       </Box>
       <Box sx={boxStyle}>
-        <FilterCheckbox />
+        <FilterCheckbox filter={filter} setFilter={setFilter} />
       </Box>
     </Box>
   );

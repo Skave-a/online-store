@@ -1,3 +1,6 @@
+import { flowersData } from '../../data/data';
+import { Iparams } from '../types/types';
+
 export const SOME_MESSAGE = 'Hello Main Page';
 
 export const LINK_TO_THE_COURSE = 'https://rs.school/js/';
@@ -27,3 +30,18 @@ export const SERVICE_MESSAGES = {
   buyMore: 'Buy more',
   yourCart: 'Your cart:',
 };
+
+export const listFamily: string[] = [];
+
+export const params: Iparams = {};
+
+export const cards = flowersData;
+
+export const optionsForSort = [
+  { id: 1, value: 'price', name: 'Sort by price ASC' },
+  { id: 2, value: 'price2', name: 'Sort by price DESC' },
+  { id: 3, value: 'rating', name: 'Sort by rating ASC' },
+  { id: 4, value: 'rating2', name: 'Sort by rating DESC' },
+  { id: 5, value: 'name', name: 'Sort by name ASC' },
+  { id: 6, value: 'name2', name: 'Sort by name DESC' },
+];
