@@ -26,4 +26,14 @@ export const SERVICE_MESSAGES = {
   buyNow: 'Buy now',
   buyMore: 'Buy more',
   yourCart: 'Your cart:',
+  products: 'Products:',
+  total: 'Total:',
+  add: 'Add',
+  drop: 'Drop',
+};
+
+export const PROMO = {
+  rss10: 'Rolling Scopes School - 10%',
+  epam10: 'EPAM Systems - 10%',
+  test: 'Promo for test: "rs" or "epm"',
 };

@@ -1,8 +1,11 @@
-import { Box, Button, CardMedia, Container, Divider, Grid, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Box, Button, CardMedia, Container, Grid, Typography } from '@mui/material';
+import { useState } from 'react';
+import { Link, Link as RouterLink } from 'react-router-dom';
 import { FlowersType } from '../../types/types';
 import { BUTTONS, SERVICE_MESSAGES } from '../../utils/constants';
 import Pagination from '../../utils/Pagination';
+import CartModal from './CartModal';
+import { CartPromo } from './CartPromo';
 
 interface ICartItem {
   pagesPerPage: FlowersType[];
@@ -29,8 +32,13 @@ export const CartItem = ({
   augmentHandler,
   decrementHandler,
 }: ICartItem) => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <>
+      <CartModal handleOpen={handleOpen} handleClose={handleClose} open={open} />
       {pagesPerPage.length ? (
         <Container maxWidth="lg">
           <Typography
@@ -55,7 +63,6 @@ export const CartItem = ({
               <Box
                 sx={{
                   border: 1,
-                  //height: '9rem',
                   borderColor: 'grey.500',
                   borderRadius: 1,
                   marginBottom: 2,
@@ -71,24 +78,21 @@ export const CartItem = ({
                   margin={1}
                   noWrap
                 >
-                  {SERVICE_MESSAGES.yourCart}
+                  {SERVICE_MESSAGES.products}
+                  {totalQuantity}
                 </Typography>
-                <Divider sx={{ m: 4 }} variant="middle" />
-                <Typography
-                  variant="h2"
-                  fontSize={30}
-                  fontFamily={`font-family: sans-serif`}
-                  color="#006666"
-                  margin={1}
-                  textAlign={'right'}
-                >
-                  {`${totalCostCart}$`}
-                </Typography>
+                <CartPromo totalCostCart={totalCostCart} />
               </Box>
-              <Button color="success" fullWidth sx={{ mb: 2 }} variant="outlined">
+              <Button
+                onClick={handleOpen}
+                color="success"
+                fullWidth
+                sx={{ mb: 2 }}
+                variant="outlined"
+              >
                 {SERVICE_MESSAGES.buyNow}
               </Button>
-              <Button color="success" fullWidth variant="outlined">
+              <Button component={RouterLink} to="/" color="success" fullWidth variant="outlined">
                 {SERVICE_MESSAGES.buyMore}
               </Button>
             </Grid>
