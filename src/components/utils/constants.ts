@@ -33,7 +33,7 @@ export const SERVICE_MESSAGES = {
 };
 
 export const PROMO = {
-  rss10: 'Rolling Scopes School - 10%',
-  epam10: 'EPAM Systems - 10%',
+  rss10: 'RSS - 10%',
+  epam10: 'EPAM - 10%',
   test: 'Promo for test: "rs" or "epm"',
 };

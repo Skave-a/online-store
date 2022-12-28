@@ -1,6 +1,7 @@
-import { Box, Button, Divider, TextField, Typography } from '@mui/material';
+import { Box, Button, Divider, IconButton, TextField, Typography } from '@mui/material';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { PROMO, SERVICE_MESSAGES } from '../../utils/constants';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 interface ICartPromo {
   totalCostCart: number;
@@ -61,6 +62,10 @@ export const CartPromo = ({ totalCostCart }: ICartPromo) => {
       setIsPromoAdded(false);
     }
   });
+
+  const deletePromoHandler = (item: string) => {
+    setPromo(Promo.filter((toFilter) => item !== toFilter));
+  };
 
   return (
     <>
@@ -149,6 +154,13 @@ export const CartPromo = ({ totalCostCart }: ICartPromo) => {
                 >
                   {SERVICE_MESSAGES.add}
                 </Button>
+                <IconButton
+                  onClick={() => deletePromoHandler(item)}
+                  aria-label="delete"
+                  size="small"
+                >
+                  <DeleteIcon color="success" fontSize="small" />
+                </IconButton>
               </Typography>
             </Box>
           );
