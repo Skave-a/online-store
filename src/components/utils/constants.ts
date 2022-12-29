@@ -26,4 +26,14 @@ export const SERVICE_MESSAGES = {
   buyNow: 'Buy now',
   buyMore: 'Buy more',
   yourCart: 'Your cart:',
+  products: 'Products:',
+  total: 'Total:',
+  add: 'Add',
+  drop: 'Drop',
+};
+
+export const PROMO = {
+  rss10: 'RSS - 10%',
+  epam10: 'EPAM - 10%',
+  test: 'Promo for test: "rs" or "epm"',
 };
