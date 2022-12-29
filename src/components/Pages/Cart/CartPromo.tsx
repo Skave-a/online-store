@@ -14,21 +14,31 @@ export const CartPromo = ({ totalCostCart }: ICartPromo) => {
   };
   const [isPromo, setIsPromo] = useState(false);
   const [isPromoAdded, setIsPromoAdded] = useState(false);
-  const [Promo, setPromo] = useState<string[]>([]);
-  const [promoApplied, setPromoApplied] = useState<string[]>([]);
+  const [promo, setPromo] = useState<string[]>([]);
+  const [promoApplied, setPromoApplied] = useState<string[]>(() => {
+    setIsPromoAdded(true);
+    return localStorage.getItem('promoApplied')
+      ? JSON.parse(localStorage.getItem('promoApplied') || '')
+      : [];
+  });
 
-  const [promoPrice, setPromoPrice] = useState(totalCostCart);
+  const [promoPrice, setPromoPrice] = useState(() => {
+    setIsPromoAdded(true);
+    return localStorage.getItem('promoPrice')
+      ? JSON.parse(localStorage.getItem('promoPrice') || '')
+      : totalCostCart;
+  });
 
   if (name === 'rs') {
     setIsPromo(true);
     setName('');
-    setPromo([...Promo, PROMO.rss10]);
+    setPromo([...promo, PROMO.rss10]);
   }
 
   if (name === 'epm') {
     setIsPromo(true);
     setName('');
-    setPromo([...Promo, PROMO.epam10]);
+    setPromo([...promo, PROMO.epam10]);
   }
 
   const addPromoHandler = (item: string) => {
@@ -61,10 +71,12 @@ export const CartPromo = ({ totalCostCart }: ICartPromo) => {
     if (!promoApplied.length) {
       setIsPromoAdded(false);
     }
-  });
+    localStorage.setItem('promoApplied', JSON.stringify(promoApplied));
+    localStorage.setItem('promoPrice', JSON.stringify(promoPrice));
+  }, [promoApplied]);
 
   const deletePromoHandler = (item: string) => {
-    setPromo(Promo.filter((toFilter) => item !== toFilter));
+    setPromo(promo.filter((toFilter) => item !== toFilter));
   };
 
   return (
@@ -135,7 +147,7 @@ export const CartPromo = ({ totalCostCart }: ICartPromo) => {
         {PROMO.test}
       </Typography>
       {isPromo &&
-        Promo.map((item) => {
+        promo.map((item) => {
           return (
             <Box sx={{ marginTop: 2 }} key={item}>
               <Typography
