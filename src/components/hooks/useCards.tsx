@@ -51,22 +51,20 @@ export const useCards = (
     query = searchQuery as string;
   }
   console.log('listFamily', listFamily);
-  const sortedAndSearchedcards = useMemo(() => {
-    return sortedCards
-      .filter((card) => {
-        return (
-          card.name.toLowerCase().includes(query.toLowerCase()) ||
-          card.description.toLowerCase().includes(query.toLowerCase()) ||
-          (card.family as string).toLowerCase().includes(query.toLowerCase()) ||
-          (card.genus as string).toLowerCase().includes(query.toLowerCase()) ||
-          card.price.toString().includes(query.toLowerCase()) ||
-          (card.discount as number).toString().includes(query.toLowerCase()) ||
-          (card.stock as number).toString().includes(query.toLowerCase()) ||
-          (card.rating as number).toString().includes(query.toLowerCase())
-        );
-      })
-      .filter((card) => listFamily.includes(card.family as string));
-  }, [query, sortedCards, listFamily]);
-  console.log(sortedAndSearchedcards);
+  const sortedAndSearchedcards = sortedCards
+    .filter((card) => {
+      return (
+        card.name.toLowerCase().includes(query.toLowerCase()) ||
+        card.description.toLowerCase().includes(query.toLowerCase()) ||
+        (card.family as string).toLowerCase().includes(query.toLowerCase()) ||
+        (card.genus as string).toLowerCase().includes(query.toLowerCase()) ||
+        card.price.toString().includes(query.toLowerCase()) ||
+        (card.discount as number).toString().includes(query.toLowerCase()) ||
+        (card.stock as number).toString().includes(query.toLowerCase()) ||
+        (card.rating as number).toString().includes(query.toLowerCase())
+      );
+    })
+    .filter((card) => listFamily.includes(card.family as string));
+  console.log('sortedAndSearchedcards', sortedAndSearchedcards);
   return sortedAndSearchedcards;
 };

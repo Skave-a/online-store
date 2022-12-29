@@ -29,10 +29,8 @@ export const FilterCheckbox = ({
         checkedFamily = arrFamily.slice(0);
       }
       setFilter({ ...filter, familyFilter: checkedFamily });
-      // console.log('checkedFamily-', checkedFamily);
     }
     listFamily = checkedFamily;
-    // console.log('listFamily', listFamily);
   };
 
   return (
@@ -40,7 +38,7 @@ export const FilterCheckbox = ({
       {arrFamily.map((item) => (
         <FormControlLabel
           key={item}
-          control={<Checkbox onClick={handleChange} />}
+          control={<Checkbox onChange={handleChange} />}
           label={item}
           value={item}
         />
