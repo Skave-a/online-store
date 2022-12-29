@@ -29,13 +29,13 @@ export const CartPromo = ({ totalCostCart }: ICartPromo) => {
       : totalCostCart;
   });
 
-  if (name === 'rs') {
+  if (name === 'rs' && !promo.includes('RSS - 10%')) {
     setIsPromo(true);
     setName('');
     setPromo([...promo, PROMO.rss10]);
   }
 
-  if (name === 'epm') {
+  if (name === 'epm' && !promo.includes('EPAM - 10%')) {
     setIsPromo(true);
     setName('');
     setPromo([...promo, PROMO.epam10]);
