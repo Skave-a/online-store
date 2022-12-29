@@ -23,7 +23,7 @@ export const Header: React.FC<{ totalQuantity: number }> = ({ totalQuantity }) =
             My Flowers
           </Link>
         </Typography>
-        <RouterLink to="/basket">
+        <RouterLink to="/cart">
           <IconButton color="inherit">
             <Badge
               anchorOrigin={{
