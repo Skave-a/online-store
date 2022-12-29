@@ -31,8 +31,6 @@ export const SERVICE_MESSAGES = {
   yourCart: 'Your cart:',
 };
 
-export const listFamily: string[] = [];
-
 export const params: Iparams = {};
 
 export const cards = flowersData;
@@ -45,3 +43,5 @@ export const optionsForSort = [
   { id: 5, value: 'name', name: 'Sort by name ASC' },
   { id: 6, value: 'name2', name: 'Sort by name DESC' },
 ];
+
+export const arrFamily = Array.from(new Set(flowersData.map((el) => el.family))) as string[];

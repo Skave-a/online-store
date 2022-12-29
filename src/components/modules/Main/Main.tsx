@@ -8,6 +8,7 @@ import { FilterSide } from '../Filter/FilterSide';
 import { Box } from '@mui/system';
 import { useSearchParams } from 'react-router-dom';
 import { cards, params } from '../../utils/constants';
+import { listFamily } from '../Filter/FilterCheckbox';
 
 function Main({
   setCart,
@@ -27,7 +28,7 @@ function Main({
   function handleChange() {
     setSearchParams(params);
   }
-  const [filter, setFilter] = useState({ sort: '', query: '', familyFilter: '' });
+  const [filter, setFilter] = useState({ sort: '', query: '', familyFilter: listFamily });
   const sortedCards = useCards(
     cards,
     filter.sort,

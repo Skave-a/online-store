@@ -42,29 +42,31 @@ export const useCards = (
   cards: FlowersType[],
   sort: string,
   query: string,
+  listFamily: string[],
   searchQuery: string,
-  sortQuery: string,
-  familyFilter: string
+  sortQuery: string
 ) => {
   const sortedCards = useSortedCards(cards, sort, sortQuery);
   if (searchQuery) {
     query = searchQuery as string;
   }
-  // console.log(familyFilter);
+  console.log('listFamily', listFamily);
   const sortedAndSearchedcards = useMemo(() => {
-    return sortedCards.filter((card) => {
-      return (
-        card.name.toLowerCase().includes(query.toLowerCase()) ||
-        card.description.toLowerCase().includes(query.toLowerCase()) ||
-        (card.family as string).toLowerCase().includes(query.toLowerCase()) ||
-        (card.genus as string).toLowerCase().includes(query.toLowerCase()) ||
-        card.price.toString().includes(query.toLowerCase()) ||
-        (card.discount as number).toString().includes(query.toLowerCase()) ||
-        (card.stock as number).toString().includes(query.toLowerCase()) ||
-        (card.rating as number).toString().includes(query.toLowerCase())
-      );
-    });
-  }, [query, sortedCards]);
-
+    return sortedCards
+      .filter((card) => {
+        return (
+          card.name.toLowerCase().includes(query.toLowerCase()) ||
+          card.description.toLowerCase().includes(query.toLowerCase()) ||
+          (card.family as string).toLowerCase().includes(query.toLowerCase()) ||
+          (card.genus as string).toLowerCase().includes(query.toLowerCase()) ||
+          card.price.toString().includes(query.toLowerCase()) ||
+          (card.discount as number).toString().includes(query.toLowerCase()) ||
+          (card.stock as number).toString().includes(query.toLowerCase()) ||
+          (card.rating as number).toString().includes(query.toLowerCase())
+        );
+      })
+      .filter((card) => listFamily.includes(card.family as string));
+  }, [query, sortedCards, listFamily]);
+  console.log(sortedAndSearchedcards);
   return sortedAndSearchedcards;
 };

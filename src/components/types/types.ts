@@ -22,5 +22,5 @@ export interface Iparams {
 export interface ICardsFiter {
   sort: string;
   query: string;
-  familyFilter: string;
+  familyFilter: string[];
 }

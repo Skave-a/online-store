@@ -1,8 +1,10 @@
 import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 import { Dispatch, SetStateAction, SyntheticEvent } from 'react';
-import { flowersData } from '../../../data/data';
 import { ICardsFiter } from '../../types/types';
-import { listFamily } from '../../utils/constants';
+import { arrFamily } from '../../utils/constants';
+
+export let listFamily = arrFamily.slice(0);
+let checkedFamily: string[] = [];
 
 export const FilterCheckbox = ({
   filter,
@@ -11,16 +13,26 @@ export const FilterCheckbox = ({
   filter: ICardsFiter;
   setFilter: Dispatch<SetStateAction<ICardsFiter>>;
 }) => {
-  const arrFamily = Array.from(new Set(flowersData.map((el) => el.family)));
   const handleChange = (e: SyntheticEvent<Element, Event>) => {
     const name = e.target as HTMLInputElement;
+    const value = name.value;
     if (name.checked) {
-      setFilter({ ...filter, familyFilter: name.value });
-      listFamily.push(name.value);
+      if (checkedFamily.length >= arrFamily.length) {
+        checkedFamily = [];
+      }
+      checkedFamily.push(value);
+      setFilter({ ...filter, familyFilter: checkedFamily });
+      console.log('checkedFamily+', checkedFamily);
     } else {
-      listFamily.splice(listFamily.indexOf(name.value), 1);
+      checkedFamily.splice(checkedFamily.indexOf(value), 1);
+      if (checkedFamily.length === 0) {
+        checkedFamily = arrFamily.slice(0);
+      }
+      setFilter({ ...filter, familyFilter: checkedFamily });
+      // console.log('checkedFamily-', checkedFamily);
     }
-    console.log(listFamily);
+    listFamily = checkedFamily;
+    // console.log('listFamily', listFamily);
   };
 
   return (
@@ -28,10 +40,9 @@ export const FilterCheckbox = ({
       {arrFamily.map((item) => (
         <FormControlLabel
           key={item}
-          control={<Checkbox />}
+          control={<Checkbox onClick={handleChange} />}
           label={item}
           value={item}
-          onChange={handleChange}
         />
       ))}
     </FormGroup>
