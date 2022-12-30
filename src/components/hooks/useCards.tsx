@@ -3,9 +3,7 @@ import { FlowersType } from '../types/types';
 import { arrFamily, arrShop } from '../utils/constants';
 
 export const useSortedCards = (cards: FlowersType[], sort: string, sortQuery: string) => {
-  if (sortQuery) {
-    sort = sortQuery;
-  }
+  if (sortQuery) sort = sortQuery;
   const sortedCards = useMemo(() => {
     if (sort) {
       return [...cards].sort((a, b) => {
@@ -51,23 +49,13 @@ export const useCards = (
   shopQuery: string
 ) => {
   const sortedCards = useSortedCards(cards, sort, sortQuery);
-  if (searchQuery) {
-    query = searchQuery as string;
-  }
-  if (famQuery) {
-    listFamily = famQuery.split('&');
-  }
-  if (listFamily.length === 0) {
-    listFamily = arrFamily;
-  }
-  if (shopQuery) {
-    listShop = shopQuery.split('&');
-  }
+  if (searchQuery) query = searchQuery as string;
+  if (famQuery) listFamily = famQuery.split('&');
+  if (listFamily.length === 0) listFamily = arrFamily;
+  if (shopQuery) listShop = shopQuery.split('&');
   if (listShop.length === 0) {
     listShop = arrShop;
   }
-  console.log('listShop', listShop);
-  console.log('listFamily', listFamily);
   const sortedAndSearchedcards = sortedCards
     .filter((card) => {
       return (

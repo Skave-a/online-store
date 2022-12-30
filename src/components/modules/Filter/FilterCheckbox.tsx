@@ -18,7 +18,7 @@ interface IProps {
   arrNoSet: string[];
 }
 
-let coutCards: FlowersType[];
+let countCards: FlowersType[];
 
 export const FilterCheckbox = (props: IProps) => {
   let {
@@ -40,16 +40,12 @@ export const FilterCheckbox = (props: IProps) => {
     const value = name.value;
     checkedArr = listOfFilter;
     if (name.checked) {
-      if (checkedArr.length >= arrSort.length && !paramQuery) {
-        checkedArr = [];
-      }
+      if (checkedArr.length >= arrSort.length && !paramQuery) checkedArr = [];
       checkedArr.push(value);
       setFilter(setFil);
     } else {
       checkedArr.splice(checkedArr.indexOf(value), 1);
-      if (checkedArr.length === 0) {
-        checkedArr = arrSort.slice(0);
-      }
+      if (checkedArr.length === 0) checkedArr = arrSort.slice(0);
       setFilter(setFil);
     }
     listOfFilter = checkedArr;
@@ -61,15 +57,17 @@ export const FilterCheckbox = (props: IProps) => {
       handleChange();
     }
   };
-  if (paramQuery) {
-    listOfFilter = paramQuery.split('&');
-  }
-  if (cards.length === 0) {
-    coutCards = flowersData;
+  if (paramQuery) listOfFilter = paramQuery.split('&');
+  // if (cards.length === 0) {
+  //   countCards = flowersData;
+  // } else {
+  //   countCards = cards;
+  // }
+  if (cards.length !== 0) {
+    countCards = cards;
   } else {
-    coutCards = cards;
+    countCards = [];
   }
-  console.log('listOfFilter', listOfFilter);
   return (
     <FormGroup>
       {arrSort.map((item) => {
@@ -79,7 +77,7 @@ export const FilterCheckbox = (props: IProps) => {
               defaultValue=""
               key={item}
               control={<Checkbox onChange={handleChangeCheckbox} checked={true || false} />}
-              label={`${item} ${coutCards.filter((card) => card[sortBy] === item).length}/${
+              label={`${item} ${countCards.filter((card) => card[sortBy] === item).length}/${
                 arrNoSet.filter((el) => el === item).length
               }`}
               value={item || ''}
@@ -91,7 +89,7 @@ export const FilterCheckbox = (props: IProps) => {
               defaultValue=""
               key={item}
               control={<Checkbox onChange={handleChangeCheckbox} checked={false || false} />}
-              label={`${item} ${coutCards.filter((card) => card[sortBy] === item).length}/${
+              label={`${item} ${countCards.filter((card) => card[sortBy] === item).length}/${
                 arrNoSet.filter((el) => el === item).length
               }`}
               value={item || ''}
