@@ -1,5 +1,5 @@
 import { SelectCards } from '../Select/SelectCards';
-import React, { Dispatch } from 'react';
+import { Dispatch } from 'react';
 import { Box, Typography } from '@mui/material';
 import { FlowersType, Iparams } from '../../types/types';
 import { SwitchView } from '../SwitchView/SwitchView';

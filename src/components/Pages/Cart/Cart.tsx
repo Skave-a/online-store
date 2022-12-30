@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { FlowersType } from '../../types/types';
 import { CartItem } from './CartItem';
 
@@ -13,10 +14,10 @@ function Cart({
   totalQuantity: number;
   cart: FlowersType[];
 }) {
-  const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [page, setPage] = useState(() => {
-    return Number(localStorage.getItem('page')) ?? 0;
-  });
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const pageQuery = Number(searchParams.get('page'));
+  const rowsPerPageQuery = Number(searchParams.get('rowsPerPage'));
 
   const [pagesPerPage, setPages] = useState<FlowersType[]>(() => {
     return localStorage.getItem('cart')
@@ -44,14 +45,13 @@ function Cart({
     .reduce((acc, el) => acc + el.quantity, 0);
 
   useEffect(() => {
-    if (!pagesPerPage.length) {
-      setPage(0);
-    }
     if (!cart.length) {
       setTotalQuantity(0);
     }
     const pagesPaginated =
-      rowsPerPage > 0 ? cart.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : cart;
+      rowsPerPageQuery > 0
+        ? cart.slice(pageQuery * rowsPerPageQuery, pageQuery * rowsPerPageQuery + rowsPerPageQuery)
+        : cart;
 
     setPages(pagesPaginated);
 
@@ -66,9 +66,11 @@ function Cart({
         })
       )
     );
-    localStorage.setItem('page', JSON.stringify(page));
+
+    localStorage.setItem('page', JSON.stringify(pageQuery));
+
     if (quantityTotal) setTotalQuantity(quantityTotal);
-  }, [page, cart, pagesPerPage.length]);
+  }, [pageQuery, rowsPerPageQuery, cart, pagesPerPage.length]);
 
   const augmentHandler = (name: string) => {
     setCart(
@@ -105,12 +107,9 @@ function Cart({
   return (
     <>
       <CartItem
+        setSearchParams={setSearchParams}
         pagesPerPage={pagesPerPage}
         totalQuantity={totalQuantity}
-        rowsPerPage={rowsPerPage}
-        setRowsPerPage={setRowsPerPage}
-        page={page}
-        setPage={setPage}
         cart={cart}
         totalCostCart={totalCostCart}
         augmentHandler={augmentHandler}

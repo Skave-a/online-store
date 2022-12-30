@@ -36,7 +36,7 @@ function App() {
           }
         />
         <Route
-          path="/basket"
+          path="/cart"
           element={
             <Cart
               totalQuantity={totalQuantity}
