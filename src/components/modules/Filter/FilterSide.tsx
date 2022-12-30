@@ -4,7 +4,7 @@ import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { FlowersType, ICardsFiter, Iparams } from '../../types/types';
 import { FilterCheckbox } from './FilterCheckbox';
 import { Typography } from '@mui/material';
-import { arrFamily, arrFamilyNoSet } from '../../utils/constants';
+import { arrFamily, arrFamilyNoSet, arrShop, arrShopNoSet } from '../../utils/constants';
 
 const boxStyle = {
   display: 'flex',
@@ -30,8 +30,11 @@ const boxFilterStyle = {
 };
 
 export let listFamily = arrFamily.slice(0);
+export let listShop = arrShop.slice(0);
 let checkedFamily: string[] = [];
+let checkedShop: string[] = [];
 let paramsFam = 'fam';
+let paramsShop = 'shop';
 
 export const FilterSide = ({
   filter,
@@ -41,11 +44,13 @@ export const FilterSide = ({
   params,
   handleChange,
   cards,
+  shopQuery,
 }: {
   filter: ICardsFiter;
   setFilter: Dispatch<SetStateAction<ICardsFiter>>;
   searchQuery: string;
   famQuery: string;
+  shopQuery: string;
   params: Iparams;
   handleChange: Function;
   cards: FlowersType[];
@@ -84,20 +89,20 @@ export const FilterSide = ({
         />
       </Box>
       <Box sx={boxFilterStyle}>
-        <Typography sx={{ fontSize: '24px' }}>Genus</Typography>
+        <Typography sx={{ fontSize: '24px' }}>Shop</Typography>
         <FilterCheckbox
-          setFil={{ ...filter, familyFilter: checkedFamily }}
+          setFil={{ ...filter, familyFilter: checkedShop }}
           setFilter={setFilter}
           handleChange={handleChange}
           params={params}
-          paramQuery={famQuery}
-          paramsFil={paramsFam}
+          paramQuery={shopQuery}
+          paramsFil={paramsShop}
           cards={cards}
-          listOfFilter={listFamily}
-          checkedArr={checkedFamily}
-          sortBy={'family'}
-          arrSort={arrFamily}
-          arrNoSet={arrFamilyNoSet as string[]}
+          listOfFilter={listShop}
+          checkedArr={checkedShop}
+          sortBy={'shop'}
+          arrSort={arrShop}
+          arrNoSet={arrShopNoSet as string[]}
         />
       </Box>
     </Box>

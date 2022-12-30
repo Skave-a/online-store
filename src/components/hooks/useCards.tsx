@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { FlowersType } from '../types/types';
-import { arrFamily } from '../utils/constants';
+import { arrFamily, arrShop } from '../utils/constants';
 
 export const useSortedCards = (cards: FlowersType[], sort: string, sortQuery: string) => {
   if (sortQuery) {
@@ -44,9 +44,11 @@ export const useCards = (
   sort: string,
   query: string,
   listFamily: string[],
+  listShop: string[],
   searchQuery: string,
   sortQuery: string,
-  famQuery: string
+  famQuery: string,
+  shopQuery: string
 ) => {
   const sortedCards = useSortedCards(cards, sort, sortQuery);
   if (searchQuery) {
@@ -58,6 +60,13 @@ export const useCards = (
   if (listFamily.length === 0) {
     listFamily = arrFamily;
   }
+  if (shopQuery) {
+    listShop = shopQuery.split('&');
+  }
+  if (listShop.length === 0) {
+    listShop = arrShop;
+  }
+  console.log('listShop', listShop);
   console.log('listFamily', listFamily);
   const sortedAndSearchedcards = sortedCards
     .filter((card) => {
@@ -66,12 +75,14 @@ export const useCards = (
         card.description.toLowerCase().includes(query.toLowerCase()) ||
         (card.family as string).toLowerCase().includes(query.toLowerCase()) ||
         (card.genus as string).toLowerCase().includes(query.toLowerCase()) ||
+        (card.shop as string).toLowerCase().includes(query.toLowerCase()) ||
         card.price.toString().includes(query.toLowerCase()) ||
         (card.discount as number).toString().includes(query.toLowerCase()) ||
         (card.stock as number).toString().includes(query.toLowerCase()) ||
         (card.rating as number).toString().includes(query.toLowerCase())
       );
     })
-    .filter((card) => listFamily.includes(card.family as string));
+    .filter((card) => listFamily.includes(card.family as string))
+    .filter((card) => listShop.includes(card.shop as string));
   return sortedAndSearchedcards;
 };

@@ -12,6 +12,7 @@ export interface FlowersType {
   price: number;
   quantity: number;
   priceTotal?: number;
+  shop?: string;
 }
 
 export interface Iparams {
@@ -23,4 +24,5 @@ export interface ICardsFiter {
   sort: string;
   query: string;
   familyFilter: string[];
+  shopFilter: string[];
 }

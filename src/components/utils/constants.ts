@@ -54,5 +54,8 @@ export const optionsForSort = [
   { id: 6, value: 'name2', name: 'Sort by name DESC' },
 ];
 
-export const arrFamily = Array.from(new Set(flowersData.map((el) => el.family))).sort() as string[];
 export const arrFamilyNoSet = flowersData.map((el) => el.family);
+export const arrFamily = Array.from(new Set(flowersData.map((el) => el.family))).sort() as string[];
+
+export const arrShopNoSet = flowersData.map((el) => el.shop);
+export const arrShop = Array.from(new Set(flowersData.map((el) => el.shop))).sort() as string[];

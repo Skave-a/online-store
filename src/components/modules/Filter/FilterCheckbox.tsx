@@ -69,6 +69,7 @@ export const FilterCheckbox = (props: IProps) => {
   } else {
     coutCards = cards;
   }
+  console.log('listOfFilter', listOfFilter);
   return (
     <FormGroup>
       {arrSort.map((item) => {

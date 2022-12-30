@@ -17,6 +17,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Haworthia',
     price: 80,
     quantity: 1,
+    shop: 'Botanical Flora',
   },
   {
     id: 2,
@@ -34,6 +35,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Croton',
     price: 85,
     quantity: 1,
+    shop: 'Botanical Flora',
   },
   {
     id: 3,
@@ -51,6 +53,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Peperomia',
     price: 75,
     quantity: 1,
+    shop: 'Garden Group',
   },
   {
     id: 4,
@@ -68,6 +71,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Pereskia',
     price: 30,
     quantity: 1,
+    shop: 'Botanical Flora',
   },
   {
     id: 5,
@@ -84,6 +88,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Ficus',
     price: 70,
     quantity: 1,
+    shop: 'Garden Group',
   },
   {
     id: 6,
@@ -100,6 +105,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Aloe',
     price: 72,
     quantity: 1,
+    shop: 'Venture Garden',
   },
   {
     id: 7,
@@ -117,6 +123,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Ceropegia',
     price: 55,
     quantity: 1,
+    shop: 'Garden Group',
   },
   {
     id: 8,
@@ -134,6 +141,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Chamedorea',
     price: 60,
     quantity: 1,
+    shop: 'Venture Garden',
   },
   {
     id: 9,
@@ -148,9 +156,10 @@ export const flowersData: FlowersType[] = [
     rating: 4.9,
     stock: 50,
     family: 'Araceae',
-    genus: '',
+    genus: 'Aracea',
     price: 80,
     quantity: 1,
+    shop: 'Go Green Plants',
   },
   {
     id: 10,
@@ -167,6 +176,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Ficus',
     price: 72,
     quantity: 1,
+    shop: 'Botanical Flora',
   },
   {
     id: 11,
@@ -184,6 +194,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Monstera',
     price: 65,
     quantity: 1,
+    shop: 'Go Green Plants',
   },
   {
     id: 12,
@@ -201,6 +212,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Zamioculcas',
     price: 90,
     quantity: 1,
+    shop: 'Venture Garden',
   },
   {
     id: 13,
@@ -218,6 +230,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Pilea',
     price: 65,
     quantity: 1,
+    shop: 'Garden Group',
   },
   {
     id: 14,
@@ -235,6 +248,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Equisetum',
     price: 20,
     quantity: 1,
+    shop: 'Venture Garden',
   },
   {
     id: 15,
@@ -252,6 +266,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Ficus',
     price: 72,
     quantity: 1,
+    shop: 'Garden Group',
   },
   {
     id: 16,
@@ -268,6 +283,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Epipremnum',
     price: 68,
     quantity: 1,
+    shop: 'Venture Garden',
   },
   {
     id: 17,
@@ -284,6 +300,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Dracaena',
     price: 55,
     quantity: 1,
+    shop: 'Venture Garden',
   },
   {
     id: 18,
@@ -301,6 +318,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Viola',
     price: 70,
     quantity: 1,
+    shop: 'Venture Garden',
   },
   {
     id: 19,
@@ -318,6 +336,7 @@ export const flowersData: FlowersType[] = [
     genus: 'Hydrangea',
     price: 80,
     quantity: 1,
+    shop: 'Garden Group',
   },
   {
     id: 20,
@@ -335,5 +354,6 @@ export const flowersData: FlowersType[] = [
     genus: 'Geranium',
     price: 10,
     quantity: 1,
+    shop: 'Venture Garden',
   },
 ];
