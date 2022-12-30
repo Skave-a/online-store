@@ -1,7 +1,7 @@
 import { Box } from '@mui/system';
 import { SearchCard } from '../Search/SearchCard';
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
-import { ICardsFiter, Iparams } from '../../types/types';
+import { FlowersType, ICardsFiter, Iparams } from '../../types/types';
 import { FilterCheckbox } from './FilterCheckbox';
 import { Typography } from '@mui/material';
 
@@ -35,6 +35,7 @@ export const FilterSide = ({
   famQuery,
   params,
   handleChange,
+  cards,
 }: {
   filter: ICardsFiter;
   setFilter: Dispatch<SetStateAction<ICardsFiter>>;
@@ -42,6 +43,7 @@ export const FilterSide = ({
   famQuery: string;
   params: Iparams;
   handleChange: Function;
+  cards: FlowersType[];
 }) => {
   function inputHandler(e: ChangeEvent<HTMLInputElement>) {
     setFilter({ ...filter, query: e.target.value });
@@ -67,6 +69,7 @@ export const FilterSide = ({
           handleChange={handleChange}
           params={params}
           famQuery={famQuery}
+          cards={cards}
         />
       </Box>
     </Box>

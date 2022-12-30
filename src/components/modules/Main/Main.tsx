@@ -49,6 +49,7 @@ function Main({
         famQuery={famQuery}
         params={params}
         handleChange={handleChange}
+        cards={sortedCards}
       />
       <Box>
         <CardsSort

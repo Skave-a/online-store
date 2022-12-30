@@ -54,7 +54,6 @@ export const useCards = (
   if (famQuery) {
     listFamily = famQuery.split('&');
   }
-  console.log('listFamily', listFamily);
   const sortedAndSearchedcards = sortedCards
     .filter((card) => {
       return (

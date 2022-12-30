@@ -55,3 +55,4 @@ export const optionsForSort = [
 ];
 
 export const arrFamily = Array.from(new Set(flowersData.map((el) => el.family))).sort() as string[];
+export const arrFamilyNoSet = flowersData.map((el) => el.family);
