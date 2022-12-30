@@ -1,7 +1,7 @@
 import { Box, Button, CardMedia, Container, Grid, Typography } from '@mui/material';
 import { useState } from 'react';
 import { Link, Link as RouterLink } from 'react-router-dom';
-import { FlowersType } from '../../types/types';
+import { FlowersType, Iparams } from '../../types/types';
 import { BUTTONS, SERVICE_MESSAGES } from '../../utils/constants';
 import Pagination from '../../utils/Pagination';
 import CartModal from './CartModal';
@@ -10,23 +10,17 @@ import { CartPromo } from './CartPromo';
 interface ICartItem {
   pagesPerPage: FlowersType[];
   totalQuantity: number;
-  rowsPerPage: number;
-  setRowsPerPage: (arg0: number) => void;
-  page: number;
-  setPage: (arg0: number) => void;
   cart: FlowersType[];
   totalCostCart: number;
   augmentHandler: (name: string) => void;
   decrementHandler: (name: string) => void;
+  setSearchParams: (arg0: Iparams) => void;
 }
 
 export const CartItem = ({
+  setSearchParams,
   pagesPerPage,
   totalQuantity,
-  rowsPerPage,
-  setRowsPerPage,
-  page,
-  setPage,
   cart,
   totalCostCart,
   augmentHandler,
@@ -51,13 +45,7 @@ export const CartItem = ({
             {SERVICE_MESSAGES.yourCart}
             {totalQuantity}
           </Typography>
-          <Pagination
-            rowsPerPage={rowsPerPage}
-            setRowsPerPage={setRowsPerPage}
-            page={page}
-            setPage={setPage}
-            cart={cart}
-          />
+          <Pagination setSearchParams={setSearchParams} cart={cart} />
           <Grid container spacing={2}>
             <Grid item xs={12} sm={4}>
               <Box
