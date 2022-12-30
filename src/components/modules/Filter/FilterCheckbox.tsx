@@ -2,56 +2,68 @@ import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 import { Dispatch, SetStateAction, SyntheticEvent } from 'react';
 import { flowersData } from '../../../data/data';
 import { FlowersType, ICardsFiter, Iparams } from '../../types/types';
-import { arrFamily, arrFamilyNoSet } from '../../utils/constants';
 
-export let listFamily = arrFamily.slice(0);
-let checkedFamily: string[] = [];
-
-export const FilterCheckbox = ({
-  filter,
-  setFilter,
-  handleChange,
-  params,
-  famQuery,
-  cards,
-}: {
-  filter: ICardsFiter;
+interface IProps {
+  setFil: ICardsFiter;
   setFilter: Dispatch<SetStateAction<ICardsFiter>>;
   handleChange: Function;
   params: Iparams;
-  famQuery: string;
+  paramQuery: string;
+  paramsFil: string;
   cards: FlowersType[];
-}) => {
-  const handleChangeCheckbox = (e: SyntheticEvent<Element, Event>, checked: boolean) => {
+  listOfFilter: string[];
+  checkedArr: string[];
+  sortBy: string;
+  arrSort: string[];
+  arrNoSet: string[];
+}
+
+let coutCards: FlowersType[];
+
+export const FilterCheckbox = (props: IProps) => {
+  let {
+    setFil,
+    handleChange,
+    params,
+    paramQuery,
+    cards,
+    listOfFilter,
+    checkedArr,
+    sortBy,
+    arrSort,
+    arrNoSet,
+    setFilter,
+    paramsFil,
+  } = props;
+  const handleChangeCheckbox = (e: SyntheticEvent<Element, Event>) => {
     const name = e.target as HTMLInputElement;
     const value = name.value;
-    checkedFamily = listFamily;
+    checkedArr = listOfFilter;
     if (name.checked) {
-      if (checkedFamily.length >= arrFamily.length && !famQuery) {
-        checkedFamily = [];
+      if (checkedArr.length >= arrSort.length && !paramQuery) {
+        checkedArr = [];
       }
-      checkedFamily.push(value);
-      setFilter({ ...filter, familyFilter: checkedFamily });
+      checkedArr.push(value);
+      setFilter(setFil);
     } else {
-      checkedFamily.splice(checkedFamily.indexOf(value), 1);
-      if (checkedFamily.length === 0) {
-        checkedFamily = arrFamily.slice(0);
+      checkedArr.splice(checkedArr.indexOf(value), 1);
+      if (checkedArr.length === 0) {
+        checkedArr = arrSort.slice(0);
       }
-      setFilter({ ...filter, familyFilter: checkedFamily });
+      setFilter(setFil);
     }
-    listFamily = checkedFamily;
-    if (listFamily.length >= arrFamily.length) {
-      params.fam = '';
+    listOfFilter = checkedArr;
+    if (listOfFilter.length >= arrSort.length) {
+      params[paramsFil] = '';
       handleChange();
     } else {
-      params.fam = listFamily.join('&');
+      params[paramsFil] = listOfFilter.join('&');
       handleChange();
     }
   };
-  if (famQuery) {
-    listFamily = famQuery.split('&');
+  if (paramQuery) {
+    listOfFilter = paramQuery.split('&');
   }
-  let coutCards: FlowersType[];
   if (cards.length === 0) {
     coutCards = flowersData;
   } else {
@@ -59,15 +71,15 @@ export const FilterCheckbox = ({
   }
   return (
     <FormGroup>
-      {arrFamily.map((item) => {
-        if (listFamily.includes(item) && listFamily.length < arrFamily.length) {
+      {arrSort.map((item) => {
+        if (listOfFilter.includes(item) && listOfFilter.length < arrSort.length) {
           return (
             <FormControlLabel
               defaultValue=""
               key={item}
               control={<Checkbox onChange={handleChangeCheckbox} checked={true || false} />}
-              label={`${item} ${coutCards.filter((card) => card.family === item).length}/${
-                arrFamilyNoSet.filter((el) => el === item).length
+              label={`${item} ${coutCards.filter((card) => card[sortBy] === item).length}/${
+                arrNoSet.filter((el) => el === item).length
               }`}
               value={item || ''}
             />
@@ -78,8 +90,8 @@ export const FilterCheckbox = ({
               defaultValue=""
               key={item}
               control={<Checkbox onChange={handleChangeCheckbox} checked={false || false} />}
-              label={`${item} ${coutCards.filter((card) => card.family === item).length}/${
-                arrFamilyNoSet.filter((el) => el === item).length
+              label={`${item} ${coutCards.filter((card) => card[sortBy] === item).length}/${
+                arrNoSet.filter((el) => el === item).length
               }`}
               value={item || ''}
             />

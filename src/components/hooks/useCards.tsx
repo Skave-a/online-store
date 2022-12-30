@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { FlowersType } from '../types/types';
+import { arrFamily } from '../utils/constants';
 
 export const useSortedCards = (cards: FlowersType[], sort: string, sortQuery: string) => {
   if (sortQuery) {
@@ -54,6 +55,10 @@ export const useCards = (
   if (famQuery) {
     listFamily = famQuery.split('&');
   }
+  if (listFamily.length === 0) {
+    listFamily = arrFamily;
+  }
+  console.log('listFamily', listFamily);
   const sortedAndSearchedcards = sortedCards
     .filter((card) => {
       return (

@@ -4,11 +4,10 @@ import { useState } from 'react';
 import CardsSort from '../Cards/CardsSort';
 import { useCards } from '../../hooks/useCards';
 import { FlowersType } from '../../types/types';
-import { FilterSide } from '../Filter/FilterSide';
+import { FilterSide, listFamily } from '../Filter/FilterSide';
 import { Box } from '@mui/system';
 import { useSearchParams } from 'react-router-dom';
 import { cards, params } from '../../utils/constants';
-import { listFamily } from '../Filter/FilterCheckbox';
 
 function Main({
   setCart,

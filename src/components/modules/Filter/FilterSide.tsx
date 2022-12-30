@@ -4,6 +4,7 @@ import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { FlowersType, ICardsFiter, Iparams } from '../../types/types';
 import { FilterCheckbox } from './FilterCheckbox';
 import { Typography } from '@mui/material';
+import { arrFamily, arrFamilyNoSet } from '../../utils/constants';
 
 const boxStyle = {
   display: 'flex',
@@ -27,6 +28,10 @@ const boxFilterStyle = {
   mb: '20px',
   flexDirection: 'column',
 };
+
+export let listFamily = arrFamily.slice(0);
+let checkedFamily: string[] = [];
+let paramsFam = 'fam';
 
 export const FilterSide = ({
   filter,
@@ -64,12 +69,35 @@ export const FilterSide = ({
       <Box sx={boxFilterStyle}>
         <Typography sx={{ fontSize: '24px' }}>Family</Typography>
         <FilterCheckbox
-          filter={filter}
+          setFil={{ ...filter, familyFilter: checkedFamily }}
           setFilter={setFilter}
           handleChange={handleChange}
           params={params}
-          famQuery={famQuery}
+          paramQuery={famQuery}
+          paramsFil={paramsFam}
           cards={cards}
+          listOfFilter={listFamily}
+          checkedArr={checkedFamily}
+          sortBy={'family'}
+          arrSort={arrFamily}
+          arrNoSet={arrFamilyNoSet as string[]}
+        />
+      </Box>
+      <Box sx={boxFilterStyle}>
+        <Typography sx={{ fontSize: '24px' }}>Genus</Typography>
+        <FilterCheckbox
+          setFil={{ ...filter, familyFilter: checkedFamily }}
+          setFilter={setFilter}
+          handleChange={handleChange}
+          params={params}
+          paramQuery={famQuery}
+          paramsFil={paramsFam}
+          cards={cards}
+          listOfFilter={listFamily}
+          checkedArr={checkedFamily}
+          sortBy={'family'}
+          arrSort={arrFamily}
+          arrNoSet={arrFamilyNoSet as string[]}
         />
       </Box>
     </Box>
