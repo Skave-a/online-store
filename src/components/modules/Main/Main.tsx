@@ -25,6 +25,7 @@ function Main({
   const searchQuery = searchParams.get('search') || '';
   const sortQuery = searchParams.get('sort') || '';
   const isGridQuery = searchParams.get('grid') || '';
+  const famQuery = searchParams.get('fam') || '';
   function handleChange() {
     setSearchParams(params);
   }
@@ -35,7 +36,8 @@ function Main({
     filter.query,
     filter.familyFilter,
     searchQuery,
-    sortQuery
+    sortQuery,
+    famQuery
   );
   const [isGrid, setIsGrid] = useState('false');
   return (
@@ -44,6 +46,7 @@ function Main({
         filter={filter}
         setFilter={setFilter}
         searchQuery={searchQuery}
+        famQuery={famQuery}
         params={params}
         handleChange={handleChange}
       />

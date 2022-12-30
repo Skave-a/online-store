@@ -3,6 +3,7 @@ import { SearchCard } from '../Search/SearchCard';
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { ICardsFiter, Iparams } from '../../types/types';
 import { FilterCheckbox } from './FilterCheckbox';
+import { Typography } from '@mui/material';
 
 const boxStyle = {
   display: 'flex',
@@ -15,16 +16,30 @@ const boxStyle = {
   mb: '20px',
 };
 
+const boxFilterStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'flex-start',
+  borderRadius: '5px',
+  bgcolor: '#F7F7FA',
+  padding: '15px',
+  width: '250px',
+  mb: '20px',
+  flexDirection: 'column',
+};
+
 export const FilterSide = ({
   filter,
   setFilter,
   searchQuery,
+  famQuery,
   params,
   handleChange,
 }: {
   filter: ICardsFiter;
   setFilter: Dispatch<SetStateAction<ICardsFiter>>;
   searchQuery: string;
+  famQuery: string;
   params: Iparams;
   handleChange: Function;
 }) => {
@@ -44,8 +59,15 @@ export const FilterSide = ({
           searchQuery={searchQuery}
         />
       </Box>
-      <Box sx={boxStyle}>
-        <FilterCheckbox filter={filter} setFilter={setFilter} />
+      <Box sx={boxFilterStyle}>
+        <Typography sx={{ fontSize: '24px' }}>Family</Typography>
+        <FilterCheckbox
+          filter={filter}
+          setFilter={setFilter}
+          handleChange={handleChange}
+          params={params}
+          famQuery={famQuery}
+        />
       </Box>
     </Box>
   );

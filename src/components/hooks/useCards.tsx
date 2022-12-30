@@ -44,11 +44,15 @@ export const useCards = (
   query: string,
   listFamily: string[],
   searchQuery: string,
-  sortQuery: string
+  sortQuery: string,
+  famQuery: string
 ) => {
   const sortedCards = useSortedCards(cards, sort, sortQuery);
   if (searchQuery) {
     query = searchQuery as string;
+  }
+  if (famQuery) {
+    listFamily = famQuery.split('&');
   }
   console.log('listFamily', listFamily);
   const sortedAndSearchedcards = sortedCards
@@ -65,6 +69,5 @@ export const useCards = (
       );
     })
     .filter((card) => listFamily.includes(card.family as string));
-  console.log('sortedAndSearchedcards', sortedAndSearchedcards);
   return sortedAndSearchedcards;
 };
