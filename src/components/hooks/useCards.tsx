@@ -1,10 +1,9 @@
 import { useMemo } from 'react';
 import { FlowersType } from '../types/types';
+import { arrFamily, arrShop } from '../utils/constants';
 
 export const useSortedCards = (cards: FlowersType[], sort: string, sortQuery: string) => {
-  if (sortQuery) {
-    sort = sortQuery;
-  }
+  if (sortQuery) sort = sortQuery;
   const sortedCards = useMemo(() => {
     if (sort) {
       return [...cards].sort((a, b) => {
@@ -42,27 +41,36 @@ export const useCards = (
   cards: FlowersType[],
   sort: string,
   query: string,
+  listFamily: string[],
+  listShop: string[],
   searchQuery: string,
-  sortQuery: string
+  sortQuery: string,
+  famQuery: string,
+  shopQuery: string
 ) => {
   const sortedCards = useSortedCards(cards, sort, sortQuery);
-  if (searchQuery) {
-    query = searchQuery as string;
+  if (searchQuery) query = searchQuery as string;
+  if (famQuery) listFamily = famQuery.split('&');
+  if (listFamily.length === 0) listFamily = arrFamily;
+  if (shopQuery) listShop = shopQuery.split('&');
+  if (listShop.length === 0) {
+    listShop = arrShop;
   }
-  const sortedAndSearchedcards = useMemo(() => {
-    return sortedCards.filter((card) => {
+  const sortedAndSearchedcards = sortedCards
+    .filter((card) => {
       return (
         card.name.toLowerCase().includes(query.toLowerCase()) ||
         card.description.toLowerCase().includes(query.toLowerCase()) ||
         (card.family as string).toLowerCase().includes(query.toLowerCase()) ||
         (card.genus as string).toLowerCase().includes(query.toLowerCase()) ||
+        (card.shop as string).toLowerCase().includes(query.toLowerCase()) ||
         card.price.toString().includes(query.toLowerCase()) ||
         (card.discount as number).toString().includes(query.toLowerCase()) ||
         (card.stock as number).toString().includes(query.toLowerCase()) ||
         (card.rating as number).toString().includes(query.toLowerCase())
       );
-    });
-  }, [query, sortedCards]);
-
+    })
+    .filter((card) => listFamily.includes(card.family as string))
+    .filter((card) => listShop.includes(card.shop as string));
   return sortedAndSearchedcards;
 };
