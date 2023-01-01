@@ -5,7 +5,7 @@ import { FlowersType, ICardsFiter, Iparams } from '../../types/types';
 interface IProps {
   setFil: ICardsFiter;
   setFilter: Dispatch<SetStateAction<ICardsFiter>>;
-  handleChange: Function;
+  handleChange: () => void;
   params: Iparams;
   paramQuery: string;
   paramsFil: string;

@@ -64,3 +64,8 @@ export const arrPrice = [
   Math.min(...Array.from(new Set(flowersData.map((el) => el.price)))),
   Math.max(...Array.from(new Set(flowersData.map((el) => el.price)))),
 ];
+
+export const arrStock = [
+  Math.min(...Array.from(new Set(flowersData.map((el) => el.stock as number)))),
+  Math.max(...Array.from(new Set(flowersData.map((el) => el.stock as number)))),
+];

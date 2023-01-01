@@ -4,9 +4,15 @@ import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { FlowersType, ICardsFiter, Iparams } from '../../types/types';
 import { FilterCheckbox } from './FilterCheckbox';
 import { Typography } from '@mui/material';
-import { arrFamily, arrFamilyNoSet, arrPrice, arrShop, arrShopNoSet } from '../../utils/constants';
+import {
+  arrFamily,
+  arrFamilyNoSet,
+  arrPrice,
+  arrShop,
+  arrShopNoSet,
+  arrStock,
+} from '../../utils/constants';
 import FilterDuoSlider from './FilterDuoSlider';
-import { flowersData } from '../../../data/data';
 
 const boxStyle = {
   display: 'flex',
@@ -34,12 +40,12 @@ const boxFilterStyle = {
 export let listFamily = arrFamily.slice(0);
 export let listShop = arrShop.slice(0);
 export let listPrice = arrPrice.slice(0);
+export let listStock = arrStock.slice(0);
 let checkedFamily: string[] = [];
 let checkedShop: string[] = [];
 let checkedPrice: number[] = [];
-let maxPrice = Math.max(...Array.from(new Set(flowersData.map((el) => el.price))));
-let minPrice = Math.min(...Array.from(new Set(flowersData.map((el) => el.price))));
-// console.log(listPrice);
+let checkedStock: number[] = [];
+
 export const FilterSide = ({
   filter,
   setFilter,
@@ -50,6 +56,7 @@ export const FilterSide = ({
   cards,
   shopQuery,
   priceQuery,
+  stockQuery,
 }: {
   filter: ICardsFiter;
   setFilter: Dispatch<SetStateAction<ICardsFiter>>;
@@ -57,8 +64,9 @@ export const FilterSide = ({
   famQuery: string;
   shopQuery: string;
   priceQuery: string;
+  stockQuery: string;
   params: Iparams;
-  handleChange: Function;
+  handleChange: () => void;
   cards: FlowersType[];
 }) => {
   function inputHandler(e: ChangeEvent<HTMLInputElement>) {
@@ -67,7 +75,7 @@ export const FilterSide = ({
     handleChange();
   }
   return (
-    <Box sx={{ maxWidth: '300px' }}>
+    <Box sx={{ maxWidth: '300px', mb: 10 }}>
       <Box sx={boxStyle}>
         <SearchCard
           onChange={(e) => {
@@ -112,9 +120,8 @@ export const FilterSide = ({
         />
       </Box>
       <Box sx={boxFilterStyle}>
+        <Typography sx={{ fontSize: '24px' }}>Price</Typography>
         <FilterDuoSlider
-          maxValue={maxPrice}
-          minValue={minPrice}
           listOfFilter={listPrice}
           setFil={{ ...filter, priceFilter: checkedPrice }}
           checkedArr={checkedPrice}
@@ -123,6 +130,21 @@ export const FilterSide = ({
           handleChange={handleChange}
           params={params}
           paramsFil={'price'}
+          unit={'$'}
+        />
+      </Box>
+      <Box sx={boxFilterStyle}>
+        <Typography sx={{ fontSize: '24px' }}>Stock</Typography>
+        <FilterDuoSlider
+          listOfFilter={listStock}
+          setFil={{ ...filter, stockFilter: checkedStock }}
+          checkedArr={checkedStock}
+          setFilter={setFilter}
+          paramQuery={stockQuery}
+          handleChange={handleChange}
+          params={params}
+          paramsFil={'stock'}
+          unit={'pcs'}
         />
       </Box>
     </Box>

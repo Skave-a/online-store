@@ -25,4 +25,5 @@ export interface ICardsFiter {
   familyFilter: string[];
   shopFilter: string[];
   priceFilter: number[];
+  stockFilter: number[];
 }

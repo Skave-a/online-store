@@ -5,26 +5,24 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import Typography from '@mui/material/Typography';
 import { ICardsFiter, Iparams } from '../../types/types';
 import HeightIcon from '@mui/icons-material/Height';
+import { flowersData } from '../../../data/data';
 
 const minDistance = 0;
-// let maxPrice = Math.max(...Array.from(new Set(flowersData.map((el) => el.price))));
-// let minPrice = Math.min(...Array.from(new Set(flowersData.map((el) => el.price))));
+
 interface IProps {
-  maxValue: number;
-  minValue: number;
   listOfFilter: number[];
   checkedArr: number[];
   setFil: ICardsFiter;
   setFilter: Dispatch<SetStateAction<ICardsFiter>>;
   paramQuery: string;
-  handleChange: Function;
+  handleChange: () => void;
   params: Iparams;
   paramsFil: string;
+  unit: string;
 }
+
 export default function FilterDuoSlider(props: IProps) {
   let {
-    minValue,
-    maxValue,
     listOfFilter,
     setFil,
     setFilter,
@@ -33,7 +31,12 @@ export default function FilterDuoSlider(props: IProps) {
     params,
     handleChange,
     paramsFil,
+    unit,
   } = props;
+  let val = Array.from(new Set(flowersData.map((el) => el.price)));
+  let maxValue = Math.max(...val);
+  let minValue = Math.min(...val);
+
   let startNum = minValue;
   let endNum = maxValue;
   if (paramQuery) {
@@ -66,11 +69,15 @@ export default function FilterDuoSlider(props: IProps) {
   };
 
   return (
-    <Box sx={{ width: 250, margin: '0 auto' }}>
+    <Box sx={{ width: 200, margin: '0 auto' }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
-        <Typography>{value[0]}</Typography>
+        <Typography>
+          {value[0]} {unit}
+        </Typography>
         <HeightIcon sx={{ transform: 'rotate(90deg)' }} />
-        <Typography>{value[1]}</Typography>
+        <Typography>
+          {value[1]} {unit}
+        </Typography>
       </Box>
       <Slider
         getAriaLabel={() => 'Minimum distance'}
@@ -81,6 +88,7 @@ export default function FilterDuoSlider(props: IProps) {
         min={minValue}
         max={maxValue}
         step={5}
+        sx={{ color: '#006666' }}
       />
     </Box>
   );

@@ -1,6 +1,7 @@
 import ViewModuleRoundedIcon from '@mui/icons-material/ViewModuleRounded';
 import WindowRoundedIcon from '@mui/icons-material/WindowRounded';
 import { Box, IconButton } from '@mui/material';
+import { Dispatch, SetStateAction } from 'react';
 import { Iparams } from '../../types/types';
 
 const iconBoxSX = {
@@ -14,8 +15,8 @@ export const SwitchView = ({
   params,
   isGrid,
 }: {
-  setIsGrid: Function;
-  handleChange: Function;
+  setIsGrid: Dispatch<SetStateAction<string>>;
+  handleChange: () => void;
   params: Iparams;
   isGrid: string;
 }) => {

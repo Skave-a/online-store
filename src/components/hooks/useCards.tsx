@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { FlowersType } from '../types/types';
-import { arrFamily, arrPrice, arrShop } from '../utils/constants';
+import { arrFamily, arrPrice, arrShop, arrStock } from '../utils/constants';
 
 export const useSortedCards = (cards: FlowersType[], sort: string, sortQuery: string) => {
   if (sortQuery) sort = sortQuery;
@@ -44,11 +44,13 @@ export const useCards = (
   listFamily: string[],
   listShop: string[],
   listPrice: number[],
+  listStock: number[],
   searchQuery: string,
   sortQuery: string,
   famQuery: string,
   shopQuery: string,
-  priceQuery: string
+  priceQuery: string,
+  stockQuery: string
 ) => {
   const sortedCards = useSortedCards(cards, sort, sortQuery);
   if (searchQuery) query = searchQuery as string;
@@ -58,6 +60,8 @@ export const useCards = (
   if (listShop.length === 0) listShop = arrShop;
   if (priceQuery) listPrice = priceQuery.split('&').map((el) => Number(el));
   if (listPrice.length === 0) listPrice = arrPrice;
+  if (stockQuery) listStock = stockQuery.split('&').map((el) => Number(el));
+  if (listStock.length === 0) listStock = arrStock;
   const sortedAndSearchedcards = sortedCards
     .filter((card) => {
       return (
@@ -74,6 +78,9 @@ export const useCards = (
     })
     .filter((card) => listFamily.includes(card.family as string))
     .filter((card) => listShop.includes(card.shop as string))
-    .filter((card) => card.price < listPrice[1] && card.price > listPrice[0]);
+    .filter((card) => card.price <= listPrice[1] && card.price >= listPrice[0])
+    .filter(
+      (card) => (card.stock as number) <= listStock[1] && (card.stock as number) >= listStock[0]
+    );
   return sortedAndSearchedcards;
 };
