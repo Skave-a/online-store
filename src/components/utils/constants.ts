@@ -59,3 +59,8 @@ export const arrFamily = Array.from(new Set(flowersData.map((el) => el.family)))
 
 export const arrShopNoSet = flowersData.map((el) => el.shop);
 export const arrShop = Array.from(new Set(flowersData.map((el) => el.shop))).sort() as string[];
+
+export const arrPrice = [
+  Math.min(...Array.from(new Set(flowersData.map((el) => el.price)))),
+  Math.max(...Array.from(new Set(flowersData.map((el) => el.price)))),
+];

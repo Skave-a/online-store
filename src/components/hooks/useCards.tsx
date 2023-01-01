@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { FlowersType } from '../types/types';
-import { arrFamily, arrShop } from '../utils/constants';
+import { arrFamily, arrPrice, arrShop } from '../utils/constants';
 
 export const useSortedCards = (cards: FlowersType[], sort: string, sortQuery: string) => {
   if (sortQuery) sort = sortQuery;
@@ -43,19 +43,21 @@ export const useCards = (
   query: string,
   listFamily: string[],
   listShop: string[],
+  listPrice: number[],
   searchQuery: string,
   sortQuery: string,
   famQuery: string,
-  shopQuery: string
+  shopQuery: string,
+  priceQuery: string
 ) => {
   const sortedCards = useSortedCards(cards, sort, sortQuery);
   if (searchQuery) query = searchQuery as string;
   if (famQuery) listFamily = famQuery.split('&');
   if (listFamily.length === 0) listFamily = arrFamily;
   if (shopQuery) listShop = shopQuery.split('&');
-  if (listShop.length === 0) {
-    listShop = arrShop;
-  }
+  if (listShop.length === 0) listShop = arrShop;
+  if (priceQuery) listPrice = priceQuery.split('&').map((el) => Number(el));
+  if (listPrice.length === 0) listPrice = arrPrice;
   const sortedAndSearchedcards = sortedCards
     .filter((card) => {
       return (
@@ -71,6 +73,7 @@ export const useCards = (
       );
     })
     .filter((card) => listFamily.includes(card.family as string))
-    .filter((card) => listShop.includes(card.shop as string));
+    .filter((card) => listShop.includes(card.shop as string))
+    .filter((card) => card.price < listPrice[1] && card.price > listPrice[0]);
   return sortedAndSearchedcards;
 };

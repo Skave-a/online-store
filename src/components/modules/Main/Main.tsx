@@ -4,7 +4,7 @@ import { useState } from 'react';
 import CardsSort from '../Cards/CardsSort';
 import { useCards } from '../../hooks/useCards';
 import { FlowersType } from '../../types/types';
-import { FilterSide, listFamily, listShop } from '../Filter/FilterSide';
+import { FilterSide, listFamily, listPrice, listShop } from '../Filter/FilterSide';
 import { Box } from '@mui/system';
 import { useSearchParams } from 'react-router-dom';
 import { cards, params } from '../../utils/constants';
@@ -26,6 +26,8 @@ function Main({
   const isGridQuery = searchParams.get('grid') || '';
   const famQuery = searchParams.get('fam') || '';
   const shopQuery = searchParams.get('shop') || '';
+  const priceQuery = searchParams.get('price') || '';
+
   function handleChange() {
     setSearchParams(params);
   }
@@ -34,6 +36,7 @@ function Main({
     query: '',
     familyFilter: listFamily,
     shopFilter: listShop,
+    priceFilter: listPrice,
   });
   const sortedCards = useCards(
     cards,
@@ -41,10 +44,12 @@ function Main({
     filter.query,
     filter.familyFilter,
     filter.shopFilter,
+    filter.priceFilter,
     searchQuery,
     sortQuery,
     famQuery,
-    shopQuery
+    shopQuery,
+    priceQuery
   );
   const [isGrid, setIsGrid] = useState('false');
   return (
@@ -55,6 +60,7 @@ function Main({
         searchQuery={searchQuery}
         famQuery={famQuery}
         shopQuery={shopQuery}
+        priceQuery={priceQuery}
         params={params}
         handleChange={handleChange}
         cards={sortedCards}

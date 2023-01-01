@@ -4,7 +4,9 @@ import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { FlowersType, ICardsFiter, Iparams } from '../../types/types';
 import { FilterCheckbox } from './FilterCheckbox';
 import { Typography } from '@mui/material';
-import { arrFamily, arrFamilyNoSet, arrShop, arrShopNoSet } from '../../utils/constants';
+import { arrFamily, arrFamilyNoSet, arrPrice, arrShop, arrShopNoSet } from '../../utils/constants';
+import FilterDuoSlider from './FilterDuoSlider';
+import { flowersData } from '../../../data/data';
 
 const boxStyle = {
   display: 'flex',
@@ -31,11 +33,13 @@ const boxFilterStyle = {
 
 export let listFamily = arrFamily.slice(0);
 export let listShop = arrShop.slice(0);
+export let listPrice = arrPrice.slice(0);
 let checkedFamily: string[] = [];
 let checkedShop: string[] = [];
-let paramsFam = 'fam';
-let paramsShop = 'shop';
-
+let checkedPrice: number[] = [];
+let maxPrice = Math.max(...Array.from(new Set(flowersData.map((el) => el.price))));
+let minPrice = Math.min(...Array.from(new Set(flowersData.map((el) => el.price))));
+// console.log(listPrice);
 export const FilterSide = ({
   filter,
   setFilter,
@@ -45,12 +49,14 @@ export const FilterSide = ({
   handleChange,
   cards,
   shopQuery,
+  priceQuery,
 }: {
   filter: ICardsFiter;
   setFilter: Dispatch<SetStateAction<ICardsFiter>>;
   searchQuery: string;
   famQuery: string;
   shopQuery: string;
+  priceQuery: string;
   params: Iparams;
   handleChange: Function;
   cards: FlowersType[];
@@ -79,7 +85,7 @@ export const FilterSide = ({
           handleChange={handleChange}
           params={params}
           paramQuery={famQuery}
-          paramsFil={paramsFam}
+          paramsFil={'fam'}
           cards={cards}
           listOfFilter={listFamily}
           checkedArr={checkedFamily}
@@ -96,13 +102,27 @@ export const FilterSide = ({
           handleChange={handleChange}
           params={params}
           paramQuery={shopQuery}
-          paramsFil={paramsShop}
+          paramsFil={'shop'}
           cards={cards}
           listOfFilter={listShop}
           checkedArr={checkedShop}
           sortBy={'shop'}
           arrSort={arrShop}
           arrNoSet={arrShopNoSet as string[]}
+        />
+      </Box>
+      <Box sx={boxFilterStyle}>
+        <FilterDuoSlider
+          maxValue={maxPrice}
+          minValue={minPrice}
+          listOfFilter={listPrice}
+          setFil={{ ...filter, priceFilter: checkedPrice }}
+          checkedArr={checkedPrice}
+          setFilter={setFilter}
+          paramQuery={priceQuery}
+          handleChange={handleChange}
+          params={params}
+          paramsFil={'price'}
         />
       </Box>
     </Box>
