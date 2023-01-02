@@ -1,12 +1,11 @@
 import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 import { Dispatch, SetStateAction, SyntheticEvent } from 'react';
-import { flowersData } from '../../../data/data';
 import { FlowersType, ICardsFiter, Iparams } from '../../types/types';
 
 interface IProps {
   setFil: ICardsFiter;
   setFilter: Dispatch<SetStateAction<ICardsFiter>>;
-  handleChange: Function;
+  handleChange: () => void;
   params: Iparams;
   paramQuery: string;
   paramsFil: string;
@@ -58,11 +57,6 @@ export const FilterCheckbox = (props: IProps) => {
     }
   };
   if (paramQuery) listOfFilter = paramQuery.split('&');
-  // if (cards.length === 0) {
-  //   countCards = flowersData;
-  // } else {
-  //   countCards = cards;
-  // }
   if (cards.length !== 0) {
     countCards = cards;
   } else {

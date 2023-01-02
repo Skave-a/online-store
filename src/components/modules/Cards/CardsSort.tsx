@@ -1,5 +1,5 @@
 import { SelectCards } from '../Select/SelectCards';
-import { Dispatch } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { Box, Typography } from '@mui/material';
 import { FlowersType, ICardsFiter, Iparams } from '../../types/types';
 import { SwitchView } from '../SwitchView/SwitchView';
@@ -26,9 +26,9 @@ const CardsSort = ({
   setFilter: Dispatch<ICardsFiter>;
   cards: FlowersType[];
   sortQuery: string;
-  handleChange: Function;
+  handleChange: () => void;
   params: Iparams;
-  setIsGrid: Function;
+  setIsGrid: Dispatch<SetStateAction<string>>;
   isGrid: string;
 }) => {
   let sorted = filter.sort;

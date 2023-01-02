@@ -18,11 +18,12 @@ export interface FlowersType {
 export interface Iparams {
   [key: string]: string;
 }
-// type FlowersMainType = number | string | undefined | string[];
 
 export interface ICardsFiter {
   sort: string;
   query: string;
   familyFilter: string[];
   shopFilter: string[];
+  priceFilter: number[];
+  stockFilter: number[];
 }

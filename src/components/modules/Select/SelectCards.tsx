@@ -23,7 +23,7 @@ export const SelectCards = ({
   value: string;
   onChange: (sort: string) => void;
   sortQuery: string;
-  handleChange: Function;
+  handleChange: () => void;
   params: Iparams;
 }) => {
   if (sortQuery) {
