@@ -37,3 +37,17 @@ export const PROMO = {
   epam10: 'EPAM - 10%',
   test: 'Promo for test: "rs" or "epm"',
 };
+
+export const styleCartModal = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 382,
+  overflow: { sx: 'scroll', sm: 'none' },
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 3,
+  justifyContent: 'space-between',
+};

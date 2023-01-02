@@ -15,9 +15,13 @@ interface ICartItem {
   augmentHandler: (name: string) => void;
   decrementHandler: (name: string) => void;
   setSearchParams: (arg0: Iparams) => void;
+  setTotalQuantity: (arg0: number) => void;
+  setCart: (arg0: FlowersType[]) => void;
 }
 
 export const CartItem = ({
+  setCart,
+  setTotalQuantity,
   setSearchParams,
   pagesPerPage,
   totalQuantity,
@@ -32,7 +36,12 @@ export const CartItem = ({
 
   return (
     <>
-      <CartModal handleOpen={handleOpen} handleClose={handleClose} open={open} />
+      <CartModal
+        handleClose={handleClose}
+        open={open}
+        setTotalQuantity={setTotalQuantity}
+        setCart={setCart}
+      />
       {pagesPerPage.length ? (
         <Container maxWidth="lg">
           <Typography

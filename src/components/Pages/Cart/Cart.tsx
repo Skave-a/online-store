@@ -107,6 +107,8 @@ function Cart({
   return (
     <>
       <CartItem
+        setCart={setCart}
+        setTotalQuantity={setTotalQuantity}
         setSearchParams={setSearchParams}
         pagesPerPage={pagesPerPage}
         totalQuantity={totalQuantity}
