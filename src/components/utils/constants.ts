@@ -18,6 +18,11 @@ export const BUTTONS = {
   plus: '+',
 };
 
+export const HEADER_MESSAGES = {
+  cartTotal: 'Cart total:',
+  myFlowers: 'My Flowers',
+};
+
 export const SERVICE_MESSAGES = {
   goToBuy: 'Go to buy',
   cartEmpty: 'Cart empty',

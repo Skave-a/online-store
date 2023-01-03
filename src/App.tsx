@@ -20,9 +20,14 @@ function App() {
     localStorage.setItem('badge', JSON.stringify(totalQuantity));
   }, [cart, totalQuantity]);
 
+  const totalCostCart = cart?.reduce(
+    (acc, el) => acc + (el.priceTotal ? el.priceTotal : el.price),
+    0
+  );
+
   return (
     <BrowserRouter>
-      <Header totalQuantity={totalQuantity} />
+      <Header totalQuantity={totalQuantity} totalCostCart={totalCostCart} />
       <Routes>
         <Route
           path="/"
@@ -43,6 +48,7 @@ function App() {
               setTotalQuantity={setTotalQuantity}
               setCart={setCart}
               cart={cart}
+              totalCostCart={totalCostCart}
             />
           }
         />
