@@ -8,11 +8,13 @@ function Cart({
   totalQuantity,
   cart,
   setCart,
+  totalCostCart,
 }: {
   setTotalQuantity: (arg0: number) => void;
   setCart: (arg0: FlowersType[]) => void;
   totalQuantity: number;
   cart: FlowersType[];
+  totalCostCart: number;
 }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -30,10 +32,10 @@ function Cart({
       : [];
   });
 
-  const totalCostCart = cart?.reduce(
+  /*  const totalCostCart = cart?.reduce(
     (acc, el) => acc + (el.priceTotal ? el.priceTotal : el.price),
     0
-  );
+  ); */
 
   let quantityTotal = cart
     .map((item) => {
