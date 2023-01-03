@@ -6,6 +6,7 @@ import Page404 from './components/Pages/Page404/Page404';
 import Main from './components/modules/Main/Main';
 import Cart from './components/Pages/Cart/Cart';
 import { FlowersType } from './components/types/types';
+import SinglePage from './components/Pages/SinglePage/SinglePage';
 
 function App() {
   const [cart, setCart] = useState<FlowersType[]>(() => {
@@ -53,6 +54,17 @@ function App() {
           }
         />
         {/* <Route path="/anyPage" element={< AnyPage/>} /> */}
+        <Route
+          path={`/:id/:name`}
+          element={
+            <SinglePage
+              setCart={setCart}
+              cart={cart}
+              totalQuantity={totalQuantity}
+              setTotalQuantity={setTotalQuantity}
+            />
+          }
+        />
         <Route path="*" element={<Page404 />} />
       </Routes>
       <Footer />

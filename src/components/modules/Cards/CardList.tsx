@@ -1,6 +1,8 @@
 import { Grid } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 import { FlowersType } from '../../types/types';
+import { SERVICE_MESSAGES } from '../../utils/constants';
 import { CardItem } from './CardItem';
 
 interface ICardList {
@@ -23,23 +25,35 @@ export const CardList = (props: ICardList) => {
         style={{ textAlign: 'center', color: '#006666' }}
         fontFamily={`'Pacifico', cursive`}
       >
-        Plants not found! Please change your search parameters
+        {SERVICE_MESSAGES.dontFound}
       </Typography>
     );
+  }
+  let gridVar = props.isGrid;
+  if (props.isGridQuery) {
+    gridVar = props.isGridQuery;
+  }
+  let md = 4;
+  if (gridVar === 'true') {
+    md = 6;
   }
   return (
     <Grid container spacing={2} sx={{ maxWidth: '1000px', mb: 15 }}>
       {props.cards.map((item) => (
-        <CardItem
-          key={item.id}
-          cards={item}
-          isGrid={props.isGrid}
-          isGridQuery={props.isGridQuery}
-          setCart={props.setCart}
-          cart={props.cart}
-          totalQuantity={props.totalQuantity}
-          setTotalQuantity={props.setTotalQuantity}
-        />
+        <Grid item xs={12} md={md} sm={6}>
+          <Link to={`/${item.id}/${item.name}`} key={item.id} style={{ textDecoration: 'none' }}>
+            <CardItem
+              key={item.id}
+              cards={item}
+              isGrid={props.isGrid}
+              isGridQuery={props.isGridQuery}
+              setCart={props.setCart}
+              cart={props.cart}
+              totalQuantity={props.totalQuantity}
+              setTotalQuantity={props.setTotalQuantity}
+            />
+          </Link>
+        </Grid>
       ))}
     </Grid>
   );
