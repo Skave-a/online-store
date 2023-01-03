@@ -12,9 +12,18 @@ export interface FlowersType {
   price: number;
   quantity: number;
   priceTotal?: number;
+  shop?: string;
 }
 
 export interface Iparams {
   [key: string]: string;
 }
-// type FlowersMainType = number | string | undefined | string[];
+
+export interface ICardsFiter {
+  sort: string;
+  query: string;
+  familyFilter: string[];
+  shopFilter: string[];
+  priceFilter: number[];
+  stockFilter: number[];
+}

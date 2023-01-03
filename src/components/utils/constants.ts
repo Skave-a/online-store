@@ -1,3 +1,6 @@
+import { flowersData } from '../../data/data';
+import { Iparams } from '../types/types';
+
 export const SOME_MESSAGE = 'Hello Main Page';
 
 export const LINK_TO_THE_COURSE = 'https://rs.school/js/';
@@ -37,6 +40,35 @@ export const PROMO = {
   epam10: 'EPAM - 10%',
   test: 'Promo for test: "rs" or "epm"',
 };
+
+export const params: Iparams = {};
+
+export const cards = flowersData;
+
+export const optionsForSort = [
+  { id: 1, value: 'price', name: 'Sort by price ASC' },
+  { id: 2, value: 'price2', name: 'Sort by price DESC' },
+  { id: 3, value: 'rating', name: 'Sort by rating ASC' },
+  { id: 4, value: 'rating2', name: 'Sort by rating DESC' },
+  { id: 5, value: 'name', name: 'Sort by name ASC' },
+  { id: 6, value: 'name2', name: 'Sort by name DESC' },
+];
+
+export const arrFamilyNoSet = flowersData.map((el) => el.family);
+export const arrFamily = Array.from(new Set(flowersData.map((el) => el.family))).sort() as string[];
+
+export const arrShopNoSet = flowersData.map((el) => el.shop);
+export const arrShop = Array.from(new Set(flowersData.map((el) => el.shop))).sort() as string[];
+
+export const arrPrice = [
+  Math.min(...Array.from(new Set(flowersData.map((el) => el.price)))),
+  Math.max(...Array.from(new Set(flowersData.map((el) => el.price)))),
+];
+
+export const arrStock = [
+  Math.min(...Array.from(new Set(flowersData.map((el) => el.stock as number)))),
+  Math.max(...Array.from(new Set(flowersData.map((el) => el.stock as number)))),
+];
 
 export const styleCartModal = {
   position: 'absolute' as 'absolute',

@@ -1,18 +1,13 @@
 import Container from '@mui/material/Container/Container';
 import { CardList } from '../Cards/CardList';
 import { useState } from 'react';
-import { flowersData } from '../../../data/data';
 import CardsSort from '../Cards/CardsSort';
 import { useCards } from '../../hooks/useCards';
 import { FlowersType } from '../../types/types';
-import { FilterSide } from '../Filter/FilterSide';
+import { FilterSide, listFamily, listPrice, listShop, listStock } from '../Filter/FilterSide';
 import { Box } from '@mui/system';
 import { useSearchParams } from 'react-router-dom';
-import { Iparams } from '../../types/types';
-
-const cards = flowersData;
-
-const params: Iparams = {};
+import { cards, params } from '../../utils/constants';
 
 function Main({
   setCart,
@@ -25,15 +20,41 @@ function Main({
   setTotalQuantity: (arg0: number) => void;
   totalQuantity: number;
 }) {
-  let [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('search') || '';
   const sortQuery = searchParams.get('sort') || '';
   const isGridQuery = searchParams.get('grid') || '';
+  const famQuery = searchParams.get('fam') || '';
+  const shopQuery = searchParams.get('shop') || '';
+  const priceQuery = searchParams.get('price') || '';
+  const stockQuery = searchParams.get('stock') || '';
+
   function handleChange() {
     setSearchParams(params);
   }
-  const [filter, setFilter] = useState({ sort: '', query: '' });
-  const sortedCards = useCards(cards, filter.sort, filter.query, searchQuery, sortQuery);
+  const [filter, setFilter] = useState({
+    sort: '',
+    query: '',
+    familyFilter: listFamily,
+    shopFilter: listShop,
+    priceFilter: listPrice,
+    stockFilter: listStock,
+  });
+  const sortedCards = useCards(
+    cards,
+    filter.sort,
+    filter.query,
+    filter.familyFilter,
+    filter.shopFilter,
+    filter.priceFilter,
+    filter.stockFilter,
+    searchQuery,
+    sortQuery,
+    famQuery,
+    shopQuery,
+    priceQuery,
+    stockQuery
+  );
   const [isGrid, setIsGrid] = useState('false');
   return (
     <Container sx={{ mt: '20px', display: 'flex', gap: '20px' }}>
@@ -41,8 +62,13 @@ function Main({
         filter={filter}
         setFilter={setFilter}
         searchQuery={searchQuery}
+        famQuery={famQuery}
+        shopQuery={shopQuery}
+        priceQuery={priceQuery}
+        stockQuery={stockQuery}
         params={params}
         handleChange={handleChange}
+        cards={sortedCards}
       />
       <Box>
         <CardsSort
