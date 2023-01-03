@@ -43,12 +43,14 @@ export const CartPromo = ({ totalCostCart }: ICartPromo) => {
 
   const addPromoHandler = (item: string) => {
     let percent = totalCostCart * (10 / 100);
-    if (item === PROMO.rss10) {
+    let isDouble = promoApplied.includes(item);
+
+    if (item === PROMO.rss10 && !isDouble) {
       setPromoApplied([...promoApplied, PROMO.rss10]);
       setIsPromoAdded(true);
       setPromoPrice(promoPrice - percent);
     }
-    if (item === PROMO.epam10) {
+    if (item === PROMO.epam10 && !isDouble) {
       setPromoApplied([...promoApplied, PROMO.epam10]);
       setIsPromoAdded(true);
       setPromoPrice(promoPrice - percent);
