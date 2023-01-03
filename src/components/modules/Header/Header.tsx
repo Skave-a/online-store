@@ -2,8 +2,12 @@ import { AppBar, Badge, IconButton, Toolbar, Typography, Link, Box } from '@mui/
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink } from 'react-router-dom';
+import { HEADER_MESSAGES } from '../../utils/constants';
 
-export const Header: React.FC<{ totalQuantity: number }> = ({ totalQuantity }) => {
+export const Header: React.FC<{ totalQuantity: number; totalCostCart: number }> = ({
+  totalQuantity,
+  totalCostCart,
+}) => {
   return (
     <AppBar position="static" style={{ background: 'white', boxShadow: 'none' }}>
       <Toolbar>
@@ -20,8 +24,17 @@ export const Header: React.FC<{ totalQuantity: number }> = ({ totalQuantity }) =
           color="#006666"
         >
           <Link component={RouterLink} to="/" underline="none" color="#006666">
-            My Flowers
+            {HEADER_MESSAGES.myFlowers}
           </Link>
+        </Typography>
+        <Typography
+          variant="h2"
+          fontSize={35}
+          sx={{ flexGrow: 1 }}
+          fontFamily={`'Pacifico', cursive`}
+          color="#006666"
+        >
+          {HEADER_MESSAGES.cartTotal} {totalCostCart}$
         </Typography>
         <RouterLink to="/cart">
           <IconButton color="inherit">
