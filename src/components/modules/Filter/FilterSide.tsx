@@ -59,6 +59,7 @@ export const FilterSide = ({
   shopQuery,
   priceQuery,
   stockQuery,
+  setSearchParams,
 }: {
   filter: ICardsFiter;
   setFilter: Dispatch<SetStateAction<ICardsFiter>>;
@@ -70,6 +71,7 @@ export const FilterSide = ({
   params: Iparams;
   handleChange: () => void;
   cards: FlowersType[];
+  setSearchParams: () => void;
 }) => {
   function inputHandler(e: ChangeEvent<HTMLInputElement>) {
     setFilter({ ...filter, query: e.target.value });
@@ -80,7 +82,7 @@ export const FilterSide = ({
     <Box sx={{ maxWidth: '300px', mb: 10 }}>
       <Box sx={{ display: 'flex', gap: '10px', mb: '20px' }}>
         <FilterCopy />
-        <FilterReset />
+        <FilterReset setSearchParams={setSearchParams} />
       </Box>
       <Box sx={boxStyle}>
         <SearchCard

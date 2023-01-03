@@ -1,6 +1,6 @@
-import { Button } from '@mui/material';
 import { useCallback } from 'react';
 import { useClipboard } from 'use-clipboard-copy';
+import { FilterButton } from './FilterButton';
 
 export const FilterCopy = () => {
   const clipboard = useClipboard();
@@ -10,8 +10,8 @@ export const FilterCopy = () => {
     clipboard.copy(url);
   }, [clipboard.copy]);
   return (
-    <Button variant="outlined" onClick={handleClick}>
+    <FilterButton variant="outlined" onClick={handleClick}>
       Copy Link
-    </Button>
+    </FilterButton>
   );
 };

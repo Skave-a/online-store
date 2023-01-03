@@ -1,6 +1,12 @@
-import { Button } from '@mui/material';
+import { FilterButton } from './FilterButton';
 
-export const FilterReset = () => {
-  // const { name, price, rating, description, photos } = props.cards;
-  return <Button variant="outlined">Reset Filters</Button>;
+export const FilterReset = ({ setSearchParams }: { setSearchParams: () => void }) => {
+  function handleClick() {
+    setSearchParams();
+  }
+  return (
+    <FilterButton variant="outlined" onClick={handleClick}>
+      Reset Filters
+    </FilterButton>
+  );
 };
