@@ -13,6 +13,8 @@ import {
   arrStock,
 } from '../../utils/constants';
 import FilterDuoSlider from './FilterDuoSlider';
+import { FilterCopy } from '../FilterButtons/FilterCopy';
+import { FilterReset } from '../FilterButtons/FilterReset';
 
 const boxStyle = {
   display: 'flex',
@@ -76,6 +78,10 @@ export const FilterSide = ({
   }
   return (
     <Box sx={{ maxWidth: '300px', mb: 10 }}>
+      <Box sx={{ display: 'flex', gap: '10px', mb: '20px' }}>
+        <FilterCopy />
+        <FilterReset />
+      </Box>
       <Box sx={boxStyle}>
         <SearchCard
           onChange={(e) => {
