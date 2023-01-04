@@ -105,3 +105,12 @@ export const btnSX = {
     backgroundColor: '#006666',
   },
 };
+
+export const typographySX = {
+  fontFamily: 'font-family: sans-serif',
+  color: '#006666',
+  margin: '8px',
+  // sx={{ fontSize: { xs: 12, sm: 14 } }}
+  fontSize: '14px',
+  align: 'left',
+};
