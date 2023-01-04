@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import Button, { ButtonProps } from '@mui/material/Button';
+import { Button, ButtonProps } from '@mui/material';
 
 export const FilterButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: theme.palette.getContrastText('#006655'),

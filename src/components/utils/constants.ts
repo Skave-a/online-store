@@ -16,6 +16,7 @@ export const BUTTONS = {
   add: 'Add',
   minus: '-',
   plus: '+',
+  isPressed: false,
 };
 
 export const HEADER_MESSAGES = {
@@ -38,6 +39,9 @@ export const SERVICE_MESSAGES = {
   total: 'Total:',
   add: 'Add',
   drop: 'Drop',
+  copyLink: 'Copy Link',
+  copied: 'Copied!',
+  resetFilters: 'Reset Filters',
 };
 
 export const PROMO = {
