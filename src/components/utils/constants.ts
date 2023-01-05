@@ -17,7 +17,6 @@ export const BUTTONS = {
   minus: '-',
   plus: '+',
   isPressed: false,
-  isPressed: false,
 };
 
 export const HEADER_MESSAGES = {
