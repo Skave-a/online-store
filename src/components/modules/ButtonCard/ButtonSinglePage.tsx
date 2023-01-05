@@ -25,8 +25,6 @@ export const ButtonSinglePage = (props: Icards) => {
     }
     props.setOpen(true);
     navigate('/cart');
-    console.log(props.open);
-    console.log('props.open');
   };
 
   return (

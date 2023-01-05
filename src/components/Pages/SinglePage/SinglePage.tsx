@@ -1,6 +1,5 @@
 import { flowersData } from '../../../data/data';
 import { Link, useParams } from 'react-router-dom';
-import { Link as RouterLink } from 'react-router-dom';
 import {
   CardActionArea,
   CardMedia,
@@ -174,7 +173,6 @@ export default function SinglePage(props: ISinglePage) {
             totalQuantity={props.totalQuantity}
             setTotalQuantity={props.setTotalQuantity}
           />
-          {/* <RouterLink to={'/cart'} style={{ textDecoration: 'none' }}> */}
           <ButtonSinglePage
             cards={flowersData[idet]}
             setCart={props.setCart}
@@ -184,7 +182,6 @@ export default function SinglePage(props: ISinglePage) {
             open={props.open}
             setOpen={props.setOpen}
           />
-          {/*  </RouterLink> */}
         </Grid>
       </Grid>
     </Container>
