@@ -174,17 +174,17 @@ export default function SinglePage(props: ISinglePage) {
             totalQuantity={props.totalQuantity}
             setTotalQuantity={props.setTotalQuantity}
           />
-          <RouterLink to={'/cart'} style={{ textDecoration: 'none' }}>
-            <ButtonSinglePage
-              cards={flowersData[idet]}
-              setCart={props.setCart}
-              cart={props.cart}
-              totalQuantity={props.totalQuantity}
-              setTotalQuantity={props.setTotalQuantity}
-              open={props.open}
-              setOpen={props.setOpen}
-            />
-          </RouterLink>
+          {/* <RouterLink to={'/cart'} style={{ textDecoration: 'none' }}> */}
+          <ButtonSinglePage
+            cards={flowersData[idet]}
+            setCart={props.setCart}
+            cart={props.cart}
+            totalQuantity={props.totalQuantity}
+            setTotalQuantity={props.setTotalQuantity}
+            open={props.open}
+            setOpen={props.setOpen}
+          />
+          {/*  </RouterLink> */}
         </Grid>
       </Grid>
     </Container>

@@ -2,6 +2,7 @@ import { Button } from '@mui/material';
 import { FlowersType } from '../../types/types';
 import { MouseEvent } from 'react';
 import { btnSX, SERVICE_MESSAGES } from '../../utils/constants';
+import { useNavigate } from 'react-router-dom';
 
 interface Icards {
   cards: FlowersType;
@@ -14,6 +15,7 @@ interface Icards {
 }
 
 export const ButtonSinglePage = (props: Icards) => {
+  const navigate = useNavigate();
   const buttonHandler = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     const isEqual = props.cart.some((item) => item.id === props.cards.id);
@@ -22,6 +24,7 @@ export const ButtonSinglePage = (props: Icards) => {
       props.setTotalQuantity(props.totalQuantity + 1);
     }
     props.setOpen(true);
+    navigate('/cart');
     console.log(props.open);
     console.log('props.open');
   };
