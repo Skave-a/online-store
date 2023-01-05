@@ -1,5 +1,4 @@
 import { Box, Button, CardMedia, Container, Grid, Typography } from '@mui/material';
-import { useState } from 'react';
 import { Link, Link as RouterLink } from 'react-router-dom';
 import { FlowersType, Iparams } from '../../types/types';
 import { BUTTONS, SERVICE_MESSAGES } from '../../utils/constants';
@@ -17,6 +16,8 @@ interface ICartItem {
   setSearchParams: (arg0: Iparams) => void;
   setTotalQuantity: (arg0: number) => void;
   setCart: (arg0: FlowersType[]) => void;
+  open: boolean;
+  setOpen: (arg0: boolean) => void;
 }
 
 export const CartItem = ({
@@ -29,8 +30,9 @@ export const CartItem = ({
   totalCostCart,
   augmentHandler,
   decrementHandler,
+  open,
+  setOpen,
 }: ICartItem) => {
-  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 

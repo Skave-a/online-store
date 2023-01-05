@@ -9,6 +9,8 @@ interface Icards {
   cart: FlowersType[];
   setTotalQuantity: (arg0: number) => void;
   totalQuantity: number;
+  open: boolean;
+  setOpen: (arg0: boolean) => void;
 }
 
 export const ButtonSinglePage = (props: Icards) => {
@@ -19,6 +21,9 @@ export const ButtonSinglePage = (props: Icards) => {
       props.setCart([...props.cart, props.cards]);
       props.setTotalQuantity(props.totalQuantity + 1);
     }
+    props.setOpen(true);
+    console.log(props.open);
+    console.log('props.open');
   };
 
   return (
