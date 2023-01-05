@@ -69,6 +69,7 @@ function Main({
         params={params}
         handleChange={handleChange}
         cards={sortedCards}
+        setSearchParams={setSearchParams}
       />
       <Box>
         <CardsSort

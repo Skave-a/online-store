@@ -13,6 +13,8 @@ import {
   arrStock,
 } from '../../utils/constants';
 import FilterDuoSlider from './FilterDuoSlider';
+import { FilterCopy } from '../FilterButtons/FilterCopy';
+import { FilterReset } from '../FilterButtons/FilterReset';
 
 const boxStyle = {
   display: 'flex',
@@ -57,6 +59,7 @@ export const FilterSide = ({
   shopQuery,
   priceQuery,
   stockQuery,
+  setSearchParams,
 }: {
   filter: ICardsFiter;
   setFilter: Dispatch<SetStateAction<ICardsFiter>>;
@@ -68,6 +71,7 @@ export const FilterSide = ({
   params: Iparams;
   handleChange: () => void;
   cards: FlowersType[];
+  setSearchParams: () => void;
 }) => {
   function inputHandler(e: ChangeEvent<HTMLInputElement>) {
     setFilter({ ...filter, query: e.target.value });
@@ -76,6 +80,10 @@ export const FilterSide = ({
   }
   return (
     <Box sx={{ maxWidth: '300px', mb: 10 }}>
+      <Box sx={{ display: 'flex', gap: '10px', mb: '20px' }}>
+        <FilterCopy />
+        <FilterReset setSearchParams={setSearchParams} />
+      </Box>
       <Box sx={boxStyle}>
         <SearchCard
           onChange={(e) => {
