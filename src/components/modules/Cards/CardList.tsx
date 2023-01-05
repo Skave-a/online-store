@@ -40,7 +40,7 @@ export const CardList = (props: ICardList) => {
   return (
     <Grid container spacing={2} sx={{ maxWidth: '1000px', mb: 15 }}>
       {props.cards.map((item) => (
-        <Grid item xs={12} md={md} sm={6}>
+        <Grid item xs={12} md={md} sm={6} key={item.id}>
           <Link to={`/${item.id}/${item.name}`} key={item.id} style={{ textDecoration: 'none' }}>
             <CardItem
               key={item.id}
