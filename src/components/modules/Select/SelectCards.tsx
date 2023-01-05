@@ -4,6 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Iparams } from '../../types/types';
+import { SERVICE_MESSAGES } from '../../utils/constants';
 
 interface IOptionSort {
   value: string;
@@ -53,7 +54,7 @@ export const SelectCards = ({
         inputProps={{ color: 'success' }}
       >
         <MenuItem value="">
-          <em>None</em>
+          <em>{SERVICE_MESSAGES.none}</em>
         </MenuItem>
         {options.map((option: IOptionSort) => (
           <MenuItem key={option.id} value={option.value}>

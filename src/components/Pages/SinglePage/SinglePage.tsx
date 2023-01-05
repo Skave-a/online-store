@@ -1,14 +1,6 @@
 import { flowersData } from '../../../data/data';
 import { Link, useParams } from 'react-router-dom';
-import {
-  CardActionArea,
-  CardMedia,
-  ClickAwayListener,
-  Container,
-  Grid,
-  Rating,
-  Typography,
-} from '@mui/material';
+import { Box, CardActionArea, CardMedia, Container, Grid, Rating, Typography } from '@mui/material';
 import { SERVICE_MESSAGES, typographySX } from '../../utils/constants';
 import { FlowersType } from '../../types/types';
 import { ButtonCard } from '../../modules/ButtonCard/ButtonCard';
@@ -30,13 +22,13 @@ export default function SinglePage(props: ISinglePage) {
   let srcImg0 = flowersData[idet].photos[0];
   let srcImg1 = flowersData[idet].photos[1];
   let srcImg = srcImg0;
-  const [state, setState] = useState(srcImg);
+  const [img, setImg] = useState(srcImg);
 
-  function handleClickAway0(el: Event) {
-    setState(srcImg1);
+  function handleClickAway0() {
+    setImg(srcImg0);
   }
-  function handleClickAway1(el: Event) {
-    setState(srcImg0);
+  function handleClickAway1() {
+    setImg(srcImg1);
   }
   return (
     <Container
@@ -49,6 +41,7 @@ export default function SinglePage(props: ISinglePage) {
         boxShadow: 1,
         mt: '20px',
         width: '90%',
+        mb: '100px',
       }}
     >
       <Typography
@@ -60,6 +53,9 @@ export default function SinglePage(props: ISinglePage) {
         noWrap
         textAlign={'center'}
         mb={5}
+        sx={{
+          whiteSpace: 'normal',
+        }}
       >
         <Link to={'/'} style={{ textDecoration: 'none', color: '#006666' }}>
           {SERVICE_MESSAGES.store}
@@ -67,8 +63,8 @@ export default function SinglePage(props: ISinglePage) {
         - {flowersData[idet].shop} - {flowersData[idet].family} - {flowersData[idet].name}
       </Typography>
       <Grid container spacing={2} alignItems={'center'}>
-        <Grid item xs={12} sm={2}>
-          <ClickAwayListener onClickAway={(el) => handleClickAway0(el)}>
+        <Grid item xs={4} sm={2}>
+          <Box onClick={handleClickAway0}>
             <CardActionArea component="span" sx={{ width: 'fit-content' }}>
               <CardMedia
                 component="img"
@@ -84,8 +80,8 @@ export default function SinglePage(props: ISinglePage) {
                 alt="Plant image"
               />
             </CardActionArea>
-          </ClickAwayListener>
-          <ClickAwayListener onClickAway={handleClickAway1}>
+          </Box>
+          <Box onClick={handleClickAway1}>
             <CardActionArea component="span" sx={{ width: 'fit-content' }}>
               <CardMedia
                 component="img"
@@ -100,11 +96,11 @@ export default function SinglePage(props: ISinglePage) {
                 alt="Plant image"
               />
             </CardActionArea>
-          </ClickAwayListener>
+          </Box>
         </Grid>
         <Grid
           item
-          xs={12}
+          xs={8}
           sm={4}
           sx={{
             minHeight: '500px',
@@ -120,7 +116,7 @@ export default function SinglePage(props: ISinglePage) {
               width: '75%',
               maxHeight: '400px',
             }}
-            image={state}
+            image={img}
             alt="Plant image"
           />
         </Grid>

@@ -47,6 +47,7 @@ export const SERVICE_MESSAGES = {
   copyLink: 'Copy Link',
   copied: 'Copied!',
   resetFilters: 'Reset Filters',
+  none: 'none',
 };
 
 export const PROMO = {

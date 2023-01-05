@@ -36,11 +36,6 @@ function Cart({
       : [];
   });
 
-  /*  const totalCostCart = cart?.reduce(
-    (acc, el) => acc + (el.priceTotal ? el.priceTotal : el.price),
-    0
-  ); */
-
   let quantityTotal = cart
     .map((item) => {
       if (item.quantity === 0) {

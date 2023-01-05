@@ -29,7 +29,7 @@ export const Header: React.FC<{ totalQuantity: number; totalCostCart: number }> 
         </Typography>
         <Typography
           variant="h2"
-          fontSize={35}
+          fontSize={25}
           sx={{ flexGrow: 1 }}
           fontFamily={`'Pacifico', cursive`}
           color="#006666"

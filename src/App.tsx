@@ -10,7 +10,6 @@ import SinglePage from './components/Pages/SinglePage/SinglePage';
 
 function App() {
   const [open, setOpen] = useState(false);
-  console.log(`open`, open);
 
   const [cart, setCart] = useState<FlowersType[]>(() => {
     return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '') : [];
