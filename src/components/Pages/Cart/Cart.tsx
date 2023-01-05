@@ -9,12 +9,16 @@ function Cart({
   cart,
   setCart,
   totalCostCart,
+  open,
+  setOpen,
 }: {
   setTotalQuantity: (arg0: number) => void;
   setCart: (arg0: FlowersType[]) => void;
   totalQuantity: number;
   cart: FlowersType[];
   totalCostCart: number;
+  open: boolean;
+  setOpen: (arg0: boolean) => void;
 }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -113,6 +117,8 @@ function Cart({
         totalCostCart={totalCostCart}
         augmentHandler={augmentHandler}
         decrementHandler={decrementHandler}
+        open={open}
+        setOpen={setOpen}
       />
     </>
   );

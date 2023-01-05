@@ -70,7 +70,17 @@ export const FilterCheckbox = (props: IProps) => {
             <FormControlLabel
               defaultValue=""
               key={item}
-              control={<Checkbox onChange={handleChangeCheckbox} checked={true || false} />}
+              control={
+                <Checkbox
+                  onChange={handleChangeCheckbox}
+                  checked={true || false}
+                  sx={{
+                    '&.Mui-checked': {
+                      color: '#006666',
+                    },
+                  }}
+                />
+              }
               label={`${item} ${countCards.filter((card) => card[sortBy] === item).length}/${
                 arrNoSet.filter((el) => el === item).length
               }`}
@@ -82,7 +92,17 @@ export const FilterCheckbox = (props: IProps) => {
             <FormControlLabel
               defaultValue=""
               key={item}
-              control={<Checkbox onChange={handleChangeCheckbox} checked={false || false} />}
+              control={
+                <Checkbox
+                  onChange={handleChangeCheckbox}
+                  checked={false || false}
+                  sx={{
+                    '&.Mui-checked': {
+                      color: '#006666',
+                    },
+                  }}
+                />
+              }
               label={`${item} ${countCards.filter((card) => card[sortBy] === item).length}/${
                 arrNoSet.filter((el) => el === item).length
               }`}

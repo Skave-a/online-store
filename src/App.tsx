@@ -6,8 +6,11 @@ import Page404 from './components/Pages/Page404/Page404';
 import Main from './components/modules/Main/Main';
 import Cart from './components/Pages/Cart/Cart';
 import { FlowersType } from './components/types/types';
+import SinglePage from './components/Pages/SinglePage/SinglePage';
 
 function App() {
+  const [open, setOpen] = useState(false);
+
   const [cart, setCart] = useState<FlowersType[]>(() => {
     return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '') : [];
   });
@@ -49,10 +52,25 @@ function App() {
               setCart={setCart}
               cart={cart}
               totalCostCart={totalCostCart}
+              open={open}
+              setOpen={setOpen}
             />
           }
         />
         {/* <Route path="/anyPage" element={< AnyPage/>} /> */}
+        <Route
+          path={`/:id/:name`}
+          element={
+            <SinglePage
+              setCart={setCart}
+              cart={cart}
+              totalQuantity={totalQuantity}
+              setTotalQuantity={setTotalQuantity}
+              open={open}
+              setOpen={setOpen}
+            />
+          }
+        />
         <Route path="*" element={<Page404 />} />
       </Routes>
       <Footer />

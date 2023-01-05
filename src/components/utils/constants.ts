@@ -27,6 +27,7 @@ export const HEADER_MESSAGES = {
 export const SERVICE_MESSAGES = {
   goToBuy: 'Go to buy',
   cartEmpty: 'Cart empty',
+  dontFound: 'Plants not found! Please change your search parameters',
   numberOfProduct: ' №:',
   name: 'Name:',
   family: 'Family:',
@@ -39,9 +40,14 @@ export const SERVICE_MESSAGES = {
   total: 'Total:',
   add: 'Add',
   drop: 'Drop',
+  price: 'Price:',
+  description: 'Description:',
+  shop: 'Shop:',
+  store: 'Store ',
   copyLink: 'Copy Link',
   copied: 'Copied!',
   resetFilters: 'Reset Filters',
+  none: 'none',
 };
 
 export const PROMO = {
@@ -91,4 +97,25 @@ export const styleCartModal = {
   boxShadow: 24,
   p: 3,
   justifyContent: 'space-between',
+};
+
+export const btnSX = {
+  border: '1px solid #006666',
+  color: '#006666',
+  padding: '8px 23px',
+  borderRadius: '5px',
+  transition: 'all 0.5s',
+  '&:hover': {
+    color: 'white',
+    backgroundColor: '#006666',
+  },
+};
+
+export const typographySX = {
+  fontFamily: 'font-family: sans-serif',
+  color: '#006666',
+  margin: '8px',
+  // sx={{ fontSize: { xs: 12, sm: 14 } }}
+  fontSize: '14px',
+  align: 'left',
 };

@@ -11,6 +11,7 @@ import {
   arrShop,
   arrShopNoSet,
   arrStock,
+  SERVICE_MESSAGES,
 } from '../../utils/constants';
 import FilterDuoSlider from './FilterDuoSlider';
 import { FilterCopy } from '../FilterButtons/FilterCopy';
@@ -94,7 +95,7 @@ export const FilterSide = ({
         />
       </Box>
       <Box sx={boxFilterStyle}>
-        <Typography sx={{ fontSize: '24px' }}>Family</Typography>
+        <Typography sx={{ fontSize: '24px' }}>{SERVICE_MESSAGES.family}</Typography>
         <FilterCheckbox
           setFil={{ ...filter, familyFilter: checkedFamily }}
           setFilter={setFilter}
@@ -111,7 +112,7 @@ export const FilterSide = ({
         />
       </Box>
       <Box sx={boxFilterStyle}>
-        <Typography sx={{ fontSize: '24px' }}>Shop</Typography>
+        <Typography sx={{ fontSize: '24px' }}>{SERVICE_MESSAGES.shop}</Typography>
         <FilterCheckbox
           setFil={{ ...filter, familyFilter: checkedShop }}
           setFilter={setFilter}
@@ -128,7 +129,7 @@ export const FilterSide = ({
         />
       </Box>
       <Box sx={boxFilterStyle}>
-        <Typography sx={{ fontSize: '24px' }}>Price</Typography>
+        <Typography sx={{ fontSize: '24px' }}>{SERVICE_MESSAGES.price}</Typography>
         <FilterDuoSlider
           listOfFilter={listPrice}
           setFil={{ ...filter, priceFilter: checkedPrice }}
@@ -142,7 +143,7 @@ export const FilterSide = ({
         />
       </Box>
       <Box sx={boxFilterStyle}>
-        <Typography sx={{ fontSize: '24px' }}>Stock</Typography>
+        <Typography sx={{ fontSize: '24px' }}>{SERVICE_MESSAGES.stock}</Typography>
         <FilterDuoSlider
           listOfFilter={listStock}
           setFil={{ ...filter, stockFilter: checkedStock }}
