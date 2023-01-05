@@ -22,60 +22,59 @@ export const CartPromo = ({ totalCostCart }: ICartPromo) => {
       : [];
   });
 
-  const [promoPrice, setPromoPrice] = useState(() => {
-    setIsPromoAdded(true);
-    return localStorage.getItem('promoPrice')
-      ? JSON.parse(localStorage.getItem('promoPrice') || '')
-      : totalCostCart;
-  });
+  const [promoPrice, setPromoPrice] = useState(totalCostCart);
 
-  if (name === 'rs' && !promo.includes('RSS - 10%')) {
+  if (name === 'rs' && !promo.includes(PROMO.rss10)) {
     setIsPromo(true);
     setName('');
     setPromo([...promo, PROMO.rss10]);
   }
 
-  if (name === 'epm' && !promo.includes('EPAM - 10%')) {
+  if (name === 'epm' && !promo.includes(PROMO.epam10)) {
     setIsPromo(true);
     setName('');
     setPromo([...promo, PROMO.epam10]);
   }
 
   const addPromoHandler = (item: string) => {
-    let percent = totalCostCart * (10 / 100);
     let isDouble = promoApplied.includes(item);
 
     if (item === PROMO.rss10 && !isDouble) {
       setPromoApplied([...promoApplied, PROMO.rss10]);
       setIsPromoAdded(true);
-      setPromoPrice(promoPrice - percent);
     }
     if (item === PROMO.epam10 && !isDouble) {
       setPromoApplied([...promoApplied, PROMO.epam10]);
       setIsPromoAdded(true);
-      setPromoPrice(promoPrice - percent);
     }
   };
 
   const dropPromoHandler = (item: string) => {
-    let percent = totalCostCart * (10 / 100);
     if (item === PROMO.rss10) {
       setPromoApplied(promoApplied.filter((toFilter) => item !== toFilter));
-      setPromoPrice(promoPrice + percent);
     }
     if (item === PROMO.epam10) {
       setPromoApplied(promoApplied.filter((toFilter) => item !== toFilter));
-      setPromoPrice(promoPrice + percent);
     }
   };
 
   useEffect(() => {
+    let percent = totalCostCart * 0.9;
+    if (promoApplied.includes(PROMO.rss10)) {
+      setPromoPrice(percent);
+    }
+    if (promoApplied.includes(PROMO.epam10)) {
+      setPromoPrice(percent);
+    }
+    if (promoApplied.length > 1) {
+      setPromoPrice(totalCostCart * 0.8);
+    }
+
     if (!promoApplied.length) {
       setIsPromoAdded(false);
     }
     localStorage.setItem('promoApplied', JSON.stringify(promoApplied));
-    localStorage.setItem('promoPrice', JSON.stringify(promoPrice));
-  }, [promoApplied]);
+  }, [promoApplied, totalCostCart]);
 
   const deletePromoHandler = (item: string) => {
     setPromo(promo.filter((toFilter) => item !== toFilter));
