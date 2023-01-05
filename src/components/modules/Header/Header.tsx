@@ -49,6 +49,7 @@ export const Header: React.FC<{ totalQuantity: number; totalCostCart: number }> 
             >
               {
                 <AddShoppingCartOutlinedIcon
+                  data-testid="cart-icon"
                   style={{ color: '#006666' }}
                   sx={{ fontSize: 48, marginTop: 1 }}
                 />
