@@ -67,7 +67,6 @@ export default function FilterDuoSlider(props: IProps) {
       handleChange();
     }
   };
-
   return (
     <Box sx={{ width: 200, margin: '0 auto' }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
@@ -89,6 +88,7 @@ export default function FilterDuoSlider(props: IProps) {
         max={maxValue}
         step={5}
         sx={{ color: '#006666' }}
+        defaultValue={[minValue, maxValue]}
       />
     </Box>
   );
