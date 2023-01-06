@@ -40,8 +40,6 @@ export default function FilterDuoSlider(props: IProps) {
     Math.max(...Array.from(new Set(sortedCards.map((el) => el[paramsFil] as number)))),
   ];
 
-  console.log(intervalValue);
-
   let val = Array.from(new Set(flowersData.map((el) => el[paramsFil] as number)));
   let maxValue = Math.max(...val);
   let minValue = Math.min(...val);
