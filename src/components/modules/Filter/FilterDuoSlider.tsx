@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { Dispatch, SetStateAction, useState } from 'react';
 import Typography from '@mui/material/Typography';
-import { ICardsFiter, Iparams } from '../../types/types';
+import { FlowersType, ICardsFiter, Iparams } from '../../types/types';
 import HeightIcon from '@mui/icons-material/Height';
 import { flowersData } from '../../../data/data';
 
@@ -19,6 +19,7 @@ interface IProps {
   params: Iparams;
   paramsFil: string;
   unit: string;
+  sortedCards: FlowersType[];
 }
 
 export default function FilterDuoSlider(props: IProps) {
@@ -32,8 +33,14 @@ export default function FilterDuoSlider(props: IProps) {
     handleChange,
     paramsFil,
     unit,
+    sortedCards,
   } = props;
-  let val = Array.from(new Set(flowersData.map((el) => el.price)));
+  let intervalValue = [
+    Math.min(...Array.from(new Set(sortedCards.map((el) => el[paramsFil] as number)))),
+    Math.max(...Array.from(new Set(sortedCards.map((el) => el[paramsFil] as number)))),
+  ];
+
+  let val = Array.from(new Set(flowersData.map((el) => el[paramsFil] as number)));
   let maxValue = Math.max(...val);
   let minValue = Math.min(...val);
 
@@ -71,16 +78,16 @@ export default function FilterDuoSlider(props: IProps) {
     <Box sx={{ width: 200, margin: '0 auto' }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
         <Typography>
-          {value[0]} {unit}
+          {intervalValue[0]} {unit}
         </Typography>
         <HeightIcon sx={{ transform: 'rotate(90deg)' }} />
         <Typography>
-          {value[1]} {unit}
+          {intervalValue[1]} {unit}
         </Typography>
       </Box>
       <Slider
         getAriaLabel={() => 'Minimum distance'}
-        value={value}
+        value={intervalValue}
         onChange={handleChangeFil}
         valueLabelDisplay="auto"
         disableSwap

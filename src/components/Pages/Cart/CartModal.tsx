@@ -77,7 +77,6 @@ export default function CartModal({
         setCart([]);
       }, 3000);
     }
-    console.log('open', open);
   };
 
   return (
