@@ -61,6 +61,7 @@ export const FilterSide = ({
   priceQuery,
   stockQuery,
   setSearchParams,
+  sortedCards,
 }: {
   filter: ICardsFiter;
   setFilter: Dispatch<SetStateAction<ICardsFiter>>;
@@ -73,6 +74,7 @@ export const FilterSide = ({
   handleChange: () => void;
   cards: FlowersType[];
   setSearchParams: () => void;
+  sortedCards: FlowersType[];
 }) => {
   function inputHandler(e: ChangeEvent<HTMLInputElement>) {
     setFilter({ ...filter, query: e.target.value });
@@ -140,6 +142,7 @@ export const FilterSide = ({
           params={params}
           paramsFil={'price'}
           unit={'$'}
+          sortedCards={sortedCards}
         />
       </Box>
       <Box sx={boxFilterStyle}>
@@ -154,6 +157,7 @@ export const FilterSide = ({
           params={params}
           paramsFil={'stock'}
           unit={'pcs'}
+          sortedCards={sortedCards}
         />
       </Box>
     </Box>
