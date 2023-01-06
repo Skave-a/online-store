@@ -37,7 +37,7 @@ export const Header: React.FC<{ totalQuantity: number; totalCostCart: number }> 
           {HEADER_MESSAGES.cartTotal} {totalCostCart}$
         </Typography>
         <RouterLink to="/cart">
-          <IconButton color="inherit">
+          <IconButton data-testid="cart-button" color="inherit">
             <Badge
               anchorOrigin={{
                 vertical: 'bottom',
@@ -45,6 +45,7 @@ export const Header: React.FC<{ totalQuantity: number; totalCostCart: number }> 
               }}
               overlap="circular"
               color="error"
+              data-testid="badge"
               badgeContent={totalQuantity}
             >
               {
