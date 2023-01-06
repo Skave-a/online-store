@@ -2,7 +2,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Box, CardActionArea, Rating } from '@mui/material';
+import { Box, Rating } from '@mui/material';
 import { FlowersType } from '../../types/types';
 import { ButtonCard } from '../ButtonCard/ButtonCard';
 
@@ -28,51 +28,49 @@ export const CardItem = (props: Icards) => {
   const { name, price, rating, description, photos } = props.cards;
   return (
     <Card>
-      <CardActionArea component="span">
-        <CardMedia
-          component="img"
-          height="200"
-          image={photos[0]}
-          alt={name}
-          sx={{ objectPosition: '50% 70%' }}
+      <CardMedia
+        component="img"
+        height="200"
+        image={photos[0]}
+        alt={name}
+        sx={{ objectPosition: '50% 70%' }}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5">
+          {name}
+        </Typography>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            display: '-webkit-box',
+            WebkitBoxOrient: 'vertical',
+            WebkitLineClamp: '3',
+            height: '60px',
+          }}
+        >
+          {description}
+        </Typography>
+      </CardContent>
+      <Box sx={priceBoxSX}>
+        <Typography>{price}$</Typography>
+        <ButtonCard
+          cards={props.cards}
+          setCart={props.setCart}
+          cart={props.cart}
+          totalQuantity={props.totalQuantity}
+          setTotalQuantity={props.setTotalQuantity}
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5">
-            {name}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              display: '-webkit-box',
-              WebkitBoxOrient: 'vertical',
-              WebkitLineClamp: '3',
-              height: '60px',
-            }}
-          >
-            {description}
-          </Typography>
-        </CardContent>
-        <Box sx={priceBoxSX}>
-          <Typography>{price}$</Typography>
-          <ButtonCard
-            cards={props.cards}
-            setCart={props.setCart}
-            cart={props.cart}
-            totalQuantity={props.totalQuantity}
-            setTotalQuantity={props.setTotalQuantity}
-          />
-        </Box>
-        <Rating
-          name="half-rating-read"
-          defaultValue={rating}
-          precision={0.5}
-          readOnly
-          sx={{ padding: '0 0 10px 16px' }}
-        />
-      </CardActionArea>
+      </Box>
+      <Rating
+        name="half-rating-read"
+        defaultValue={rating}
+        precision={0.5}
+        readOnly
+        sx={{ padding: '0 0 10px 16px' }}
+      />
     </Card>
   );
 };
