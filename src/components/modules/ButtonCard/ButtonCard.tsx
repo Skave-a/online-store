@@ -15,7 +15,8 @@ export const ButtonCard = (props: Icards) => {
   const [inCart, setInCart] = useState(false);
 
   const buttonHandler = (e: MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
+    // e.stopPropagation();
+    e.preventDefault();
     const isEqual = props.cart.some((item) => item.id === props.cards.id);
     if (!isEqual) {
       props.setCart([...props.cart, props.cards]);
