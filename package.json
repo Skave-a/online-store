@@ -2,7 +2,7 @@
   "name": "online-store",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://georgiybeloklokov.github.io/online-store/",
+  "homepage": "https://georgiybeloklokov.github.io/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
