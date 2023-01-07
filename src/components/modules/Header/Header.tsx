@@ -11,15 +11,15 @@ export const Header: React.FC<{ totalQuantity: number; totalCostCart: number }> 
   return (
     <AppBar position="static" style={{ background: 'white', boxShadow: 'none' }}>
       <Toolbar>
-        <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+        {/* <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
           <IconButton size="large" edge="start" aria-label="menu" sx={{ mr: 2 }}>
             <MenuIcon style={{ color: '#006666' }} />
           </IconButton>
-        </Box>
+        </Box> */}
         <Typography
           variant="h1"
-          fontSize={35}
-          sx={{ flexGrow: 1 }}
+          //fontSize={35}
+          sx={{ flexGrow: 1, fontSize: { xs: 20, sm: 25 } }}
           fontFamily={`'Pacifico', cursive`}
           color="#006666"
         >
@@ -29,8 +29,8 @@ export const Header: React.FC<{ totalQuantity: number; totalCostCart: number }> 
         </Typography>
         <Typography
           variant="h2"
-          fontSize={25}
-          sx={{ flexGrow: 1 }}
+          //fontSize={25}
+          sx={{ flexGrow: 1, fontSize: { xs: 20, sm: 25 } }}
           fontFamily={`'Pacifico', cursive`}
           color="#006666"
         >
