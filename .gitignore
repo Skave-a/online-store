@@ -9,7 +9,6 @@ Explore
 @GeorgiyBeloklokov 
 GeorgiyBeloklokov
 /
-online-store
 Public
 Code
 Issues
@@ -20,7 +19,6 @@ Wiki
 Security
 Insights
 Settings
-online-store/.gitignore
 @GeorgiyBeloklokov
 GeorgiyBeloklokov feat: react
 Latest commit b7f5759 last month
@@ -170,4 +168,3 @@ API
 Training
 Blog
 About
-online-store/.gitignore at develop · GeorgiyBeloklokov/online-store
