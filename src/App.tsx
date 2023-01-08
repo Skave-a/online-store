@@ -57,7 +57,6 @@ function App() {
             />
           }
         />
-        {/* <Route path="/anyPage" element={< AnyPage/>} /> */}
         <Route
           path={`/:id/:name`}
           element={
