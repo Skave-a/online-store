@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Footer } from './components/modules/Footer/Footer';
 import { Header } from './components/modules/Header/Header';
 import Page404 from './components/Pages/Page404/Page404';
@@ -29,7 +29,7 @@ function App() {
   );
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Header totalQuantity={totalQuantity} totalCostCart={totalCostCart} />
       <Routes>
         <Route
@@ -74,7 +74,7 @@ function App() {
         <Route path="*" element={<Page404 />} />
       </Routes>
       <Footer />
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

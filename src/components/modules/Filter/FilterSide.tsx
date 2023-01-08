@@ -85,7 +85,7 @@ export const FilterSide = ({
     <Box sx={{ maxWidth: '300px', mb: 10 }}>
       <Box sx={{ display: 'flex', gap: '10px', mb: '20px' }}>
         <FilterCopy />
-        <FilterReset setSearchParams={setSearchParams} />
+        <FilterReset setSearchParams={setSearchParams} setFilter={setFilter} filter={filter} />
       </Box>
       <Box sx={boxStyle}>
         <SearchCard
