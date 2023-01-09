@@ -53,7 +53,7 @@ export const useCards = (
   stockQuery: string
 ) => {
   const sortedCards = useSortedCards(cards, sort, sortQuery);
-  if (searchQuery) query = searchQuery as string;
+  if (searchQuery.length > 1) query = searchQuery as string;
   if (famQuery) listFamily = famQuery.split('&');
   if (listFamily.length === 0) listFamily = arrFamily;
   if (shopQuery) listShop = shopQuery.split('&');
