@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/online-store/static/css/main.125e1854.css",
-    "main.js": "/online-store/static/js/main.d0b6b62a.js",
+    "main.js": "/online-store/static/js/main.c42a30c7.js",
     "static/js/27.513b2d5a.chunk.js": "/online-store/static/js/27.513b2d5a.chunk.js",
     "static/media/mastercard.svg": "/online-store/static/media/mastercard.0b7d0b4bc356eab475f433d3ce6f2a78.svg",
     "static/media/rss.svg": "/online-store/static/media/rss.fe36f023692478916a89.svg",
@@ -13,6 +13,6 @@
   },
   "entrypoints": [
     "static/css/main.125e1854.css",
-    "static/js/main.d0b6b62a.js"
+    "static/js/main.c42a30c7.js"
   ]
 }
